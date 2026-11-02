@@ -1,0 +1,151 @@
+{
+  "run_id": "20261018T071745Z-scenarios-litellm-failover-f5141c",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "command": "scenarios",
+  "gateway_url": "https://agw-litellm-a1b2c3d4e5-ew.a.run.app",
+  "scenario_file": "scenarios/litellm/failover.json",
+  "scenario": {
+    "name": "litellm-failover",
+    "description": "Test 2 (routing and failover) on LiteLLM v1.103.2 with router_settings.fallbacks gemini-3.8-flash <-> claude-haiku-5-5 and test-gemini-broken -> claude-haiku-5-5, retries off. Mocked failures (mock_testing_fallbacks: a 500; mock_testing_rate_limit_error: a 429) are raised by LiteLLM's router before any model call, so the failed attempt costs nothing; test-gemini-broken is a real upstream error (a model id that does not exist).",
+    "record_headers": [
+      "x-litellm-attempted-fallbacks",
+      "x-litellm-model-group",
+      "x-litellm-model-api-base",
+      "x-litellm-call-id"
+    ],
+    "cases": [
+      {
+        "name": "gemini-healthy",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 2,
+        "expect": {
+          "status": 200,
+          "model": "gemini-3.8-flash"
+        }
+      },
+      {
+        "name": "gemini-500-falls-back",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 3,
+        "body": {
+          "mock_testing_fallbacks": true
+        },
+        "expect": {
+          "status": 200,
+          "model": "claude-haiku-5-5",
+          "headers": {
+            "x-litellm-attempted-fallbacks": "1"
+          }
+        }
+      },
+      {
+        "name": "gemini-500-falls-back-stream",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "stream": true,
+        "repeat": 3,
+        "body": {
+          "mock_testing_fallbacks": true
+        },
+        "expect": {
+          "status": 200,
+          "model": "claude-haiku-5-5"
+        }
+      },
+      {
+        "name": "gemini-429-falls-back",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 3,
+        "body": {
+          "mock_testing_rate_limit_error": true
+        },
+        "expect": {
+          "status": 200,
+          "model": "claude-haiku-5-5"
+        }
+      },
+      {
+        "name": "claude-500-falls-back",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 3,
+        "body": {
+          "mock_testing_fallbacks": true
+        },
+        "expect": {
+          "status": 200,
+          "model": "gemini-3.8-flash"
+        }
+      },
+      {
+        "name": "claude-429-falls-back",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 3,
+        "body": {
+          "mock_testing_rate_limit_error": true
+        },
+        "expect": {
+          "status": 200,
+          "model": "gemini-3.8-flash"
+        }
+      },
+      {
+        "name": "gemini-500-fallbacks-disabled",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 2,
+        "body": {
+          "mock_testing_fallbacks": true,
+          "disable_fallbacks": true
+        },
+        "expect": {
+          "status": 500
+        }
+      },
+      {
+        "name": "broken-model-real-error",
+        "model": "test-gemini-broken",
+        "kind": "gemini",
+        "repeat": 5,
+        "expect": {
+          "status": 200,
+          "model": "claude-haiku-5-5"
+        }
+      },
+      {
+        "name": "broken-model-real-error-stream",
+        "model": "test-gemini-broken",
+        "kind": "gemini",
+        "stream": true,
+        "repeat": 3,
+        "expect": {
+          "status": 200,
+          "model": "claude-haiku-5-5"
+        }
+      },
+      {
+        "name": "gemini-healthy-after",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 2,
+        "expect": {
+          "status": 200,
+          "model": "gemini-3.8-flash"
+        }
+      }
+    ]
+  }
+}

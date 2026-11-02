@@ -1,0 +1,7 @@
+# Copy to terraform.tfvars (git-ignored) and fill in.
+project_id      = "my-gcp-project"
+image           = "europe-west1-docker.pkg.dev/my-gcp-project/agw-dockerhub/kong/kong@sha256:9a2ae6699a2ce0d60592eb176555d3594a22782c20cc6557a61ff3a7e8b559a3" # 3.9.3
+invoker_members = ["user:me@example.com", "serviceAccount:agw-agent@my-gcp-project.iam.gserviceaccount.com", "serviceAccount:agw-harness@my-gcp-project.iam.gserviceaccount.com"]
+
+# Optional overrides
+# db_tier = "db-f1-micro"

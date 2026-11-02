@@ -1,0 +1,360 @@
+[
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t5-20261101T184412-982117-valid"
+   },
+   "latencies": {
+    "kong": 8,
+    "proxy": 1419,
+    "receive": 3,
+    "request": 1430
+   },
+   "request": {
+    "id": "311485740f94a23a1bd5a1332c0cc73c",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 23296,
+     "balancer_start": 1793558672603,
+     "balancer_start_ns": 1.7935586726033e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T18:44:34.024601Z"
+ },
+ {
+  "jsonPayload": {
+   "latencies": {
+    "kong": 0,
+    "proxy": -1,
+    "receive": 0,
+    "request": 1
+   },
+   "request": {
+    "id": "3b6ea4005689bd45a164b17ee5b31e51",
+    "method": "POST"
+   },
+   "response": {
+    "status": 401
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-11-01T18:44:34.212526Z"
+ },
+ {
+  "jsonPayload": {
+   "latencies": {
+    "kong": 1,
+    "proxy": -1,
+    "receive": 0,
+    "request": 3
+   },
+   "request": {
+    "id": "080e5c16a1503b288bd28909691ad773",
+    "method": "POST"
+   },
+   "response": {
+    "status": 401
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-11-01T18:44:34.228552Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 1,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 0,
+      "cost": 0,
+      "prompt_tokens": 0,
+      "time_per_token": 0,
+      "total_tokens": 0
+     }
+    }
+   },
+   "consumer": {
+    "username": "agw-t5-20261101T184412-982117-claude-only"
+   },
+   "latencies": {
+    "kong": 6,
+    "proxy": -1,
+    "receive": 0,
+    "request": 7
+   },
+   "request": {
+    "id": "771b7c6f7ab1255e3fa3612a48451323",
+    "method": "POST"
+   },
+   "response": {
+    "status": 403
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-11-01T18:44:34.248458Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t5-20261101T184412-982117-claude-only"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 729,
+    "receive": 1,
+    "request": 732
+   },
+   "request": {
+    "id": "6b0d524901abbd539f479305078eca25",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 36608,
+     "balancer_start": 1793558674263,
+     "balancer_start_ns": 1.7935586742638e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T18:44:34.992644Z"
+ },
+ {
+  "jsonPayload": {
+   "latencies": {
+    "kong": 2,
+    "proxy": -1,
+    "receive": 0,
+    "request": 2
+   },
+   "request": {
+    "id": "1df1c54f5722e3391b7f8045c3a5421a",
+    "method": "POST"
+   },
+   "response": {
+    "status": 401
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-11-01T18:44:35.008996Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t5-20261101T184412-982117-no-group"
+   },
+   "latencies": {
+    "kong": 4,
+    "proxy": -1,
+    "receive": 0,
+    "request": 4
+   },
+   "request": {
+    "id": "4f0e7721145a2d72606e6b020cc58831",
+    "method": "POST"
+   },
+   "response": {
+    "status": 403
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-11-01T18:44:35.024056Z"
+ },
+ {
+  "jsonPayload": {
+   "latencies": {
+    "kong": 2,
+    "proxy": -1,
+    "receive": 0,
+    "request": 3
+   },
+   "request": {
+    "id": "2684af6435db01479b43345857983459",
+    "method": "POST"
+   },
+   "response": {
+    "status": 401
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-11-01T18:44:35.039919Z"
+ },
+ {
+  "jsonPayload": {
+   "latencies": {
+    "kong": 2,
+    "proxy": -1,
+    "receive": 0,
+    "request": 3
+   },
+   "request": {
+    "id": "446fa401b718d60b84a4fb157fdd4802",
+    "method": "POST"
+   },
+   "response": {
+    "status": 401
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-11-01T18:44:35.053463Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t5-20261101T184412-982117-rotated"
+   },
+   "latencies": {
+    "kong": 4,
+    "proxy": 632,
+    "receive": 1,
+    "request": 637
+   },
+   "request": {
+    "id": "0da293512509ad146491675316b0ef67",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 23296,
+     "balancer_start": 1793558675067,
+     "balancer_start_ns": 1.7935586750676e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T18:44:35.700114Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agent"
+   },
+   "latencies": {
+    "kong": 6,
+    "proxy": 396,
+    "receive": 2,
+    "request": 404
+   },
+   "request": {
+    "id": "c659e83cf063f15c7fcac65b3d75642c",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 1,
+     "balancer_latency_ns": 24576,
+     "balancer_start": 1793558675716,
+     "balancer_start_ns": 1.793558675717e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T18:44:36.115694Z"
+ }
+]

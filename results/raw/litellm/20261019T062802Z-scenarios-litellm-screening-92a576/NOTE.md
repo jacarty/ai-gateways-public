@@ -1,0 +1,1 @@
+Test 4 (2026-10-19, local, `id_token_source: gcloud`, the harness's virtual key): `harness/scenarios/litellm/screening.json` (the shared case set on both models, once each) on gateway revision `agw-litellm-00010-qzw`, run A: the committed config, no guardrails.

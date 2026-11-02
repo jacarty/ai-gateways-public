@@ -1,0 +1,70 @@
+{
+ "budgets": [
+  {
+   "id": "ff106bef-e0d1-47bd-9700-2ff91fbdbd8d",
+   "max_limit": 0.05,
+   "reset_duration": "1d",
+   "last_reset": "2026-10-24T10:21:15.475815Z",
+   "current_usage": 0.0003146,
+   "model_config_id": "f34fed2f-9696-4533-8b5a-5597639cf503",
+   "config_hash": "",
+   "created_at": "2026-10-24T10:21:15.475815Z",
+   "updated_at": "2026-10-24T10:21:15.475815Z",
+   "per_model_usage": [
+    {
+     "model": "claude-haiku-5-5",
+     "provider": "vertex",
+     "total_requests": 10,
+     "total_tokens": 1036,
+     "total_cost": 0.0003146,
+     "input_cost": 6.38e-05,
+     "output_cost": 0.0002508,
+     "additional_cost": 0
+    }
+   ]
+  },
+  {
+   "id": "d66f1af1-ebb0-49e6-ba87-22477c4fc369",
+   "max_limit": 0.0001,
+   "reset_duration": "1h",
+   "last_reset": "2026-10-24T10:21:15.477355Z",
+   "current_usage": 0.0003146,
+   "model_config_id": "f34fed2f-9696-4533-8b5a-5597639cf503",
+   "config_hash": "",
+   "created_at": "2026-10-24T10:21:15.477355Z",
+   "updated_at": "2026-10-24T10:21:15.477355Z",
+   "per_model_usage": [
+    {
+     "model": "claude-haiku-5-5",
+     "provider": "vertex",
+     "total_requests": 10,
+     "total_tokens": 1036,
+     "total_cost": 0.0003146,
+     "input_cost": 6.38e-05,
+     "output_cost": 0.0002508,
+     "additional_cost": 0
+    }
+   ]
+  }
+ ],
+ "is_active": true,
+ "model_configs": [],
+ "provider_configs": [
+  {
+   "id": 6,
+   "virtual_key_id": "bad3ddf5-e7a2-411d-b675-5678b5d8fc6a",
+   "provider": "vertex",
+   "weight": 1,
+   "allow_all_keys": true,
+   "keys": null,
+   "allowed_models": [
+    "gemini-3.8-flash",
+    "claude-haiku-5-5"
+   ],
+   "blacklisted_models": []
+  }
+ ],
+ "rate_limit": null,
+ "rate_limits": [],
+ "virtual_key_name": "agw-t3-race-20261024T102115-445650"
+}

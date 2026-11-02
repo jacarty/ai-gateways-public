@@ -1,0 +1,51 @@
+# Imported by start.sh on every start (`kong config db_import`, an upsert by ID),
+# so decK can always reach the Admin API. Keep in step with kong.yaml, which
+# declares the same entities with the same IDs. __AGW_KONG_ADMIN_KEY__ is filled
+# in at start from the agw-kong-admin-key secret.
+_format_version: "3.0"
+
+services:
+  - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0001
+    name: admin-api
+    url: http://127.0.0.1:8001
+    tags: [agw]
+    routes:
+      - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0002
+        name: admin-api
+        paths: [/admin-api]
+        strip_path: true
+        tags: [agw]
+        plugins:
+          - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0003
+            name: acl
+            config:
+              allow: [admin]
+              hide_groups_header: true
+            tags: [agw]
+
+consumers:
+  - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0004
+    username: admin
+    tags: [agw]
+    acls:
+      - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0005
+        group: admin
+        tags: [agw]
+    keyauth_credentials:
+      - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0006
+        key: Bearer __AGW_KONG_ADMIN_KEY__
+        tags: [agw]
+
+plugins:
+  # Global: every route needs a key. key-auth reads the whole Authorization
+  # header, so credentials are stored as "Bearer <key>" (ADR 0014).
+  - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0007
+    name: key-auth
+    config:
+      key_names: [authorization]
+      hide_credentials: true
+      # Header only: by default key-auth also reads ?authorization=... from the
+      # query string, which would put the key in request URLs and logs.
+      key_in_query: false
+      key_in_body: false
+    tags: [agw]

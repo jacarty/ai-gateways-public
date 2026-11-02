@@ -1,0 +1,11 @@
+Test 6, audit fidelity, run B: the `log_payloads` window (2026-11-01, about 19:16:44-19:16:51 UTC), run as run A (`harness/scenarios/kong/run-audit.sh`, local, the harness's own key, one agent request, an admin probe). Gateway: `agw-kong` revision `00003-7g6` (Kong OSS 3.9.3). Window B (`harness/scenarios/kong/README.md`, "Test 6"): `logging.log_payloads: true` on the `gemini` service's `ai-proxy`, and `log_statistics: true` plus `log_payloads: true` on both Claude routes' `ai-proxy` (payloads are written only when statistics are on), synced by decK (3 updated); `make diff-kong` 0/0/0 against the window file before the run, and the window was closed straight after (3 updated back, then 0/0/0). 6 cases, 6 matched; 9 Kong rows, collection complete. The notebook's cell D (one Claude request, before this run) showed the same.
+
+Same trail as run A (every request a row, joined by request id and by trace; the agent hop by consumer and time only; the admin probe's POST and DELETE rows), plus content:
+
+- Every row that went through `ai-proxy` now holds the request body (`ai.proxy.payload.request`, 273-367 characters, the prompt marker in each): as sent upstream, the agent's included, and for the refused Gemini request (400) as received, since nothing was sent.
+- The answer (`ai.proxy.payload.response`) is there for the non-streamed requests (251-1336 characters), but not for the streamed Claude request (0 characters): on a `preserve` stream Kong doesn't collect the response body. The refused request has no response either.
+- The 404 (no route) and the admin rows carry no payload: `ai-proxy` never ran for them.
+- With statistics on, the Claude rows log tokens as 0: Kong parses the non-streamed response, but in this config it doesn't read Anthropic's usage fields.
+- No row holds an ID token or Google token (scanned), and every `Authorization` is removed or `REDACTED`, as in run A. The prompts were synthetic; they stay in Cloud Logging's `_Default` bucket for its 30-day retention.
+
+Payload lengths were read from Cloud Logging for this note (lengths only); `trail.json` keeps flags (`prompt_marker`, `payload_logged`) only. `admin-probe.json` gained a final newline from the end-of-file pre-commit hook after the run (whitespace only); `run-audit.sh` now writes it.

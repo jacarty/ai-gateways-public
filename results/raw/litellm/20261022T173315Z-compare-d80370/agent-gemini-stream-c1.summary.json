@@ -1,0 +1,51 @@
+{
+  "run": "agent-gemini-stream-c1",
+  "target": "agent",
+  "model": "gemini",
+  "model_name": "gemini-3.8-flash",
+  "stream": true,
+  "concurrency": 1,
+  "warmup_discarded": 10,
+  "blocks": 2,
+  "block_size": 10,
+  "rewarm_per_block": 1,
+  "block_orders": [
+    [
+      "agent",
+      "direct"
+    ],
+    [
+      "direct",
+      "agent"
+    ]
+  ],
+  "agent_backend": "direct",
+  "requests": 20,
+  "ok": 19,
+  "error_rate": 0.05,
+  "wall_s": 45.932,
+  "throughput_rps": 0.414,
+  "latency_s": {
+    "p50": 1.2038,
+    "p95": 19.4724,
+    "p99": 19.4724,
+    "mean": 2.276
+  },
+  "latency_all_s": {
+    "p50": 1.2038,
+    "p95": 2.7455,
+    "p99": 19.4724
+  },
+  "ttft_s": {
+    "p50": 1.1363,
+    "p95": 19.3537,
+    "mean": 2.1539
+  },
+  "output_tokens_mean": 20.3684,
+  "thinking_tokens_mean": 10.8947,
+  "thinking_reported": 19,
+  "thinking_used": 2,
+  "errors": [
+    "{\"modelVersion\": \"gemini-3.8-flash\", \"content\": {\"parts\": [{\"text\": \"By the most widely taught convention, there are seven continents: Asia, Africa, North America, South America, Antarctica, Europe, and\"}, {\"text\": \"\", \"thoughtSignature\": \"AY89a1_pZm_TemsmuIPuJvc-K19LVAd5EghMcTMwxJDfRRKt6wCOi4bw6Eti2egBn7ovwMA427vDAkxJTmpGLVsVAkTtBU9mu-EBakFtJOJhvTLFAKa55Vq-ta5fEsNR-C-UwLK1_pQWX7jM5Bg2olY3I7mXbJLluvK6Bj9fEEWGG1eF05WfAxHGSoXi59ujo0lQk9D5p8tS_Qxqc_5u9N1VlypSgm06PQRXtPK4vd6JDEll_3Jg1RFB5718SIgyIdKj"
+  ]
+}

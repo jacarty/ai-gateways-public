@@ -1,0 +1,119 @@
+{
+  "$schema": "https://www.getbifrost.ai/schema",
+  "source_of_truth": "config.json",
+  "encryption_key": "env.BIFROST_ENCRYPTION_KEY",
+  "setup_token": "env.BIFROST_SETUP_TOKEN",
+  "client": {
+    "enforce_auth_on_inference": true,
+    "allow_direct_keys": false
+  },
+  "providers": {
+    "vertex": {
+      "keys": [
+        {
+          "name": "vertex-adc",
+          "value": "",
+          "models": ["gemini-3.8-flash", "claude-haiku-5-5"],
+          "weight": 1,
+          "vertex_key_config": {
+            "project_id": "env.AGW_PROJECT",
+            "region": "eu",
+            "auth_credentials": ""
+          }
+        }
+      ]
+    }
+  },
+  "governance": {
+    "auth_config": {
+      "is_enabled": true,
+      "admin_username": "env.BIFROST_ADMIN_USERNAME",
+      "admin_password": "env.BIFROST_ADMIN_PASSWORD"
+    },
+    "virtual_keys": [
+      {
+        "id": "agw-agent",
+        "name": "agw-agent",
+        "description": "The ADK agent (agw-agent).",
+        "value": "env.AGW_BIFROST_AGENT_KEY",
+        "is_active": true,
+        "provider_configs": [
+          {
+            "provider": "vertex",
+            "allowed_models": ["gemini-3.8-flash", "claude-haiku-5-5"],
+            "key_ids": ["*"],
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "id": "agw-harness",
+        "name": "agw-harness",
+        "description": "The load harness (agw-harness job and local runs).",
+        "value": "env.AGW_BIFROST_HARNESS_KEY",
+        "is_active": true,
+        "provider_configs": [
+          {
+            "provider": "vertex",
+            "allowed_models": ["gemini-3.8-flash", "claude-haiku-5-5"],
+            "key_ids": ["*"],
+            "weight": 1
+          }
+        ]
+      }
+    ],
+    "pricing_overrides": [
+      {
+        "id": "agw-price-gemini-3-8-flash",
+        "name": "Gemini 3.8 Flash, EU multi-region (Cloud Billing catalogue, regional)",
+        "scope_kind": "provider",
+        "provider_id": "vertex",
+        "match_type": "exact",
+        "pattern": "gemini-3.8-flash",
+        "request_types": ["chat_completion"],
+        "pricing_patch": "{\"input_cost_per_token\": 0.00000165, \"output_cost_per_token\": 0.00000825}"
+      },
+      {
+        "id": "agw-price-claude-haiku-5-5",
+        "name": "Claude Haiku 5.5, EU multi-region (Agent Platform pricing page)",
+        "scope_kind": "provider",
+        "provider_id": "vertex",
+        "match_type": "exact",
+        "pattern": "claude-haiku-5-5",
+        "request_types": ["chat_completion"],
+        "pricing_patch": "{\"input_cost_per_token\": 0.00000011, \"output_cost_per_token\": 0.00000055}"
+      }
+    ],
+    "routing_rules": [],
+    "budgets": [],
+    "rate_limits": []
+  },
+  "config_store": {
+    "enabled": true,
+    "type": "postgres",
+    "config": {
+      "host": "env.AGW_DB_HOST",
+      "port": "5432",
+      "user": "env.AGW_DB_USER",
+      "password": "env.AGW_DB_PASSWORD",
+      "db_name": "env.AGW_DB_NAME",
+      "ssl_mode": "disable",
+      "max_open_conns": 4,
+      "max_idle_conns": 2
+    }
+  },
+  "logs_store": {
+    "enabled": true,
+    "type": "postgres",
+    "config": {
+      "host": "env.AGW_DB_HOST",
+      "port": "5432",
+      "user": "env.AGW_DB_USER",
+      "password": "env.AGW_DB_PASSWORD",
+      "db_name": "env.AGW_DB_NAME",
+      "ssl_mode": "disable",
+      "max_open_conns": 4,
+      "max_idle_conns": 2
+    }
+  }
+}

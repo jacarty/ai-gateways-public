@@ -1,0 +1,38 @@
+{
+  "name": "litellm-failover",
+  "description": "Test 2 (routing and failover) on LiteLLM v1.103.2. Needs the test window from README.md: router_settings.fallbacks gemini-3.8-flash <-> claude-haiku-5-5 and test-gemini-broken -> claude-haiku-5-5, retries off, the test-only model test-gemini-broken (a model id that does not exist: a real upstream error), and dangerously_allow_mock_testing_request_params for the mocked cases (mock_testing_fallbacks: a 500; mock_testing_rate_limit_error: a 429; both raised by LiteLLM before any model call).",
+  "record_headers": [
+    "x-litellm-attempted-fallbacks",
+    "x-litellm-model-group",
+    "x-litellm-model-api-base",
+    "x-litellm-call-id"
+  ],
+  "cases": [
+    {"name": "gemini-healthy", "model": "gemini-3.8-flash", "kind": "gemini", "repeat": 2,
+     "expect": {"status": 200, "model": "gemini-3.8-flash"}},
+    {"name": "gemini-500-falls-back", "model": "gemini-3.8-flash", "kind": "gemini", "repeat": 3,
+     "body": {"mock_testing_fallbacks": true},
+     "expect": {"status": 200, "model": "claude-haiku-5-5", "headers": {"x-litellm-attempted-fallbacks": "1"}}},
+    {"name": "gemini-500-falls-back-stream", "model": "gemini-3.8-flash", "kind": "gemini", "stream": true, "repeat": 3,
+     "body": {"mock_testing_fallbacks": true},
+     "expect": {"status": 200, "model": "claude-haiku-5-5"}},
+    {"name": "gemini-429-falls-back", "model": "gemini-3.8-flash", "kind": "gemini", "repeat": 3,
+     "body": {"mock_testing_rate_limit_error": true},
+     "expect": {"status": 200, "model": "claude-haiku-5-5"}},
+    {"name": "claude-500-falls-back", "model": "claude-haiku-5-5", "kind": "claude", "repeat": 3,
+     "body": {"mock_testing_fallbacks": true},
+     "expect": {"status": 200, "model": "gemini-3.8-flash"}},
+    {"name": "claude-429-falls-back", "model": "claude-haiku-5-5", "kind": "claude", "repeat": 3,
+     "body": {"mock_testing_rate_limit_error": true},
+     "expect": {"status": 200, "model": "gemini-3.8-flash"}},
+    {"name": "gemini-500-fallbacks-disabled", "model": "gemini-3.8-flash", "kind": "gemini", "repeat": 2,
+     "body": {"mock_testing_fallbacks": true, "disable_fallbacks": true},
+     "expect": {"status": 500}},
+    {"name": "broken-model-real-error", "model": "test-gemini-broken", "kind": "gemini", "repeat": 5,
+     "expect": {"status": 200, "model": "claude-haiku-5-5"}},
+    {"name": "broken-model-real-error-stream", "model": "test-gemini-broken", "kind": "gemini", "stream": true, "repeat": 3,
+     "expect": {"status": 200, "model": "claude-haiku-5-5"}},
+    {"name": "gemini-healthy-after", "model": "gemini-3.8-flash", "kind": "gemini", "repeat": 2,
+     "expect": {"status": 200, "model": "gemini-3.8-flash"}}
+  ]
+}

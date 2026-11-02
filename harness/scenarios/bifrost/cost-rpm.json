@@ -1,0 +1,35 @@
+{
+  "name": "bifrost-cost-rpm",
+  "description": "Test 3 on Bifrost transports/v2.2.6, run through run-cost.sh with a throwaway key (limits in the run's NOTE.md and quota.json). A request limit of 3 a minute. Bifrost checks usage >= limit before each call and counts a request only after it succeeds, so expect 3 answered, then 429 with no model call, then answered again once the minute has passed (resets are swept every 10 s).",
+  "record_headers": [],
+  "cases": [
+    {
+      "name": "rpm-within-limit",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 3,
+      "expect": {
+        "status": 200
+      }
+    },
+    {
+      "name": "rpm-over-limit",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 2,
+      "expect": {
+        "status": 429
+      }
+    },
+    {
+      "name": "rpm-after-window",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "pause_s": 70,
+      "expect": {
+        "status": 200
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "run_id": "20261022T080054Z-scenarios-litellm-audit-747b9f",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "command": "scenarios",
+  "gateway_url": "https://agw-litellm-a1b2c3d4e5-ew.a.run.app",
+  "git_commit": "ea059e1-dirty",
+  "note": "revision agw-litellm-00014-4p8; D, store_prompts_in_spend_logs",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/litellm/audit.json",
+  "scenario": {
+    "name": "litellm-audit",
+    "description": "Test 6 (audit fidelity) on LiteLLM v1.103.2: requests a cooperating caller tags with a session id (litellm_session_id) and its own spend-log metadata, one refused request in the same session, and one untagged request. Run with run-audit.sh, which also sends one request through the agent (unchanged: it tags nothing) and then collects the trail each request left (LiteLLM spend-log rows, Cloud Run request and container logs) into trail.json and trail.md. The prompt carries a marker so stored content can be found (window D).",
+    "record_headers": [
+      "x-litellm-call-id",
+      "x-litellm-model-group",
+      "x-litellm-model-api-base",
+      "x-litellm-applied-guardrails"
+    ],
+    "cases": [
+      {
+        "name": "session-claude",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+        "body": {
+          "litellm_session_id": "agw-t6-session",
+          "metadata": {
+            "spend_logs_metadata": {
+              "agw_test": "6",
+              "agw_case": "session-claude"
+            }
+          }
+        },
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "session-gemini",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 1,
+        "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+        "body": {
+          "litellm_session_id": "agw-t6-session",
+          "metadata": {
+            "spend_logs_metadata": {
+              "agw_test": "6",
+              "agw_case": "session-gemini"
+            }
+          }
+        },
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "session-claude-stream",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+        "stream": true,
+        "body": {
+          "litellm_session_id": "agw-t6-session",
+          "metadata": {
+            "spend_logs_metadata": {
+              "agw_test": "6",
+              "agw_case": "session-claude-stream"
+            }
+          }
+        },
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "session-unknown-model",
+        "model": "agw-t6-no-such-model",
+        "kind": "claude",
+        "repeat": 1,
+        "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+        "body": {
+          "litellm_session_id": "agw-t6-session",
+          "metadata": {
+            "spend_logs_metadata": {
+              "agw_test": "6",
+              "agw_case": "session-unknown-model"
+            }
+          }
+        },
+        "expect": {
+          "status": 403,
+          "error_contains": "not available for this api key"
+        }
+      },
+      {
+        "name": "untagged-claude",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+        "expect": {
+          "status": 200
+        }
+      }
+    ]
+  }
+}

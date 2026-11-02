@@ -1,0 +1,56 @@
+{
+  "run": "direct-claude-stream-c1",
+  "target": "direct",
+  "model": "claude",
+  "model_name": "claude-haiku-5-5",
+  "stream": true,
+  "concurrency": 1,
+  "warmup_discarded": 10,
+  "blocks": 4,
+  "block_size": 25,
+  "rewarm_per_block": 1,
+  "block_orders": [
+    [
+      "direct",
+      "gateway"
+    ],
+    [
+      "gateway",
+      "direct"
+    ],
+    [
+      "direct",
+      "gateway"
+    ],
+    [
+      "gateway",
+      "direct"
+    ]
+  ],
+  "requests": 100,
+  "ok": 100,
+  "error_rate": 0.0,
+  "wall_s": 51.177,
+  "throughput_rps": 1.954,
+  "latency_s": {
+    "p50": 0.4507,
+    "p95": 0.984,
+    "p99": 1.2648,
+    "mean": 0.5104
+  },
+  "latency_all_s": {
+    "p50": 0.4507,
+    "p95": 0.984,
+    "p99": 1.2648
+  },
+  "ttft_s": {
+    "p50": 0.2424,
+    "p95": 0.8103,
+    "mean": 0.3451
+  },
+  "output_tokens_mean": 44.63,
+  "thinking_tokens_mean": null,
+  "thinking_reported": 0,
+  "thinking_used": 0,
+  "errors": []
+}

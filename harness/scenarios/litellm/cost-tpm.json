@@ -1,0 +1,60 @@
+{
+  "name": "litellm-cost-tpm",
+  "description": "Test 3 on LiteLLM v1.103.2: a token-per-minute limit. Run with the t3-tpm key (tpm_limit 1000; README.md). LiteLLM reserves input plus max_completion_tokens (256) before each call and settles to actual use after it, so one at a time about 7 requests fit (~110 tokens each, and the next needs a full ~300-token reservation free), at once only about 3 (~300 reserved each), and a request whose cap alone exceeds the limit is refused without a call. Cases without a status expectation are read from their status mix.",
+  "record_headers": [
+    "x-litellm-key-spend",
+    "x-litellm-response-cost",
+    "x-ratelimit-remaining-requests",
+    "x-ratelimit-remaining-tokens",
+    "retry-after",
+    "x-litellm-model-group"
+  ],
+  "cases": [
+    {
+      "name": "tpm-one-at-a-time",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 12
+    },
+    {
+      "name": "tpm-refused",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "expect": {
+        "status": 429,
+        "error_contains": "rate limit"
+      }
+    },
+    {
+      "name": "tpm-at-once",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 6,
+      "concurrent": true,
+      "pause_s": 65
+    },
+    {
+      "name": "tpm-cap-above-limit",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "pause_s": 65,
+      "body": {
+        "max_completion_tokens": 2000
+      },
+      "expect": {
+        "status": 429
+      }
+    },
+    {
+      "name": "tpm-normal-request-still-fits",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "expect": {
+        "status": 200
+      }
+    }
+  ]
+}

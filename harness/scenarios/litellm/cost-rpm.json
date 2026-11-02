@@ -1,0 +1,43 @@
+{
+  "name": "litellm-cost-rpm",
+  "description": "Test 3 (cost control) on LiteLLM v1.103.2: a request-per-minute limit. Run with the t3-rpm key (rpm_limit 3; README.md). Expect the first three requests through, the next refused with a 429 before any model call, and requests allowed again once the 60 s window has passed.",
+  "record_headers": [
+    "x-litellm-key-spend",
+    "x-litellm-response-cost",
+    "x-ratelimit-remaining-requests",
+    "x-ratelimit-remaining-tokens",
+    "retry-after",
+    "x-litellm-model-group"
+  ],
+  "cases": [
+    {
+      "name": "rpm-within-limit",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 3,
+      "expect": {
+        "status": 200
+      }
+    },
+    {
+      "name": "rpm-over-limit",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 2,
+      "expect": {
+        "status": 429,
+        "error_contains": "rate limit"
+      }
+    },
+    {
+      "name": "rpm-after-window",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "pause_s": 65,
+      "expect": {
+        "status": 200
+      }
+    }
+  ]
+}

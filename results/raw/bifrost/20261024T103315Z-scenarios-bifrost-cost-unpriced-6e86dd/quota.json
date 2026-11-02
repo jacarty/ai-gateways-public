@@ -1,0 +1,49 @@
+{
+ "budgets": [
+  {
+   "id": "cc695e32-a632-4875-9258-19e2ffc49708",
+   "max_limit": 0.0001,
+   "reset_duration": "1h",
+   "last_reset": "2026-10-24T10:33:15.193432Z",
+   "current_usage": 0,
+   "model_config_id": "b85e2ab2-76ad-4bdd-bdec-f4275aeaf921",
+   "config_hash": "",
+   "created_at": "2026-10-24T10:33:15.193432Z",
+   "updated_at": "2026-10-24T10:33:15.193432Z",
+   "per_model_usage": []
+  },
+  {
+   "id": "f8af1453-1f9b-417f-b75c-7645ca76e4b3",
+   "max_limit": 0.05,
+   "reset_duration": "1d",
+   "last_reset": "2026-10-24T10:33:15.189842Z",
+   "current_usage": 0,
+   "model_config_id": "b85e2ab2-76ad-4bdd-bdec-f4275aeaf921",
+   "config_hash": "",
+   "created_at": "2026-10-24T10:33:15.189842Z",
+   "updated_at": "2026-10-24T10:33:15.189842Z",
+   "per_model_usage": []
+  }
+ ],
+ "is_active": true,
+ "model_configs": [],
+ "provider_configs": [
+  {
+   "id": 14,
+   "virtual_key_id": "56e8149f-54d8-474b-ad8e-5c0d2d89bf27",
+   "provider": "vertex",
+   "weight": 1,
+   "allow_all_keys": true,
+   "keys": null,
+   "allowed_models": [
+    "gemini-3.8-flash",
+    "claude-haiku-5-5",
+    "test-claude-unpriced"
+   ],
+   "blacklisted_models": []
+  }
+ ],
+ "rate_limit": null,
+ "rate_limits": [],
+ "virtual_key_name": "agw-t3-unpriced-20261024T103314-447413"
+}

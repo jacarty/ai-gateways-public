@@ -1,0 +1,31 @@
+{
+  "name": "bifrost-cost-budget",
+  "description": "Test 3 on Bifrost transports/v2.2.6, run through run-cost.sh with a throwaway key (limits in the run's NOTE.md and quota.json). A $0.0002 budget (1 h), one request at a time. A Claude request costs about $0.00003 at the override price; expect about 7 through, the one that crosses admitted, then 402 with no model call, for either model. quota.json shows the final usage.",
+  "record_headers": [],
+  "cases": [
+    {
+      "name": "budget-spend-down",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 10
+    },
+    {
+      "name": "budget-refused",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 2,
+      "expect": {
+        "status": 402
+      }
+    },
+    {
+      "name": "budget-refused-gemini",
+      "model": "gemini-3.8-flash",
+      "kind": "gemini",
+      "repeat": 1,
+      "expect": {
+        "status": 402
+      }
+    }
+  ]
+}

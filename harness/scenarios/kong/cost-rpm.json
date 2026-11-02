@@ -1,0 +1,52 @@
+{
+  "name": "kong-cost-rpm",
+  "description": "Test 3 on Kong OSS 3.9.3, run through run-cost.sh with a throwaway consumer (its limit in the run's meta.json note). Kong's rate-limiting plugin on the consumer: 3 requests a minute, policy local (counted in the instance's memory; windows are clock minutes, and run-cost.sh starts the run just after one turns). Expect 3 answered, then Kong's 429 'API rate limit exceeded' with no model call, then answered again in the next minute. Kong OSS limits requests only: there is no token or spend limit (ai-rate-limiting-advanced is enterprise).",
+  "record_headers": [
+    "ratelimit-limit",
+    "ratelimit-remaining",
+    "ratelimit-reset",
+    "retry-after",
+    "x-ratelimit-remaining-minute",
+    "x-kong-request-id"
+  ],
+  "cases": [
+    {
+      "name": "rpm-within-limit",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 3,
+      "expect": {
+        "status": 200
+      }
+    },
+    {
+      "name": "rpm-over-limit",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 2,
+      "expect": {
+        "status": 429,
+        "error_contains": "API rate limit exceeded"
+      }
+    },
+    {
+      "name": "rpm-over-limit-other-model",
+      "model": "gemini-3.8-flash",
+      "kind": "gemini",
+      "repeat": 1,
+      "expect": {
+        "status": 429
+      }
+    },
+    {
+      "name": "rpm-after-window",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "pause_s": 65,
+      "expect": {
+        "status": 200
+      }
+    }
+  ]
+}

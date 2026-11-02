@@ -1,0 +1,57 @@
+# LiteLLM proxy config for the agw-litellm gateway (LiteLLM v1.103.2).
+#
+# Terraform stores this file as a Secret Manager secret and mounts it at
+# /etc/litellm/config.yaml; a change here rolls out a new Cloud Run revision on apply.
+# It holds no secrets: values written os.environ/NAME are read from the container's
+# environment, which Terraform fills from Secret Manager.
+#
+# The model names are the ones the agent and the harness send ("model" in the
+# OpenAI request), so callers never change between the baseline and a gateway.
+
+model_list:
+  - model_name: gemini-3.8-flash
+    litellm_params:
+      model: vertex_ai/gemini-3.8-flash
+      vertex_project: os.environ/GOOGLE_CLOUD_PROJECT
+      # Must be set: LiteLLM's default is us-central1. "eu" maps to
+      # aiplatform.eu.rep.googleapis.com, the same endpoint as the baseline.
+      vertex_location: os.environ/AGW_MODEL_LOCATION
+      # LiteLLM v1.103.2's price map has every Gemini 3.8 Flash tier at half the
+      # Cloud Billing catalogue price, so spend and budgets would see half the real
+      # cost. These are the catalogue's "Regional Text Input/Output - Predictions"
+      # SKUs (2026-10-18): $1.65 / $8.25 per 1M (short prompts). A price set here replaces the map
+      # entry, including its 1.1 regional uplift, so this is the regional price.
+      input_cost_per_token: 0.00000165
+      output_cost_per_token: 0.00000825
+
+  - model_name: claude-haiku-5-5
+    litellm_params:
+      model: vertex_ai/claude-haiku-5-5
+      vertex_project: os.environ/GOOGLE_CLOUD_PROJECT
+      vertex_location: os.environ/AGW_MODEL_LOCATION
+      # Haiku 5.5 is not in LiteLLM's v1.103.2 price map; without these its spend
+      # has no basis (budgets still apply: only a price of exactly 0 skips them,
+      # test 3). From the Agent Platform pricing
+      # page (2026-10-17): $0.11 / $0.55 per 1M input / output tokens (short prompts),
+      # the EU Multi-Region column; the global endpoint is $0.10 / $0.50 (checked 2026-10-18).
+      input_cost_per_token: 0.00000011
+      output_cost_per_token: 0.00000055
+
+router_settings:
+  # The router retries failed calls twice by default (openai's DEFAULT_MAX_RETRIES);
+  # the direct baseline never retries, so retries would hide errors and add latency.
+  num_retries: 0
+  # No fallbacks, on purpose: with them, a Gemini error in a measured run would be
+  # answered by Claude and counted as a Gemini success. Test 2 (failover) adds
+  # fallbacks, a test-only broken model and LiteLLM's mock switch for its window
+  # only, then removes them: harness/scenarios/litellm/README.md.
+
+litellm_settings:
+  # Unsupported OpenAI params raise instead of being dropped silently, so what
+  # each model accepts (max_completion_tokens, reasoning_effort, stream_options)
+  # shows up as a finding rather than a quiet difference from the baseline.
+  drop_params: false
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
+  # DATABASE_URL is read from the environment: virtual keys, budgets, spend logs.

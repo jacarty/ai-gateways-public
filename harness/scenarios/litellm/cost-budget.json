@@ -1,0 +1,40 @@
+{
+  "name": "litellm-cost-budget",
+  "description": "Test 3 on LiteLLM v1.103.2: a hard dollar budget, one request at a time. Run with the t3-budget key (max_budget $0.0002; README.md). Each Claude request costs about $0.00003 and reserves about $0.00015 up front; expect about 6 through, then 429 \"Budget has been exceeded\" with no model call. x-litellm-key-spend shows the spend after each request; the final spend can pass the budget by at most one request.",
+  "record_headers": [
+    "x-litellm-key-spend",
+    "x-litellm-response-cost",
+    "x-ratelimit-remaining-requests",
+    "x-ratelimit-remaining-tokens",
+    "retry-after",
+    "x-litellm-model-group"
+  ],
+  "cases": [
+    {
+      "name": "budget-spend-down",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 10
+    },
+    {
+      "name": "budget-refused",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 2,
+      "expect": {
+        "status": 429,
+        "error_contains": "budget has been exceeded"
+      }
+    },
+    {
+      "name": "budget-refused-gemini",
+      "model": "gemini-3.8-flash",
+      "kind": "gemini",
+      "repeat": 1,
+      "expect": {
+        "status": 429,
+        "error_contains": "budget has been exceeded"
+      }
+    }
+  ]
+}

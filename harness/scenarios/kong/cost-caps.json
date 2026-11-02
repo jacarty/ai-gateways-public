@@ -1,0 +1,50 @@
+{
+  "name": "kong-cost-caps",
+  "description": "Test 3 on Kong OSS 3.9.3, run through run-cost.sh with a throwaway consumer (its limit in the run's meta.json note). No rate limit. Per-request caps: each case asks for a long answer and up to 2000 tokens. Gemini's cap comes from kong.yaml (model.options.max_tokens 256), which overrides the caller's max_tokens (llm/drivers/shared.lua merge_config_defaults) and replaces the dropped max_completion_tokens; Claude's native request passes through with the caller's max_tokens. The Claude case replaces the harness's two-sentence system instruction so its answer can run past 256 tokens; the Gemini cases keep it, and are cut short anyway by default-level thinking inside the 256 cap. Kong's log (kong-log.json) shows what it counted and priced: Gemini's usage and cost, nothing for Claude (preserve route, log_statistics off).",
+  "record_headers": [
+    "x-kong-request-id",
+    "x-kong-llm-model"
+  ],
+  "cases": [
+    {
+      "name": "gemini-asks-2000-completion-tokens",
+      "model": "gemini-3.8-flash",
+      "kind": "gemini",
+      "repeat": 1,
+      "prompt": "Describe how a bicycle works, in about 300 words.",
+      "body": {
+        "max_completion_tokens": 2000
+      },
+      "expect": {
+        "status": 200
+      }
+    },
+    {
+      "name": "gemini-asks-2000-max-tokens",
+      "model": "gemini-3.8-flash",
+      "kind": "gemini",
+      "repeat": 1,
+      "prompt": "Describe how a bicycle works, in about 300 words.",
+      "body": {
+        "max_tokens": 2000
+      },
+      "expect": {
+        "status": 200
+      }
+    },
+    {
+      "name": "claude-asks-2000-max-tokens",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "prompt": "Describe how a bicycle works, in about 300 words.",
+      "body": {
+        "max_tokens": 2000,
+        "system": "You are a test agent used to benchmark AI gateways. Answer in about 300 words."
+      },
+      "expect": {
+        "status": 200
+      }
+    }
+  ]
+}

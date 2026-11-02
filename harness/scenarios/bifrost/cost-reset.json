@@ -1,0 +1,32 @@
+{
+  "name": "bifrost-cost-reset",
+  "description": "Test 3 on Bifrost transports/v2.2.6, run through run-cost.sh with a throwaway key (limits in the run's NOTE.md and quota.json). A $0.0001 budget that resets every minute. Spend it, be refused, wait, and be admitted again: shows when a reset actually lands (swept every 10 s; an expired window is skipped, not denied, until swept).",
+  "record_headers": [],
+  "cases": [
+    {
+      "name": "reset-spend-down",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 5
+    },
+    {
+      "name": "reset-refused",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "expect": {
+        "status": 402
+      }
+    },
+    {
+      "name": "reset-after-window",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "pause_s": 75,
+      "expect": {
+        "status": 200
+      }
+    }
+  ]
+}

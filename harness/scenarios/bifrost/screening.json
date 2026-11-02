@@ -1,0 +1,11 @@
+{
+  "name": "bifrost-screening",
+  "description": "Test 4 (inline screening) on Bifrost transports/v2.2.6: the shared case set (../screening-cases.json) on both models, once each. Run it twice: with the committed config (Bifrost OSS has no guardrails: what passes through), and with the guardrail window (README.md, \"Test 4\": a guardrails_config rule, which no OSS code reads); say which in --note. No mask_marker: Bifrost OSS never masks content.",
+  "cases_from": "../screening-cases.json",
+  "matrix": [
+    {"model": "gemini-3.8-flash", "kind": "gemini"},
+    {"model": "claude-haiku-5-5", "kind": "claude"}
+  ],
+  "case_defaults": {"repeat": 1},
+  "record_headers": []
+}

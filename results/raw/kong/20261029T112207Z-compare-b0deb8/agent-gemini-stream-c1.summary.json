@@ -1,0 +1,51 @@
+{
+  "run": "agent-gemini-stream-c1",
+  "target": "agent",
+  "model": "gemini",
+  "model_name": "gemini-3.8-flash",
+  "stream": true,
+  "concurrency": 1,
+  "warmup_discarded": 10,
+  "blocks": 2,
+  "block_size": 10,
+  "rewarm_per_block": 1,
+  "block_orders": [
+    [
+      "agent",
+      "direct"
+    ],
+    [
+      "direct",
+      "agent"
+    ]
+  ],
+  "agent_backend": "direct",
+  "requests": 20,
+  "ok": 19,
+  "error_rate": 0.05,
+  "wall_s": 36.909,
+  "throughput_rps": 0.515,
+  "latency_s": {
+    "p50": 1.6726,
+    "p95": 3.0156,
+    "p99": 3.0156,
+    "mean": 1.7602
+  },
+  "latency_all_s": {
+    "p50": 1.6726,
+    "p95": 3.0156,
+    "p99": 3.4555
+  },
+  "ttft_s": {
+    "p50": 1.4096,
+    "p95": 2.9009,
+    "mean": 1.6005
+  },
+  "output_tokens_mean": 22.4211,
+  "thinking_tokens_mean": 29.7368,
+  "thinking_reported": 19,
+  "thinking_used": 4,
+  "errors": [
+    "{\"modelVersion\": \"gemini-3.8-flash\", \"content\": {\"parts\": [{\"text\": \"By the most widely accepted model, there are seven continents: Africa, Antarctica, Asia, Australia, Europe, North America, and South\"}, {\"text\": \"\", \"thoughtSignature\": \"AY89a1_ptJITHEhw3T8n0mKBFOJjJeTa-f1KdRwc8BFBWgzihgHZb3TfXQbRrrsJ-FB7fjOIUTX3IUJTVIx6sFvxuWb_aUNOkFzLEf6X18-GpToX3Dh6TdRhcYdfIncaz2KsGDkI8L__XiaWbxxXdvHCtV3sCNvTf3iDMSDe4kw-yWNuuvqO09IMYJ9n-J7FMZ5bqd0l6Ts56EPrdJeiHkF0gT7QhDqdfxzWo1uhqrsOv9EcE_FpsLlEiSCJaP_6h3G0T"
+  ]
+}

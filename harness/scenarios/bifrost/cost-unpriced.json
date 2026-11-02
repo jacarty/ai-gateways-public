@@ -1,0 +1,40 @@
+{
+  "name": "bifrost-cost-unpriced",
+  "description": "Test 3 on Bifrost transports/v2.2.6, run through run-cost.sh with a throwaway key (limits in the run's NOTE.md and quota.json). Needs the test 3 window (README.md): test-claude-unpriced, an alias to the real Claude model whose canonical model_name has no price. Bifrost charges a budget only when cost > 0, so unpriced requests should never spend the $0.0001 budget: expect all of them answered, then priced Claude requests to spend it and be refused. RESULT (2026-10-24): wrong prediction. Bifrost priced the alias as claude-haiku-5-5, the model it resolves to, so the unpriced cases were charged and refused once the budget was spent; the 5 mismatches in the recorded run are that finding.",
+  "record_headers": [],
+  "cases": [
+    {
+      "name": "unpriced-not-charged",
+      "model": "test-claude-unpriced",
+      "kind": "claude",
+      "repeat": 8,
+      "expect": {
+        "status": 200
+      }
+    },
+    {
+      "name": "priced-spends-budget",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 5
+    },
+    {
+      "name": "priced-refused",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "expect": {
+        "status": 402
+      }
+    },
+    {
+      "name": "unpriced-refused-once-spent",
+      "model": "test-claude-unpriced",
+      "kind": "claude",
+      "repeat": 1,
+      "expect": {
+        "status": 402
+      }
+    }
+  ]
+}

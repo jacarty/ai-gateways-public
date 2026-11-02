@@ -1,0 +1,69 @@
+#!/bin/sh
+#
+# Pre-push hook: branch naming validation
+# Validates that the branch being pushed follows the naming convention.
+#
+# Run by pre-commit (see .pre-commit-config.yaml); install with `uv tool install pre-commit==4.6.2 && pre-commit install`.
+
+# Colours for output
+RED=$(printf '\033[0;31m')
+GREEN=$(printf '\033[0;32m')
+YELLOW=$(printf '\033[0;33m')
+NC=$(printf '\033[0m')
+
+# The branch being pushed (set by pre-commit), else the checked-out branch.
+# Tag pushes and deletes have no refs/heads/ target and are skipped.
+if [ -n "$PRE_COMMIT_REMOTE_BRANCH" ]; then
+    case "$PRE_COMMIT_REMOTE_BRANCH" in
+        refs/heads/*) BRANCH=${PRE_COMMIT_REMOTE_BRANCH#refs/heads/} ;;
+        *) exit 0 ;;
+    esac
+else
+    BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
+fi
+
+# Skip if we can't determine the branch (detached HEAD)
+if [ -z "$BRANCH" ]; then
+    exit 0
+fi
+
+# Allow these branches without validation
+EXEMPT_BRANCHES="main|master|dev|develop|staging|production|release"
+
+if echo "$BRANCH" | grep -qE "^($EXEMPT_BRANCHES)$"; then
+    exit 0
+fi
+
+# Valid branch pattern: type/short-description
+# - type must match conventional commit types
+# - description uses lowercase, numbers, and hyphens
+# - no uppercase, no spaces, no special characters
+VALID_TYPES="feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert"
+BRANCH_PATTERN="^($VALID_TYPES)/[a-z0-9][a-z0-9-]{1,48}[a-z0-9]$"
+
+if ! echo "$BRANCH" | grep -qE "$BRANCH_PATTERN"; then
+    echo "" >&2
+    echo "${RED}✗ Invalid branch name: ${YELLOW}${BRANCH}${NC}" >&2
+    echo "" >&2
+    echo "  Expected format: ${GREEN}<type>/<short-description>${NC}" >&2
+    echo "" >&2
+    echo "  Valid types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert" >&2
+    echo "" >&2
+    echo "  Rules:" >&2
+    echo "    - Lowercase only, no spaces" >&2
+    echo "    - Use hyphens to separate words" >&2
+    echo "    - Keep the part after the slash under 50 characters" >&2
+    echo "    - Must start and end with a letter or number" >&2
+    echo "" >&2
+    echo "  Examples:" >&2
+    echo "    ${GREEN}feat/oauth-google-login${NC}" >&2
+    echo "    ${GREEN}fix/null-payment-response${NC}" >&2
+    echo "    ${GREEN}docs/aws-deployment${NC}" >&2
+    echo "    ${GREEN}refactor/extract-query-builder${NC}" >&2
+    echo "" >&2
+    echo "  Exempt branches: main, master, dev, develop, staging, production, release" >&2
+    echo "  Skip this check with: git push --no-verify" >&2
+    exit 1
+fi
+
+exit 0

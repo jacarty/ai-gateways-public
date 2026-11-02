@@ -1,0 +1,160 @@
+{
+  "run_id": "20261020T135214Z-scenarios-litellm-auth-e0f291",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "command": "scenarios",
+  "gateway_url": "https://agw-litellm-a1b2c3d4e5-ew.a.run.app",
+  "git_commit": "d087e77",
+  "note": "revision agw-litellm-00013-snq; throwaway keys agw-t5-run-*-20261020T135119-182322",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/litellm/auth.json",
+  "scenario": {
+    "name": "litellm-auth",
+    "description": "Test 5 (identity and secrets) on LiteLLM v1.103.2: which layer stops which credential problem. Two layers: Cloud Run IAM checks the Google ID token (X-Serverless-Authorization; refusals are HTML), then LiteLLM checks its virtual key (Authorization; refusals are JSON with type auth_error). Run with run-auth.sh, which mints the throwaway keys (a Claude-only key, an expired key, a blocked key, a deleted key) and reads the agent's key, passes them as AGW_T5_* environment variables, and deletes its keys on exit. Only the valid cases reach a model (3 calls).",
+    "record_headers": [
+      "x-litellm-model-group",
+      "www-authenticate"
+    ],
+    "cases": [
+      {
+        "name": "valid-id-token-and-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "no-credentials",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "id_token": false,
+        "api_key": "none",
+        "expect": {
+          "status": 403,
+          "error_contains": "forbidden"
+        }
+      },
+      {
+        "name": "key-without-id-token",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "id_token": false,
+        "expect": {
+          "status": 401,
+          "error_contains": "unauthorized",
+          "error_not_contains": "auth_error"
+        }
+      },
+      {
+        "name": "id-token-without-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "none",
+        "expect": {
+          "status": 401,
+          "error_contains": "no api key passed"
+        }
+      },
+      {
+        "name": "key-not-sk-format",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "agw-not-a-real-key-123",
+        "expect": {
+          "status": 401,
+          "error_contains": "auth_error",
+          "error_not_contains": "agw-not-a-real-key-123"
+        }
+      },
+      {
+        "name": "unknown-sk-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "sk-agw-wrong-key",
+        "expect": {
+          "status": 401,
+          "error_contains": "invalid proxy server token"
+        }
+      },
+      {
+        "name": "claude-only-key-asks-gemini",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_CLAUDE_ONLY_KEY",
+        "expect": {
+          "status": 403,
+          "error_contains": "not available for this api key"
+        }
+      },
+      {
+        "name": "claude-only-key-asks-claude",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_CLAUDE_ONLY_KEY",
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "expired-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_EXPIRED_KEY",
+        "expect": {
+          "status": 401,
+          "error_contains": "expired key"
+        }
+      },
+      {
+        "name": "blocked-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_BLOCKED_KEY",
+        "expect": {
+          "status": 401,
+          "error_contains": "blocked"
+        }
+      },
+      {
+        "name": "deleted-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_DELETED_KEY",
+        "expect": {
+          "status": 401,
+          "error_contains": "unable to find token"
+        }
+      },
+      {
+        "name": "agent-key-from-the-harness",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_AGENT_KEY",
+        "expect": {
+          "status": 200
+        }
+      }
+    ]
+  }
+}

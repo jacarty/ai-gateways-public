@@ -1,0 +1,13 @@
+# Scenarios 20261022T080054Z-scenarios-litellm-audit-747b9f: litellm-audit
+
+Test 6 (audit fidelity) on LiteLLM v1.103.2: requests a cooperating caller tags with a session id (litellm_session_id) and its own spend-log metadata, one refused request in the same session, and one untagged request. Run with run-audit.sh, which also sends one request through the agent (unchanged: it tags nothing) and then collects the trail each request left (LiteLLM spend-log rows, Cloud Run request and container logs) into trail.json and trail.md. The prompt carries a marker so stored content can be found (window D).
+
+A behaviour run, not a measured one: each case sent `repeat` times, one at a time (all at once for a concurrent case), and latencies are from wherever it ran. *Matched* counts attempts that met the case's expectations; a mismatch is a finding, not a harness error. Full answers and error bodies are in `outcomes.jsonl`.
+
+| Case | Model asked | Stream | Expected | Matched | Statuses | Answered by | `x-litellm-call-id` | `x-litellm-model-group` | `x-litellm-model-api-base` | `x-litellm-applied-guardrails` | p50 s | Errors |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| session-claude | claude-haiku-5-5 | no | status=200 | 1/1 | 200 | claude-haiku-5-5 | 9b52fb94-9b9e-4d00-9546-bd408984de77 | claude-haiku-5-5 | https://aiplatform.eu.rep.googleapis.com/v1/projects/my-gcp-project/locations/eu/publishers/anthropic/models/claude-haiku-5-5:rawPredict | — | 104.0695 |  |
+| session-gemini | gemini-3.8-flash | no | status=200 | 1/1 | 200 | gemini-3.8-flash | 7f989d50-adaa-42c2-8c4e-e6c60fc058ab | gemini-3.8-flash | eu-aiplatform.googleapis.com/v1/projects/my-gcp-project/locations/eu/publishers/google/models/gemini-3.8-flash:generateContent | — | 1.0645 |  |
+| session-claude-stream | claude-haiku-5-5 | yes | status=200 | 1/1 | 200 | claude-haiku-5-5 | b9ebf306-1af3-4eb6-b633-f53e499743b6 | claude-haiku-5-5 | https://aiplatform.eu.rep.googleapis.com/v1/projects/my-gcp-project/locations/eu/publishers/anthropic/models/claude-haiku-5-5:rawPredict | — | 0.6697 |  |
+| session-unknown-model | agw-t6-no-such-model | no | status=403, error_contains=not available for this api key | 1/1 | 403 | — | — | — | — | — | 0.0284 | {"error":{"message":"The requested model 'agw-t6-no-such-model' is not available |
+| untagged-claude | claude-haiku-5-5 | no | status=200 | 1/1 | 200 | claude-haiku-5-5 | 8c54de2b-5c80-446f-9682-2fc90ec4b887 | claude-haiku-5-5 | https://aiplatform.eu.rep.googleapis.com/v1/projects/my-gcp-project/locations/eu/publishers/anthropic/models/claude-haiku-5-5:rawPredict | — | 0.4598 |  |

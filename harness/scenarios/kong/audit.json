@@ -1,0 +1,90 @@
+{
+  "name": "kong-audit",
+  "description": "Test 6 (audit fidelity) on Kong OSS 3.9.3: five requests a cooperating caller tags with its own headers (x-agw-session, x-agw-case; Kong's file-log keeps every request header), two of them refused by Kong (Gemini asked for a model its route doesn't serve: 400; Claude at a model path with no route: 404), plus one untagged request. The 404 is refused before routing and authentication, so its Kong row has no route, service or consumer: only the caller's own tag says whose it was. Claude in native Vertex format (AGW_GATEWAY_CLAUDE_API=anthropic). Run with run-audit.sh, which also sends one request through the agent (unchanged: it tags nothing), makes and deletes one throwaway consumer through /admin-api (the admin change an auditor would ask about), and then collects the trail (Kong's file-log rows and Cloud Run's request logs for the gateway and the agent, all in Cloud Logging) into trail.json and trail.md. record_headers checks the request id Kong returns. The prompt carries a marker so stored content can be found.",
+  "record_headers": [
+    "x-kong-request-id"
+  ],
+  "cases": [
+    {
+      "name": "session-claude",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+      "headers": {
+        "x-agw-session": "agw-t6-session",
+        "x-agw-case": "session-claude"
+      },
+      "expect": {
+        "status": 200
+      }
+    },
+    {
+      "name": "session-gemini",
+      "model": "gemini-3.8-flash",
+      "kind": "gemini",
+      "repeat": 1,
+      "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+      "headers": {
+        "x-agw-session": "agw-t6-session",
+        "x-agw-case": "session-gemini"
+      },
+      "expect": {
+        "status": 200
+      }
+    },
+    {
+      "name": "session-claude-stream",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+      "headers": {
+        "x-agw-session": "agw-t6-session",
+        "x-agw-case": "session-claude-stream"
+      },
+      "stream": true,
+      "expect": {
+        "status": 200
+      }
+    },
+    {
+      "name": "session-gemini-wrong-model",
+      "model": "agw-t6-no-such-model",
+      "kind": "gemini",
+      "repeat": 1,
+      "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+      "headers": {
+        "x-agw-session": "agw-t6-session",
+        "x-agw-case": "session-gemini-wrong-model"
+      },
+      "expect": {
+        "status": 400
+      }
+    },
+    {
+      "name": "session-claude-no-route",
+      "model": "agw-t6-no-such-model",
+      "kind": "claude",
+      "repeat": 1,
+      "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+      "headers": {
+        "x-agw-session": "agw-t6-session",
+        "x-agw-case": "session-claude-no-route"
+      },
+      "expect": {
+        "status": 404
+      }
+    },
+    {
+      "name": "untagged-claude",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+      "expect": {
+        "status": 200
+      }
+    }
+  ]
+}

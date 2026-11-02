@@ -1,0 +1,266 @@
+{
+ "revision": "agw-kong-00003-7g6",
+ "probes": [
+  {
+   "probe": "enabled plugins",
+   "request": "GET /plugins/enabled",
+   "status": 200,
+   "body": {
+    "enabled_plugins": [
+     "acme",
+     "grpc-gateway",
+     "grpc-web",
+     "pre-function",
+     "post-function",
+     "azure-functions",
+     "zipkin",
+     "opentelemetry",
+     "ai-proxy",
+     "ai-prompt-decorator",
+     "ai-prompt-template",
+     "ai-prompt-guard",
+     "ai-request-transformer",
+     "ai-response-transformer",
+     "standard-webhooks",
+     "jwt",
+     "acl",
+     "correlation-id",
+     "cors",
+     "oauth2",
+     "tcp-log",
+     "udp-log",
+     "file-log",
+     "http-log",
+     "key-auth",
+     "hmac-auth",
+     "basic-auth",
+     "ip-restriction",
+     "request-transformer",
+     "response-transformer",
+     "request-size-limiting",
+     "rate-limiting",
+     "response-ratelimiting",
+     "syslog",
+     "loggly",
+     "datadog",
+     "ldap-auth",
+     "statsd",
+     "bot-detection",
+     "aws-lambda",
+     "request-termination",
+     "prometheus",
+     "proxy-cache",
+     "session",
+     "redirect"
+    ]
+   }
+  },
+  {
+   "probe": "control: rate-limiting (OSS)",
+   "request": "POST /schemas/plugins/validate",
+   "status": 200,
+   "body": {
+    "message": "schema validation successful"
+   }
+  },
+  {
+   "probe": "enterprise plugin: ai-proxy-advanced",
+   "request": "POST /schemas/plugins/validate",
+   "status": 400,
+   "body": {
+    "name": "schema violation",
+    "message": "schema violation (name: plugin 'ai-proxy-advanced' not enabled; add it to the 'plugins' configuration property)",
+    "fields": {
+     "name": "plugin 'ai-proxy-advanced' not enabled; add it to the 'plugins' configuration property"
+    },
+    "code": 2
+   }
+  },
+  {
+   "probe": "enterprise plugin: ai-rate-limiting-advanced",
+   "request": "POST /schemas/plugins/validate",
+   "status": 400,
+   "body": {
+    "name": "schema violation",
+    "message": "schema violation (name: plugin 'ai-rate-limiting-advanced' not enabled; add it to the 'plugins' configuration property)",
+    "fields": {
+     "name": "plugin 'ai-rate-limiting-advanced' not enabled; add it to the 'plugins' configuration property"
+    },
+    "code": 2
+   }
+  },
+  {
+   "probe": "enterprise plugin: ai-sanitizer",
+   "request": "POST /schemas/plugins/validate",
+   "status": 400,
+   "body": {
+    "name": "schema violation",
+    "message": "schema violation (name: plugin 'ai-sanitizer' not enabled; add it to the 'plugins' configuration property)",
+    "fields": {
+     "name": "plugin 'ai-sanitizer' not enabled; add it to the 'plugins' configuration property"
+    },
+    "code": 2
+   }
+  },
+  {
+   "probe": "enterprise plugin: ai-semantic-prompt-guard",
+   "request": "POST /schemas/plugins/validate",
+   "status": 400,
+   "body": {
+    "name": "schema violation",
+    "message": "schema violation (name: plugin 'ai-semantic-prompt-guard' not enabled; add it to the 'plugins' configuration property)",
+    "fields": {
+     "name": "plugin 'ai-semantic-prompt-guard' not enabled; add it to the 'plugins' configuration property"
+    },
+    "code": 2
+   }
+  },
+  {
+   "probe": "enterprise plugin: ai-semantic-cache",
+   "request": "POST /schemas/plugins/validate",
+   "status": 400,
+   "body": {
+    "name": "schema violation",
+    "message": "schema violation (name: plugin 'ai-semantic-cache' not enabled; add it to the 'plugins' configuration property)",
+    "fields": {
+     "name": "plugin 'ai-semantic-cache' not enabled; add it to the 'plugins' configuration property"
+    },
+    "code": 2
+   }
+  },
+  {
+   "probe": "enterprise plugin: ai-gcp-model-armor",
+   "request": "POST /schemas/plugins/validate",
+   "status": 400,
+   "body": {
+    "name": "schema violation",
+    "message": "schema violation (name: plugin 'ai-gcp-model-armor' not enabled; add it to the 'plugins' configuration property)",
+    "fields": {
+     "name": "plugin 'ai-gcp-model-armor' not enabled; add it to the 'plugins' configuration property"
+    },
+    "code": 2
+   }
+  },
+  {
+   "probe": "enterprise plugin: rate-limiting-advanced",
+   "request": "POST /schemas/plugins/validate",
+   "status": 400,
+   "body": {
+    "name": "schema violation",
+    "message": "schema violation (name: plugin 'rate-limiting-advanced' not enabled; add it to the 'plugins' configuration property)",
+    "fields": {
+     "name": "plugin 'rate-limiting-advanced' not enabled; add it to the 'plugins' configuration property"
+    },
+    "code": 2
+   }
+  },
+  {
+   "probe": "enterprise plugin: openid-connect",
+   "request": "POST /schemas/plugins/validate",
+   "status": 400,
+   "body": {
+    "name": "schema violation",
+    "message": "schema violation (name: plugin 'openid-connect' not enabled; add it to the 'plugins' configuration property)",
+    "fields": {
+     "name": "plugin 'openid-connect' not enabled; add it to the 'plugins' configuration property"
+    },
+    "code": 2
+   }
+  },
+  {
+   "probe": "enterprise plugin: key-auth-enc",
+   "request": "POST /schemas/plugins/validate",
+   "status": 400,
+   "body": {
+    "name": "schema violation",
+    "message": "schema violation (name: plugin 'key-auth-enc' not enabled; add it to the 'plugins' configuration property)",
+    "fields": {
+     "name": "plugin 'key-auth-enc' not enabled; add it to the 'plugins' configuration property"
+    },
+    "code": 2
+   }
+  },
+  {
+   "probe": "enterprise plugin: jwt-signer",
+   "request": "POST /schemas/plugins/validate",
+   "status": 400,
+   "body": {
+    "name": "schema violation",
+    "message": "schema violation (name: plugin 'jwt-signer' not enabled; add it to the 'plugins' configuration property)",
+    "fields": {
+     "name": "plugin 'jwt-signer' not enabled; add it to the 'plugins' configuration property"
+    },
+    "code": 2
+   }
+  },
+  {
+   "probe": "control: env vault (OSS)",
+   "request": "POST /schemas/vaults/validate",
+   "status": 200,
+   "body": {
+    "message": "schema validation successful"
+   }
+  },
+  {
+   "probe": "enterprise vault: gcp",
+   "request": "POST /schemas/vaults/validate",
+   "status": 400,
+   "body": {
+    "name": "schema violation",
+    "message": "schema violation (name: vault 'gcp' is not installed)",
+    "fields": {
+     "name": "vault 'gcp' is not installed"
+    },
+    "code": 2
+   }
+  },
+  {
+   "probe": "enterprise route: /audit/requests",
+   "request": "GET /audit/requests",
+   "status": 404,
+   "body": {
+    "message": "Not found"
+   }
+  },
+  {
+   "probe": "enterprise route: /audit/objects",
+   "request": "GET /audit/objects",
+   "status": 404,
+   "body": {
+    "message": "Not found"
+   }
+  },
+  {
+   "probe": "enterprise route: /rbac/users",
+   "request": "GET /rbac/users",
+   "status": 404,
+   "body": {
+    "message": "Not found"
+   }
+  },
+  {
+   "probe": "enterprise route: /rbac/roles",
+   "request": "GET /rbac/roles",
+   "status": 404,
+   "body": {
+    "message": "Not found"
+   }
+  },
+  {
+   "probe": "enterprise route: /workspaces",
+   "request": "GET /workspaces",
+   "status": 404,
+   "body": {
+    "message": "Not found"
+   }
+  },
+  {
+   "probe": "enterprise route: /licenses",
+   "request": "GET /licenses",
+   "status": 404,
+   "body": {
+    "message": "Not found"
+   }
+  }
+ ]
+}

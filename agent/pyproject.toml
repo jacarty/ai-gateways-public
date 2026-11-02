@@ -1,0 +1,33 @@
+[project]
+name = "agw-agent"
+version = "0.1.0"
+description = "The ADK agent held constant across every gateway test"
+requires-python = ">=3.13"
+dependencies = [
+    "google-adk==2.10.0",
+    "anthropic[vertex]==1.9.0",
+    "litellm==1.103.1",
+    "uvicorn==0.54.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+# Not an installable package: the container runs it from src/ via PYTHONPATH.
+package = false
+# Supply-chain guard: resolve only releases at least ~2 weeks old at lock time.
+exclude-newer = "2026-09-30T00:00:00Z"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+# The repo lives on gcsfuse, where the cache dir trips "too many open files".
+addopts = "-p no:cacheprovider"
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

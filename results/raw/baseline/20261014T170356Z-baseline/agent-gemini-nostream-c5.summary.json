@@ -1,0 +1,24 @@
+{
+  "run": "agent-gemini-nostream-c5",
+  "target": "agent",
+  "model": "gemini",
+  "model_name": "gemini-3.8-flash",
+  "stream": false,
+  "concurrency": 5,
+  "warmup_discarded": 10,
+  "requests": 50,
+  "ok": 50,
+  "error_rate": 0.0,
+  "wall_s": 66.878,
+  "throughput_rps": 0.748,
+  "latency_s": {
+    "p50": 1.6174,
+    "p95": 11.8072,
+    "p99": 49.0172,
+    "mean": 3.7185
+  },
+  "ttft_s": null,
+  "output_tokens_mean": 21.7,
+  "thinking_tokens_mean": 8.38,
+  "errors": []
+}

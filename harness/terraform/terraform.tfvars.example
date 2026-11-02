@@ -1,0 +1,9 @@
+# Copy to terraform.tfvars (git-ignored) and fill in.
+project_id = "my-gcp-project"
+image      = "europe-west1-docker.pkg.dev/my-gcp-project/agw-images/harness@sha256:<digest from scripts/build-image.sh harness>"
+
+# Optional overrides
+# gateway_url            = ""   # set during gateway phases (the gateway stack's `gateway_url` output)
+# gateway_claude_api     = "openai"   # "anthropic" for Kong: Claude in its own Vertex format
+# gateway_api_key_secret = ""   # and its key, e.g. agw-litellm-harness-key
+# max_tokens     = 256

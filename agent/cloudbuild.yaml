@@ -1,0 +1,12 @@
+# Builds and pushes the agent image. Run via scripts/build-image.sh agent.
+# _IMAGE is the full Artifact Registry reference, tagged with the git commit.
+timeout: 900s
+steps:
+  # Pinned by digest (resolved from :latest on 2026-10-13), like the Dockerfile's bases.
+  - name: gcr.io/cloud-builders/docker@sha256:f772ab459889c67835bd959c2b9e9351f2c0752c4f989710ecda20c229f0733e
+    args: ["build", "--tag", "${_IMAGE}", "."]
+images:
+  - "${_IMAGE}"
+options:
+  # Required when building as a user-specified service account.
+  logging: CLOUD_LOGGING_ONLY

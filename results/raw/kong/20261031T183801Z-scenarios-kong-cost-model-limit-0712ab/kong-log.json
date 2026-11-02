@@ -1,0 +1,181 @@
+[
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 1648,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 7,
+      "cost": 0.0001089,
+      "prompt_tokens": 31,
+      "time_per_token": 235.42857142857,
+      "total_tokens": 38
+     }
+    }
+   },
+   "consumer": {
+    "username": "agw-t3-model-limit-20261031T183745-919798"
+   },
+   "latencies": {
+    "kong": 26,
+    "proxy": 1645,
+    "receive": 2,
+    "request": 1673
+   },
+   "request": {
+    "id": "815944783a1d617a4f381d241846531e",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 18432,
+     "balancer_start": 1793471882769,
+     "balancer_start_ns": 1.7934718827699e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T18:38:04.415494Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 0,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "UNSPECIFIED",
+      "request_model": "UNSPECIFIED",
+      "response_model": "UNSPECIFIED"
+     },
+     "usage": {
+      "completion_tokens": 0,
+      "cost": 0,
+      "prompt_tokens": 0,
+      "time_per_token": 0,
+      "total_tokens": 0
+     }
+    }
+   },
+   "consumer": {
+    "username": "agw-t3-model-limit-20261031T183745-919798"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": -1,
+    "receive": 0,
+    "request": 1
+   },
+   "request": {
+    "id": "576cd50a13a8da14c54fb461268a167e",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:38:04.428935Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-model-limit-20261031T183745-919798"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": 1014,
+    "receive": 1,
+    "request": 1016
+   },
+   "request": {
+    "id": "8f99bc68a5e0be7904d27d4a8480a17a",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 17664,
+     "balancer_start": 1793471884445,
+     "balancer_start_ns": 1.7934718844458e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T18:38:05.459215Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-model-limit-20261031T183745-919798"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 633,
+    "receive": 1,
+    "request": 636
+   },
+   "request": {
+    "id": "eec0174b9c1a87700004864b6ef9202f",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 32512,
+     "balancer_start": 1793471885477,
+     "balancer_start_ns": 1.7934718854773e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T18:38:06.111304Z"
+ }
+]

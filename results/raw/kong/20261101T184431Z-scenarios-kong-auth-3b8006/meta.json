@@ -1,0 +1,192 @@
+{
+  "run_id": "20261101T184431Z-scenarios-kong-auth-3b8006",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "gateway_claude_api": "anthropic",
+  "command": "scenarios",
+  "gateway_url": "https://agw-kong-a1b2c3d4e5-ew.a.run.app/v1",
+  "git_commit": "00c1190-dirty",
+  "note": "revision agw-kong-00003-7g6; throwaway consumers agw-t5-20261101T184412-982117-*; committed config (decK diff 0/0/0), agw-kong-00003-7g6",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/kong/auth.json",
+  "scenario": {
+    "name": "kong-auth",
+    "description": "Test 5 (identity and secrets) on Kong OSS 3.9.3: which layer stops which credential problem. Two layers: Cloud Run IAM checks the Google ID token (X-Serverless-Authorization; refusals are HTML), then Kong's key-auth checks the key (Authorization: Bearer <key>, stored as the literal string; refusals are JSON) and acl the consumer's group. Run with run-auth.sh, which makes throwaway consumers through the Admin API (tagged agw-throwaway: valid, Claude-only, expired, no group, deleted, rotated), passes their keys as AGW_T5_* environment variables, and deletes them on exit; the run's own key is the throwaway 'valid' consumer's, never the harness's. The expired, deleted and rotated keys are used once through /admin-api before they lapse (a 403 there: authenticated, not an admin), so Kong has them cached and the case tests cache invalidation, not just the database. Expected from the Kong 3.9.4 source (the AI and auth plugins match 3.9.3's): no key 401 'No API key found in request'; an unknown, expired, deleted or rotated-away key 401 'Unauthorized'; a key whose consumer is in no allowed group 403 'You cannot consume this service'. Kong's 401s carry WWW-Authenticate: Key and its 403s a JSON content type, which Cloud Run's HTML refusals don't, so those cases pin the layer. Kong OSS has no per-key model list: the Claude-only consumer is a request-termination plugin scoped to it and the gemini service. Claude cases throughout (cheapest); the refused cases make no model call.",
+    "record_headers": [
+      "x-kong-request-id",
+      "content-type",
+      "www-authenticate"
+    ],
+    "cases": [
+      {
+        "name": "valid-id-token-and-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "no-credentials",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "id_token": false,
+        "api_key": "none",
+        "expect": {
+          "status": 403,
+          "error_contains": "forbidden"
+        }
+      },
+      {
+        "name": "key-without-id-token",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "id_token": false,
+        "expect": {
+          "status": 401,
+          "error_not_contains": "No API key"
+        }
+      },
+      {
+        "name": "id-token-without-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "none",
+        "expect": {
+          "status": 401,
+          "error_contains": "No API key found in request",
+          "headers": {
+            "www-authenticate": "Key"
+          }
+        }
+      },
+      {
+        "name": "unknown-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_UNKNOWN_KEY",
+        "expect": {
+          "status": 401,
+          "error_contains": "Unauthorized",
+          "error_not_contains": "agw-unknown",
+          "headers": {
+            "www-authenticate": "Key"
+          }
+        }
+      },
+      {
+        "name": "claude-only-key-asks-gemini",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_CLAUDE_ONLY_KEY",
+        "expect": {
+          "status": 403,
+          "error_contains": "not allowed to use Gemini",
+          "headers": {
+            "content-type": "application/json; charset=utf-8"
+          }
+        }
+      },
+      {
+        "name": "claude-only-key-asks-claude",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_CLAUDE_ONLY_KEY",
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "expired-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_EXPIRED_KEY",
+        "expect": {
+          "status": 401,
+          "error_contains": "Unauthorized",
+          "headers": {
+            "www-authenticate": "Key"
+          }
+        }
+      },
+      {
+        "name": "key-of-consumer-in-no-group",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_NO_GROUP_KEY",
+        "expect": {
+          "status": 403,
+          "error_contains": "You cannot consume this service",
+          "headers": {
+            "content-type": "application/json; charset=utf-8"
+          }
+        }
+      },
+      {
+        "name": "deleted-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_DELETED_KEY",
+        "expect": {
+          "status": 401,
+          "error_contains": "Unauthorized",
+          "headers": {
+            "www-authenticate": "Key"
+          }
+        }
+      },
+      {
+        "name": "rotated-key-old-value",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_ROTATED_OLD_KEY",
+        "expect": {
+          "status": 401,
+          "error_contains": "Unauthorized",
+          "headers": {
+            "www-authenticate": "Key"
+          }
+        }
+      },
+      {
+        "name": "rotated-key-new-value",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_ROTATED_NEW_KEY",
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "agent-key-from-the-harness",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_AGENT_KEY",
+        "expect": {
+          "status": 200
+        }
+      }
+    ]
+  }
+}

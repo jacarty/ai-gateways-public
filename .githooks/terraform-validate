@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# Pre-commit hook: terraform validate for each directory with changed Terraform files.
+# Run by pre-commit (see .pre-commit-config.yaml) with the changed files as arguments.
+#
+# Uses a separate TF_DATA_DIR per stack, so it never touches the stack's own
+# .terraform/ (e.g. foundation's live GCS backend config), and inits with
+# -backend=false so it never reads remote state or calls GCP.
+# -lockfile=readonly fails instead of silently changing .terraform.lock.hcl.
+
+set -e
+
+if ! command -v terraform >/dev/null 2>&1; then
+    echo "✗ terraform not found on PATH (this repo uses 1.16.x)" >&2
+    exit 1
+fi
+
+CACHE_ROOT="${XDG_CACHE_HOME:-$HOME/.cache}/ai-gateways/tf-validate"
+export TF_PLUGIN_CACHE_DIR="${TF_PLUGIN_CACHE_DIR:-$CACHE_ROOT/plugins}"
+mkdir -p "$TF_PLUGIN_CACHE_DIR"
+
+# Unique directories, one per line; a temp file keeps paths with spaces intact
+# and keeps FAILED out of a pipeline subshell.
+dirs=$(mktemp)
+trap 'rm -f "$dirs"' EXIT
+for f in "$@"; do dirname -- "$f"; done | sort -u > "$dirs"
+
+FAILED=0
+
+while IFS= read -r dir; do
+    # Readable name plus a checksum, so different stacks never share a data dir.
+    data_key="$(printf '%s' "$dir" | tr -c 'A-Za-z0-9._-' '_')-$(printf '%s' "$dir" | cksum | cut -d' ' -f1)"
+    export TF_DATA_DIR="$CACHE_ROOT/$data_key"
+
+    if ! out=$(terraform -chdir="$dir" init -backend=false -input=false -lockfile=readonly -no-color 2>&1 </dev/null); then
+        echo "✗ terraform init failed in $dir" >&2
+        echo "$out" >&2
+        echo "  New stack or changed providers? Run 'terraform init' in $dir, then 'git add $dir/.terraform.lock.hcl'." >&2
+        FAILED=1
+        continue
+    fi
+
+    if ! terraform -chdir="$dir" validate -no-color </dev/null; then
+        echo "✗ terraform validate failed in $dir" >&2
+        FAILED=1
+    fi
+done < "$dirs"
+
+exit $FAILED

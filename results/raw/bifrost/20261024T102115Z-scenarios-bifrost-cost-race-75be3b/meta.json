@@ -1,0 +1,44 @@
+{
+  "run_id": "20261024T102115Z-scenarios-bifrost-cost-race-75be3b",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "command": "scenarios",
+  "gateway_url": "https://agw-bifrost-a1b2c3d4e5-ew.a.run.app/v1",
+  "git_commit": "5cb107b-dirty",
+  "note": "revision agw-bifrost-00010-fp2; throwaway key agw-t3-race-20261024T102115-445650 {\"budgets\": [{\"max_limit\": 0.0001, \"reset_duration\": \"1h\"}]}",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/bifrost/cost-race.json",
+  "scenario": {
+    "name": "bifrost-cost-race",
+    "description": "Test 3 on Bifrost transports/v2.2.6, run through run-cost.sh with a throwaway key (limits in the run's NOTE.md and quota.json). A $0.0001 budget (about 3 Claude requests) and ten requests at once. With no reservation, every request that starts before any usage is charged should be admitted: expect the burst to overshoot the budget, and the next burst refused.",
+    "record_headers": [],
+    "cases": [
+      {
+        "name": "race-burst",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 10,
+        "concurrent": true
+      },
+      {
+        "name": "race-second-burst",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 10,
+        "concurrent": true,
+        "pause_s": 5,
+        "expect": {
+          "status": 402
+        }
+      }
+    ]
+  }
+}

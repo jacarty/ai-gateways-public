@@ -1,0 +1,45 @@
+{
+  "run": "agent-gemini-nostream-c1",
+  "target": "agent",
+  "model": "gemini",
+  "model_name": "gemini-3.8-flash",
+  "stream": false,
+  "concurrency": 1,
+  "warmup_discarded": 10,
+  "blocks": 2,
+  "block_size": 10,
+  "rewarm_per_block": 1,
+  "block_orders": [
+    [
+      "direct",
+      "agent"
+    ],
+    [
+      "agent",
+      "direct"
+    ]
+  ],
+  "agent_backend": "gateway",
+  "requests": 20,
+  "ok": 20,
+  "error_rate": 0.0,
+  "wall_s": 107.624,
+  "throughput_rps": 0.186,
+  "latency_s": {
+    "p50": 2.8836,
+    "p95": 4.2459,
+    "p99": 53.4649,
+    "mean": 5.3808
+  },
+  "latency_all_s": {
+    "p50": 2.8836,
+    "p95": 4.2459,
+    "p99": 53.4649
+  },
+  "ttft_s": null,
+  "output_tokens_mean": 15.3,
+  "thinking_tokens_mean": 0.0,
+  "thinking_reported": 20,
+  "thinking_used": 0,
+  "errors": []
+}

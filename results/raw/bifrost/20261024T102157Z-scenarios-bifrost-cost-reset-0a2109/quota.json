@@ -1,0 +1,59 @@
+{
+ "budgets": [
+  {
+   "id": "933c752b-33fb-4b47-82c3-f6e64cc8b779",
+   "max_limit": 0.05,
+   "reset_duration": "1d",
+   "last_reset": "2026-10-24T10:21:57.095318Z",
+   "current_usage": 0.00010241,
+   "model_config_id": "72a982ed-1ee7-4164-ad7c-82e80a54989d",
+   "config_hash": "",
+   "created_at": "2026-10-24T10:21:57.095318Z",
+   "updated_at": "2026-10-24T10:21:57.095318Z",
+   "per_model_usage": [
+    {
+     "model": "claude-haiku-5-5",
+     "provider": "vertex",
+     "total_requests": 6,
+     "total_tokens": 319,
+     "total_cost": 0.00010241,
+     "input_cost": 1.826e-05,
+     "output_cost": 8.415e-05,
+     "additional_cost": 0
+    }
+   ]
+  },
+  {
+   "id": "c4db2e86-a5e5-45bc-a065-19146d8063e7",
+   "max_limit": 0.0001,
+   "reset_duration": "1m",
+   "last_reset": "2026-10-24T10:22:57.097535Z",
+   "current_usage": 0,
+   "model_config_id": "72a982ed-1ee7-4164-ad7c-82e80a54989d",
+   "config_hash": "",
+   "created_at": "2026-10-24T10:21:57.097535Z",
+   "updated_at": "2026-10-24T10:21:57.097535Z",
+   "per_model_usage": []
+  }
+ ],
+ "is_active": true,
+ "model_configs": [],
+ "provider_configs": [
+  {
+   "id": 8,
+   "virtual_key_id": "94248b10-32c9-4f1a-b136-973ac7cdf98b",
+   "provider": "vertex",
+   "weight": 1,
+   "allow_all_keys": true,
+   "keys": null,
+   "allowed_models": [
+    "gemini-3.8-flash",
+    "claude-haiku-5-5"
+   ],
+   "blacklisted_models": []
+  }
+ ],
+ "rate_limit": null,
+ "rate_limits": [],
+ "virtual_key_name": "agw-t3-reset-20261024T102156-445906"
+}

@@ -1,0 +1,54 @@
+{
+  "run": "gateway-gemini-nostream-c1",
+  "target": "gateway",
+  "model": "gemini",
+  "model_name": "gemini-3.8-flash",
+  "stream": false,
+  "concurrency": 1,
+  "warmup_discarded": 10,
+  "blocks": 4,
+  "block_size": 25,
+  "rewarm_per_block": 1,
+  "block_orders": [
+    [
+      "direct",
+      "gateway"
+    ],
+    [
+      "gateway",
+      "direct"
+    ],
+    [
+      "direct",
+      "gateway"
+    ],
+    [
+      "gateway",
+      "direct"
+    ]
+  ],
+  "requests": 100,
+  "ok": 99,
+  "error_rate": 0.01,
+  "wall_s": 466.797,
+  "throughput_rps": 0.212,
+  "latency_s": {
+    "p50": 2.7077,
+    "p95": 14.1532,
+    "p99": 41.1669,
+    "mean": 4.1084
+  },
+  "latency_all_s": {
+    "p50": 2.7077,
+    "p95": 14.1532,
+    "p99": 41.1669
+  },
+  "ttft_s": null,
+  "output_tokens_mean": 18.3232,
+  "thinking_tokens_mean": null,
+  "thinking_reported": 0,
+  "thinking_used": 0,
+  "errors": [
+    "{\n  \"message\":\"The upstream server is timing out\",\n  \"request_id\":\"386519157830f401a96d0b7636dec81d\"\n}"
+  ]
+}

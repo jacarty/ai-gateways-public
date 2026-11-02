@@ -1,0 +1,11 @@
+# Copy to terraform.tfvars (git-ignored) and fill in.
+project_id      = "my-gcp-project"
+image           = "europe-west1-docker.pkg.dev/my-gcp-project/agw-images/agent@sha256:<digest from the build>"
+invoker_members = ["user:me@example.com", "serviceAccount:agw-harness@my-gcp-project.iam.gserviceaccount.com"]
+
+# Optional overrides
+# target            = "direct"   # or "gateway" with gateway_url
+# gateway_url       = ""         # the gateway's `url` output
+# gateway_api_key_secret = ""    # agw-* secret with the gateway key, e.g. agw-litellm-agent-key
+# gateway_claude_api = "openai"  # "anthropic" for Kong: Claude in its own Vertex format
+# max_output_tokens = 256

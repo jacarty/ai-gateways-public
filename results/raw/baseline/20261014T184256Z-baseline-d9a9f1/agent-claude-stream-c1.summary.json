@@ -1,0 +1,34 @@
+{
+  "run": "agent-claude-stream-c1",
+  "target": "agent",
+  "model": "claude",
+  "model_name": "claude-haiku-5-5",
+  "stream": true,
+  "concurrency": 1,
+  "warmup_discarded": 10,
+  "requests": 50,
+  "ok": 50,
+  "error_rate": 0.0,
+  "wall_s": 29.698,
+  "throughput_rps": 1.684,
+  "latency_s": {
+    "p50": 0.5273,
+    "p95": 0.9834,
+    "p99": 2.2622,
+    "mean": 0.5935
+  },
+  "latency_all_s": {
+    "p50": 0.5273,
+    "p95": 0.9834,
+    "p99": 2.2622
+  },
+  "ttft_s": {
+    "p50": 0.3217,
+    "p95": 0.7027,
+    "mean": 0.4176
+  },
+  "output_tokens_mean": 43.56,
+  "thinking_tokens_mean": 0.0,
+  "thinking_reported": 50,
+  "errors": []
+}

@@ -1,0 +1,9 @@
+{
+ "status": 200,
+ "started_at": 1793560609.1023164,
+ "ended_at": 1793560610.4330127,
+ "session_id": "agw-t6-agent-20261101T191649",
+ "app": "claude",
+ "answered": true,
+ "answer_chars": 59
+}

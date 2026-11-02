@@ -1,0 +1,54 @@
+{
+  "run": "gateway-gemini-nostream-c1",
+  "target": "gateway",
+  "model": "gemini",
+  "model_name": "gemini-3.8-flash",
+  "stream": false,
+  "concurrency": 1,
+  "warmup_discarded": 10,
+  "blocks": 4,
+  "block_size": 25,
+  "rewarm_per_block": 1,
+  "block_orders": [
+    [
+      "direct",
+      "gateway"
+    ],
+    [
+      "gateway",
+      "direct"
+    ],
+    [
+      "direct",
+      "gateway"
+    ],
+    [
+      "gateway",
+      "direct"
+    ]
+  ],
+  "requests": 100,
+  "ok": 96,
+  "error_rate": 0.04,
+  "wall_s": 192.254,
+  "throughput_rps": 0.499,
+  "latency_s": {
+    "p50": 1.2189,
+    "p95": 3.6274,
+    "p99": 33.2233,
+    "mean": 1.778
+  },
+  "latency_all_s": {
+    "p50": 1.2359,
+    "p95": 5.002,
+    "p99": 6.6551
+  },
+  "ttft_s": null,
+  "output_tokens_mean": 21.7812,
+  "thinking_tokens_mean": null,
+  "thinking_reported": 0,
+  "thinking_used": 0,
+  "errors": [
+    "{\"error\":{\"message\":\"litellm.RateLimitError: litellm.RateLimitError: vertex_aiException - {\\n  \\\"error\\\": {\\n    \\\"code\\\": 429,\\n    \\\"message\\\": \\\"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\\\",\\n    \\\"status\\\": \\\"RESOURCE_EXHAUSTED\\\"\\n  }\\n}\\n. Received Model Group=gemini-3.8-flash\\nAvailable Model Group Fallbacks=None\",\"type\":\"throttling_error\",\"param\":null,\"code\":\"429\"}}"
+  ]
+}

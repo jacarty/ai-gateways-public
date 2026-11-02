@@ -1,0 +1,50 @@
+{
+  "run_id": "20261024T102102Z-scenarios-bifrost-cost-budget-6a1059",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "command": "scenarios",
+  "gateway_url": "https://agw-bifrost-a1b2c3d4e5-ew.a.run.app/v1",
+  "git_commit": "5cb107b-dirty",
+  "note": "revision agw-bifrost-00010-fp2; throwaway key agw-t3-budget-20261024T102101-445527 {\"budgets\": [{\"max_limit\": 0.0002, \"reset_duration\": \"1h\"}]}",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/bifrost/cost-budget.json",
+  "scenario": {
+    "name": "bifrost-cost-budget",
+    "description": "Test 3 on Bifrost transports/v2.2.6, run through run-cost.sh with a throwaway key (limits in the run's NOTE.md and quota.json). A $0.0002 budget (1 h), one request at a time. A Claude request costs about $0.00003 at the override price; expect about 7 through, the one that crosses admitted, then 402 with no model call, for either model. quota.json shows the final usage.",
+    "record_headers": [],
+    "cases": [
+      {
+        "name": "budget-spend-down",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 10
+      },
+      {
+        "name": "budget-refused",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 2,
+        "expect": {
+          "status": 402
+        }
+      },
+      {
+        "name": "budget-refused-gemini",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 1,
+        "expect": {
+          "status": 402
+        }
+      }
+    ]
+  }
+}

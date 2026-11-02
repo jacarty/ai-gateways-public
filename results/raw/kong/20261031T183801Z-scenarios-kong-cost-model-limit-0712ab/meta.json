@@ -1,0 +1,61 @@
+{
+  "run_id": "20261031T183801Z-scenarios-kong-cost-model-limit-0712ab",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "gateway_claude_api": "anthropic",
+  "command": "scenarios",
+  "gateway_url": "https://agw-kong-a1b2c3d4e5-ew.a.run.app/v1",
+  "git_commit": "d5bc54d-dirty",
+  "note": "revision agw-kong-00003-7g6; throwaway consumer agw-t3-model-limit-20261031T183745-919798, rate-limiting {\"minute\": 1, \"policy\": \"local\"} on gemini-chat",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/kong/cost-model-limit.json",
+  "scenario": {
+    "name": "kong-cost-model-limit",
+    "description": "Test 3 on Kong OSS 3.9.3, run through run-cost.sh with a throwaway consumer (its limit in the run's meta.json note). 1 request a minute on the Gemini route only (a plugin scoped to the consumer and the gemini-chat route), policy local. A per-model request limit: expect Gemini answered once, then refused, while Claude, on a route with no limit for this consumer, still answers.",
+    "record_headers": [
+      "ratelimit-limit",
+      "ratelimit-remaining",
+      "ratelimit-reset",
+      "retry-after",
+      "x-ratelimit-remaining-minute",
+      "x-kong-request-id"
+    ],
+    "cases": [
+      {
+        "name": "gemini-within-limit",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 1,
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "gemini-refused",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 1,
+        "expect": {
+          "status": 429
+        }
+      },
+      {
+        "name": "claude-still-answers",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 2,
+        "expect": {
+          "status": 200
+        }
+      }
+    ]
+  }
+}

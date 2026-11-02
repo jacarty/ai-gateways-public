@@ -1,0 +1,50 @@
+{
+  "run_id": "20261024T102132Z-scenarios-bifrost-cost-model-budget-d10e33",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "command": "scenarios",
+  "gateway_url": "https://agw-bifrost-a1b2c3d4e5-ew.a.run.app/v1",
+  "git_commit": "5cb107b-dirty",
+  "note": "revision agw-bifrost-00010-fp2; throwaway key agw-t3-model-budget-20261024T102131-445783 {\"model_budgets\": [{\"model_name\": \"gemini-3.8-flash\", \"budgets\": [{\"max_limit\": 0.0003, \"reset_duration\": \"1h\"}]}]}",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/bifrost/cost-model-budget.json",
+  "scenario": {
+    "name": "bifrost-cost-model-budget",
+    "description": "Test 3 on Bifrost transports/v2.2.6, run through run-cost.sh with a throwaway key (limits in the run's NOTE.md and quota.json). A $0.0003 budget on Gemini only (a model budget under the key's Vertex provider config; per-model budgets are enterprise-only in LiteLLM). A Gemini request costs about $0.00023: expect 2 through, then Gemini refused with 402 while Claude, with no budget of its own, still answers.",
+    "record_headers": [],
+    "cases": [
+      {
+        "name": "gemini-spend-down",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 3
+      },
+      {
+        "name": "gemini-refused",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 1,
+        "expect": {
+          "status": 402
+        }
+      },
+      {
+        "name": "claude-still-answers",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 2,
+        "expect": {
+          "status": 200
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "run_id": "20261024T102157Z-scenarios-bifrost-cost-reset-0a2109",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "command": "scenarios",
+  "gateway_url": "https://agw-bifrost-a1b2c3d4e5-ew.a.run.app/v1",
+  "git_commit": "5cb107b-dirty",
+  "note": "revision agw-bifrost-00010-fp2; throwaway key agw-t3-reset-20261024T102156-445906 {\"budgets\": [{\"max_limit\": 0.0001, \"reset_duration\": \"1m\"}]}",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/bifrost/cost-reset.json",
+  "scenario": {
+    "name": "bifrost-cost-reset",
+    "description": "Test 3 on Bifrost transports/v2.2.6, run through run-cost.sh with a throwaway key (limits in the run's NOTE.md and quota.json). A $0.0001 budget that resets every minute. Spend it, be refused, wait, and be admitted again: shows when a reset actually lands (swept every 10 s; an expired window is skipped, not denied, until swept).",
+    "record_headers": [],
+    "cases": [
+      {
+        "name": "reset-spend-down",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 5
+      },
+      {
+        "name": "reset-refused",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "expect": {
+          "status": 402
+        }
+      },
+      {
+        "name": "reset-after-window",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "pause_s": 75,
+        "expect": {
+          "status": 200
+        }
+      }
+    ]
+  }
+}

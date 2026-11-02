@@ -1,0 +1,43 @@
+{
+  "name": "litellm-cost-throttle",
+  "description": "Test 3 config window on LiteLLM v1.103.2: throttle instead of block. Needs litellm_settings.budget_exceeded_throttle_percentage: 0.5 in config.yaml and the t3-throttle key (rpm_limit 4, max_budget $0.00001, throttle_on_budget_exceeded; README.md). After the first request the key is over budget; instead of a budget 429 it keeps working at half its rpm (2 a minute), then gets a rate-limit 429.",
+  "record_headers": [
+    "x-litellm-key-spend",
+    "x-litellm-response-cost",
+    "x-ratelimit-remaining-requests",
+    "x-ratelimit-remaining-tokens",
+    "retry-after",
+    "x-litellm-model-group"
+  ],
+  "cases": [
+    {
+      "name": "throttle-spend-budget",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "expect": {
+        "status": 200
+      }
+    },
+    {
+      "name": "throttle-within-half-rpm",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 2,
+      "pause_s": 65,
+      "expect": {
+        "status": 200
+      }
+    },
+    {
+      "name": "throttle-over-half-rpm",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "expect": {
+        "status": 429,
+        "error_contains": "rate limit"
+      }
+    }
+  ]
+}

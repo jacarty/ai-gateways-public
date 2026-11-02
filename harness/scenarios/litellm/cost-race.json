@@ -1,0 +1,29 @@
+{
+  "name": "litellm-cost-race",
+  "description": "Test 3 on LiteLLM v1.103.2: the same budget under concurrency. Run with the t3-race key (max_budget $0.0005; README.md). Ten requests at once each reserve their worst case (~$0.00015) before any finishes, so only about 4 are admitted although ten would cost ~$0.0003 in total: the reservation trades unused budget for never overshooting. A second burst after the first has settled shows the freed budget.",
+  "record_headers": [
+    "x-litellm-key-spend",
+    "x-litellm-response-cost",
+    "x-ratelimit-remaining-requests",
+    "x-ratelimit-remaining-tokens",
+    "retry-after",
+    "x-litellm-model-group"
+  ],
+  "cases": [
+    {
+      "name": "race-burst",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 10,
+      "concurrent": true
+    },
+    {
+      "name": "race-second-burst",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 10,
+      "concurrent": true,
+      "pause_s": 5
+    }
+  ]
+}

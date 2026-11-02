@@ -1,0 +1,734 @@
+{
+ "window": {
+  "start": "2026-10-24T14:10:25.962548Z",
+  "end": "2026-10-24T14:13:40.292646Z"
+ },
+ "rows": [
+  {
+   "id": "08bceb79-c029-4ed5-8ba0-70f555ffeca3",
+   "time": "2026-10-24T14:10:31.035965Z",
+   "virtual_key": "agw-harness",
+   "provider": "vertex",
+   "model": "claude-haiku-5-5",
+   "status": "success",
+   "session_id": "agw-t6-session",
+   "tag": "session-claude",
+   "metadata_keys": [
+    "agw-case",
+    "agw-test"
+   ],
+   "user_agent": "python-httpx/0.28.1",
+   "parent_request_id": null,
+   "fallback_index": 0,
+   "selected_key": "vertex-adc",
+   "tokens": 101,
+   "cost": 2.563e-05,
+   "latency_ms": 1038.283686,
+   "overhead_ms": 2.0773189999999886,
+   "stream": false,
+   "content": {
+    "prompt_marker": true,
+    "input_stored": true,
+    "output_stored": true,
+    "id_token": false,
+    "virtual_key_value": false,
+    "serverless_auth_header": false
+   }
+  },
+  {
+   "id": "5f1b1375-1ee7-401f-bb7d-6bec03d91661",
+   "time": "2026-10-24T14:10:32.091163Z",
+   "virtual_key": "agw-harness",
+   "provider": "vertex",
+   "model": "gemini-3.8-flash",
+   "status": "success",
+   "session_id": "agw-t6-session",
+   "tag": "session-gemini",
+   "metadata_keys": [
+    "agw-case",
+    "agw-test"
+   ],
+   "user_agent": "python-httpx/0.28.1",
+   "parent_request_id": null,
+   "fallback_index": 0,
+   "selected_key": "vertex-adc",
+   "tokens": 47,
+   "cost": 0.00012375,
+   "latency_ms": 1559.410546,
+   "overhead_ms": 90.40382799999998,
+   "stream": false,
+   "content": {
+    "prompt_marker": true,
+    "input_stored": true,
+    "output_stored": true,
+    "id_token": false,
+    "virtual_key_value": false,
+    "serverless_auth_header": false
+   }
+  },
+  {
+   "id": "051f4a18-33f4-4694-9995-15322326a9d4",
+   "time": "2026-10-24T14:10:33.665367Z",
+   "virtual_key": "agw-harness",
+   "provider": "vertex",
+   "model": "claude-haiku-5-5",
+   "status": "success",
+   "session_id": "agw-t6-session",
+   "tag": "session-claude-stream",
+   "metadata_keys": [
+    "agw-case",
+    "agw-test"
+   ],
+   "user_agent": "python-httpx/0.28.1",
+   "parent_request_id": null,
+   "fallback_index": 0,
+   "selected_key": "vertex-adc",
+   "tokens": 202,
+   "cost": 8.118e-05,
+   "latency_ms": 1642.862549,
+   "overhead_ms": 86.613662,
+   "stream": true,
+   "content": {
+    "prompt_marker": true,
+    "input_stored": true,
+    "output_stored": true,
+    "id_token": false,
+    "virtual_key_value": false,
+    "serverless_auth_header": false
+   }
+  },
+  {
+   "id": "cafb1900-44b0-49a7-9f68-3a0925e38f66",
+   "time": "2026-10-24T14:10:35.335086Z",
+   "virtual_key": "agw-harness",
+   "provider": "vertex",
+   "model": "claude-haiku-5-5",
+   "status": "success",
+   "session_id": null,
+   "tag": null,
+   "metadata_keys": [],
+   "user_agent": "python-httpx/0.28.1",
+   "parent_request_id": null,
+   "fallback_index": 0,
+   "selected_key": "vertex-adc",
+   "tokens": 141,
+   "cost": 4.763e-05,
+   "latency_ms": 662.261896,
+   "overhead_ms": 6.261071000000015,
+   "stream": false,
+   "content": {
+    "prompt_marker": true,
+    "input_stored": true,
+    "output_stored": true,
+    "id_token": false,
+    "virtual_key_value": false,
+    "serverless_auth_header": false
+   }
+  },
+  {
+   "id": "016ac5c6-db52-4ceb-8416-a29b9fa955cc",
+   "time": "2026-10-24T14:11:16.668631Z",
+   "virtual_key": "agw-agent",
+   "provider": "vertex",
+   "model": "claude-haiku-5-5",
+   "status": "success",
+   "session_id": null,
+   "tag": null,
+   "metadata_keys": [],
+   "user_agent": "AsyncOpenAI/Python 2.54.0",
+   "parent_request_id": null,
+   "fallback_index": 0,
+   "selected_key": "vertex-adc",
+   "tokens": 131,
+   "cost": 3.201e-05,
+   "latency_ms": 1093.123803,
+   "overhead_ms": 2.0031569999998737,
+   "stream": false,
+   "content": {
+    "prompt_marker": true,
+    "input_stored": true,
+    "output_stored": true,
+    "id_token": false,
+    "virtual_key_value": false,
+    "serverless_auth_header": false
+   }
+  }
+ ],
+ "gateway_cloud_run": {
+  "request_log_entries": [
+   {
+    "time": "2026-10-24T14:13:35.858924Z",
+    "method": "GET",
+    "path": "/api/logs/016ac5c6-db52-4ceb-8416-a29b9fa955cc",
+    "status": 200,
+    "latency": "0.081084194s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "ed7a866b54a2cc51c5d987b9cc58fc6b"
+   },
+   {
+    "time": "2026-10-24T14:13:35.763282Z",
+    "method": "GET",
+    "path": "/api/logs/cafb1900-44b0-49a7-9f68-3a0925e38f66",
+    "status": 200,
+    "latency": "0.078997234s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "c973f6e5376bc77ab38e9f37b951d663"
+   },
+   {
+    "time": "2026-10-24T14:13:35.664010Z",
+    "method": "GET",
+    "path": "/api/logs/051f4a18-33f4-4694-9995-15322326a9d4",
+    "status": 200,
+    "latency": "0.080961473s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "f3b1e28c86dd777c7dad6885c52ce7bd"
+   },
+   {
+    "time": "2026-10-24T14:13:35.559484Z",
+    "method": "GET",
+    "path": "/api/logs/5f1b1375-1ee7-401f-bb7d-6bec03d91661",
+    "status": 200,
+    "latency": "0.082411334s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "e168727f13922c573f59293310907047"
+   },
+   {
+    "time": "2026-10-24T14:13:35.451981Z",
+    "method": "GET",
+    "path": "/api/logs/08bceb79-c029-4ed5-8ba0-70f555ffeca3",
+    "status": 200,
+    "latency": "0.087894764s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "c8c50c89a79efa6385e4b14bdfe4cba2"
+   },
+   {
+    "time": "2026-10-24T14:13:35.324517Z",
+    "method": "GET",
+    "path": "/api/logs?start_time=2026-10-24T14%3A10%3A25.962548Z&end_time=2026-10-24T14%3A13%3A40.292646Z&limit=200&order=asc",
+    "status": 200,
+    "latency": "0.092881195s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "6292e15f3f2e10bebf1601144ee84752"
+   },
+   {
+    "time": "2026-10-24T14:12:42.132358Z",
+    "method": "GET",
+    "path": "/api/logs/016ac5c6-db52-4ceb-8416-a29b9fa955cc",
+    "status": 200,
+    "latency": "0.086703s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "1eaa6ce4a00be911fb3bff041e4581ec"
+   },
+   {
+    "time": "2026-10-24T14:12:42.023638Z",
+    "method": "GET",
+    "path": "/api/logs/cafb1900-44b0-49a7-9f68-3a0925e38f66",
+    "status": 200,
+    "latency": "0.090337239s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "ec8dc60422e3a6385646e67992be770d"
+   },
+   {
+    "time": "2026-10-24T14:12:41.917938Z",
+    "method": "GET",
+    "path": "/api/logs/051f4a18-33f4-4694-9995-15322326a9d4",
+    "status": 200,
+    "latency": "0.086570950s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "56cd2698f997ef27a58baa3b1b0544cd"
+   },
+   {
+    "time": "2026-10-24T14:12:41.808285Z",
+    "method": "GET",
+    "path": "/api/logs/5f1b1375-1ee7-401f-bb7d-6bec03d91661",
+    "status": 200,
+    "latency": "0.091589379s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "3724263b7b28ab80fdb26df352c2f1d3"
+   },
+   {
+    "time": "2026-10-24T14:12:41.704356Z",
+    "method": "GET",
+    "path": "/api/logs/08bceb79-c029-4ed5-8ba0-70f555ffeca3",
+    "status": 200,
+    "latency": "0.085799330s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "6c288614b11e8269982035ad1075f389"
+   },
+   {
+    "time": "2026-10-24T14:12:41.580730Z",
+    "method": "GET",
+    "path": "/api/logs?start_time=2026-10-24T14%3A10%3A25.962548Z&end_time=2026-10-24T14%3A11%3A52.956536Z&limit=200&order=asc",
+    "status": 200,
+    "latency": "0.094929408s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "8d3ef5985b6429672a6e7c4723ebd76d"
+   },
+   {
+    "time": "2026-10-24T14:12:31.478483Z",
+    "method": "GET",
+    "path": "/api/logs/016ac5c6-db52-4ceb-8416-a29b9fa955cc",
+    "status": 200,
+    "latency": "0.079897175s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "0418d9114d1cd997eb1d719b1db283b0"
+   },
+   {
+    "time": "2026-10-24T14:12:31.374608Z",
+    "method": "GET",
+    "path": "/api/logs/cafb1900-44b0-49a7-9f68-3a0925e38f66",
+    "status": 200,
+    "latency": "0.087134254s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "2c9f76eec0eece709372a02ccc9fea43"
+   },
+   {
+    "time": "2026-10-24T14:12:31.266153Z",
+    "method": "GET",
+    "path": "/api/logs/051f4a18-33f4-4694-9995-15322326a9d4",
+    "status": 200,
+    "latency": "0.087887465s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "30c4d32bb01235d6d0bcd25f370496b7"
+   },
+   {
+    "time": "2026-10-24T14:12:31.153192Z",
+    "method": "GET",
+    "path": "/api/logs/5f1b1375-1ee7-401f-bb7d-6bec03d91661",
+    "status": 200,
+    "latency": "0.093456134s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "ecafb3237649e6814eba1762a5fb966a"
+   },
+   {
+    "time": "2026-10-24T14:12:31.046389Z",
+    "method": "GET",
+    "path": "/api/logs/08bceb79-c029-4ed5-8ba0-70f555ffeca3",
+    "status": 200,
+    "latency": "0.088413834s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "31825f52cf71d718e323e4a479066ba2"
+   },
+   {
+    "time": "2026-10-24T14:12:30.928993Z",
+    "method": "GET",
+    "path": "/api/logs?start_time=2026-10-24T14%3A10%3A25.962548Z&end_time=2026-10-24T14%3A11%3A52.956536Z&limit=200&order=asc",
+    "status": 200,
+    "latency": "0.089356315s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "9b9cc2d9b19cc97a547a42405e74e171"
+   },
+   {
+    "time": "2026-10-24T14:12:20.824331Z",
+    "method": "GET",
+    "path": "/api/logs/016ac5c6-db52-4ceb-8416-a29b9fa955cc",
+    "status": 200,
+    "latency": "0.086465151s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "6140e50e21a540281c54576d3270bea7"
+   },
+   {
+    "time": "2026-10-24T14:12:20.722081Z",
+    "method": "GET",
+    "path": "/api/logs/cafb1900-44b0-49a7-9f68-3a0925e38f66",
+    "status": 200,
+    "latency": "0.079665521s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "6b8f3064ae15dc6eb9b5973f990715d7"
+   },
+   {
+    "time": "2026-10-24T14:12:20.621074Z",
+    "method": "GET",
+    "path": "/api/logs/051f4a18-33f4-4694-9995-15322326a9d4",
+    "status": 200,
+    "latency": "0.084398841s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "8de734bdfcefbc30354f5c42bcfef3ce"
+   },
+   {
+    "time": "2026-10-24T14:12:20.523132Z",
+    "method": "GET",
+    "path": "/api/logs/5f1b1375-1ee7-401f-bb7d-6bec03d91661",
+    "status": 200,
+    "latency": "0.080789872s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "99120ee1ff2fa1d7d7f76cf81fac8a58"
+   },
+   {
+    "time": "2026-10-24T14:12:20.424570Z",
+    "method": "GET",
+    "path": "/api/logs/08bceb79-c029-4ed5-8ba0-70f555ffeca3",
+    "status": 200,
+    "latency": "0.081873131s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "69edc0c99846f0c4d0bcf00e132db4ce"
+   },
+   {
+    "time": "2026-10-24T14:12:20.302278Z",
+    "method": "GET",
+    "path": "/api/logs?start_time=2026-10-24T14%3A10%3A25.962548Z&end_time=2026-10-24T14%3A11%3A52.956536Z&limit=200&order=asc",
+    "status": 200,
+    "latency": "0.094395120s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "d2a65b70803ea00da53f4395465cef8e"
+   },
+   {
+    "time": "2026-10-24T14:12:10.192501Z",
+    "method": "GET",
+    "path": "/api/logs/016ac5c6-db52-4ceb-8416-a29b9fa955cc",
+    "status": 200,
+    "latency": "0.091529873s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "84d5ae3b3baf42f435aeee1f1980d79f"
+   },
+   {
+    "time": "2026-10-24T14:12:10.083529Z",
+    "method": "GET",
+    "path": "/api/logs/cafb1900-44b0-49a7-9f68-3a0925e38f66",
+    "status": 200,
+    "latency": "0.091589744s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "7655879ddbd05697bf668b4b1e070425"
+   },
+   {
+    "time": "2026-10-24T14:12:09.975571Z",
+    "method": "GET",
+    "path": "/api/logs/051f4a18-33f4-4694-9995-15322326a9d4",
+    "status": 200,
+    "latency": "0.089636743s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "141e4e6a7fd8acdc3cee954c4bf498cc"
+   },
+   {
+    "time": "2026-10-24T14:12:09.880439Z",
+    "method": "GET",
+    "path": "/api/logs/5f1b1375-1ee7-401f-bb7d-6bec03d91661",
+    "status": 200,
+    "latency": "0.080509424s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "6743ecbcde7fa6578f8e8bb54372d16e"
+   },
+   {
+    "time": "2026-10-24T14:12:09.783637Z",
+    "method": "GET",
+    "path": "/api/logs/08bceb79-c029-4ed5-8ba0-70f555ffeca3",
+    "status": 200,
+    "latency": "0.081160463s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "4bbf5d2f45428fb7aa20e9a8f3c6d13a"
+   },
+   {
+    "time": "2026-10-24T14:12:09.606241Z",
+    "method": "GET",
+    "path": "/api/logs?start_time=2026-10-24T14%3A10%3A25.962548Z&end_time=2026-10-24T14%3A11%3A52.956536Z&limit=200&order=asc",
+    "status": 200,
+    "latency": "0.087030894s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "397cede0c14e760f305a9d00612c0298"
+   },
+   {
+    "time": "2026-10-24T14:11:59.504667Z",
+    "method": "GET",
+    "path": "/api/logs/016ac5c6-db52-4ceb-8416-a29b9fa955cc",
+    "status": 200,
+    "latency": "0.080081703s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "db29f8ae381839cbdceea36a7649b745"
+   },
+   {
+    "time": "2026-10-24T14:11:59.401089Z",
+    "method": "GET",
+    "path": "/api/logs/cafb1900-44b0-49a7-9f68-3a0925e38f66",
+    "status": 200,
+    "latency": "0.085794762s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "a34469ebd9170153dc0e382d09d1f519"
+   },
+   {
+    "time": "2026-10-24T14:11:59.301595Z",
+    "method": "GET",
+    "path": "/api/logs/051f4a18-33f4-4694-9995-15322326a9d4",
+    "status": 200,
+    "latency": "0.081400343s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "17b654b451f69f1f020e574fea845586"
+   },
+   {
+    "time": "2026-10-24T14:11:59.144437Z",
+    "method": "GET",
+    "path": "/api/logs/5f1b1375-1ee7-401f-bb7d-6bec03d91661",
+    "status": 200,
+    "latency": "0.140379138s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "6ca653c4f89bc0342511d6f00b269243"
+   },
+   {
+    "time": "2026-10-24T14:11:59.033201Z",
+    "method": "GET",
+    "path": "/api/logs/08bceb79-c029-4ed5-8ba0-70f555ffeca3",
+    "status": 200,
+    "latency": "0.094851061s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "4de48c56df4009211dc41c6c066b7563"
+   },
+   {
+    "time": "2026-10-24T14:11:58.892648Z",
+    "method": "GET",
+    "path": "/api/logs?start_time=2026-10-24T14%3A10%3A25.962548Z&end_time=2026-10-24T14%3A11%3A52.956536Z&limit=200&order=asc",
+    "status": 200,
+    "latency": "0.113543029s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "4d0a157ba90d7c7ba976735ee2370395"
+   },
+   {
+    "time": "2026-10-24T14:11:48.792313Z",
+    "method": "GET",
+    "path": "/api/logs/016ac5c6-db52-4ceb-8416-a29b9fa955cc",
+    "status": 200,
+    "latency": "0.083177735s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "a6a6769c1d4d58aa5bd75000da94551f"
+   },
+   {
+    "time": "2026-10-24T14:11:48.691468Z",
+    "method": "GET",
+    "path": "/api/logs/cafb1900-44b0-49a7-9f68-3a0925e38f66",
+    "status": 200,
+    "latency": "0.083638334s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "18a379ce5c447251987360762b1c7c26"
+   },
+   {
+    "time": "2026-10-24T14:11:48.588527Z",
+    "method": "GET",
+    "path": "/api/logs/051f4a18-33f4-4694-9995-15322326a9d4",
+    "status": 200,
+    "latency": "0.086542856s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "68e92d918ec93e8615d41c173ddc3f6a"
+   },
+   {
+    "time": "2026-10-24T14:11:48.488068Z",
+    "method": "GET",
+    "path": "/api/logs/5f1b1375-1ee7-401f-bb7d-6bec03d91661",
+    "status": 200,
+    "latency": "0.081876625s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "5fd92e7593eb2cc15af502231368cd05"
+   },
+   {
+    "time": "2026-10-24T14:11:48.324748Z",
+    "method": "GET",
+    "path": "/api/logs/08bceb79-c029-4ed5-8ba0-70f555ffeca3",
+    "status": 200,
+    "latency": "0.145572999s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "d321da2a57682ac339b6db22edca3e12"
+   },
+   {
+    "time": "2026-10-24T14:11:47.983710Z",
+    "method": "GET",
+    "path": "/api/logs?start_time=2026-10-24T14%3A10%3A25.962548Z&end_time=2026-10-24T14%3A11%3A52.956536Z&limit=200&order=asc",
+    "status": 200,
+    "latency": "0.306396008s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "53f1f6eb674901b9c002c60fc22df58a"
+   },
+   {
+    "time": "2026-10-24T14:11:16.646754Z",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "status": 200,
+    "latency": "1.094905660s",
+    "user_agent": "AsyncOpenAI/Python 2.54.0",
+    "remote_ip": "public (redacted)",
+    "trace": "adbb4bd4e5b1228d9bebd30cc4030d89"
+   },
+   {
+    "time": "2026-10-24T14:10:35.330624Z",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "status": 200,
+    "latency": "0.663918305s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "dd2e58117f994ed87187435d58a5e12a"
+   },
+   {
+    "time": "2026-10-24T14:10:35.316530Z",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "status": 400,
+    "latency": "0.002658980s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "9a97cb714dc6bb907187435d58a5ef14"
+   },
+   {
+    "time": "2026-10-24T14:10:33.660796Z",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "status": 200,
+    "latency": "1.644094097s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "308004133ad9af307187435d58a5ea93"
+   },
+   {
+    "time": "2026-10-24T14:10:32.086474Z",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "status": 200,
+    "latency": "1.561381744s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "ec0010f3dfc03abe7187435d58a5e5bd"
+   },
+   {
+    "time": "2026-10-24T14:10:31.012616Z",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "status": 200,
+    "latency": "1.043180380s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "08e6192083d0646f7187435d58a5e1ec"
+   }
+  ],
+  "container_log_lines": 48,
+  "entries_naming_a_caller_identity": 0,
+  "entries_containing": {
+   "prompt_marker": 0,
+   "session": 0
+  }
+ },
+ "agent_cloud_run": {
+  "request_log_entries": [
+   {
+    "time": "2026-10-24T14:10:37.879986Z",
+    "method": "POST",
+    "path": "/run",
+    "status": 200,
+    "latency": "39.504412763s",
+    "user_agent": "curl/8.14.1",
+    "remote_ip": "public (redacted)",
+    "trace": "c75fe18fb1674debb2145fc6ba617cdd"
+   }
+  ],
+  "container_log_lines": 13,
+  "entries_naming_a_caller_identity": 0,
+  "entries_containing": {
+   "prompt_marker": 0,
+   "session": 0
+  }
+ },
+ "agent_run": {
+  "status": 200,
+  "started_at": 1792851037.8322737,
+  "ended_at": 1792851077.8485699,
+  "session_id": "agw-t6-agent-20261024T141037",
+  "app": "claude",
+  "answer": "The capital of Belgium is Brussels. It is also home to the main institutions of the European Union and NATO headquarters."
+ },
+ "join": {
+  "requests": [
+   {
+    "case": "session-claude",
+    "status": 200,
+    "row": "08bceb79-c029-4ed5-8ba0-70f555ffeca3",
+    "joined_by": "request id",
+    "cloud_run_trace_by_time": "08e6192083d0646f7187435d58a5e1ec"
+   },
+   {
+    "case": "session-gemini",
+    "status": 200,
+    "row": "5f1b1375-1ee7-401f-bb7d-6bec03d91661",
+    "joined_by": "request id",
+    "cloud_run_trace_by_time": "ec0010f3dfc03abe7187435d58a5e5bd"
+   },
+   {
+    "case": "session-claude-stream",
+    "status": 200,
+    "row": "051f4a18-33f4-4694-9995-15322326a9d4",
+    "joined_by": "request id",
+    "cloud_run_trace_by_time": "308004133ad9af307187435d58a5ea93"
+   },
+   {
+    "case": "session-unknown-model",
+    "status": 400,
+    "row": null,
+    "joined_by": null,
+    "cloud_run_trace_by_time": null
+   },
+   {
+    "case": "untagged-claude",
+    "status": 200,
+    "row": "cafb1900-44b0-49a7-9f68-3a0925e38f66",
+    "joined_by": "request id",
+    "cloud_run_trace_by_time": "dd2e58117f994ed87187435d58a5e12a"
+   }
+  ],
+  "agent_row": "016ac5c6-db52-4ceb-8416-a29b9fa955cc",
+  "agent_row_trace_by_time": "adbb4bd4e5b1228d9bebd30cc4030d89",
+  "unjoined_rows": []
+ },
+ "response_headers": {
+  "session-claude": {
+   "x-request-id": "08bceb79-c029-4ed5-8ba0-70f555ffeca3"
+  },
+  "session-gemini": {
+   "x-request-id": "5f1b1375-1ee7-401f-bb7d-6bec03d91661"
+  },
+  "session-claude-stream": {
+   "x-request-id": "051f4a18-33f4-4694-9995-15322326a9d4"
+  },
+  "session-unknown-model": {
+   "x-request-id": "9932969f-b1d5-4340-bb0b-c403bfa632b7"
+  },
+  "untagged-claude": {
+   "x-request-id": "cafb1900-44b0-49a7-9f68-3a0925e38f66"
+  }
+ }
+}

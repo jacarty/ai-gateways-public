@@ -1,0 +1,83 @@
+{
+ "budgets": [
+  {
+   "id": "e3c4df94-7e9c-4a33-8691-f1236e431352",
+   "max_limit": 0.05,
+   "reset_duration": "1d",
+   "last_reset": "2026-10-24T10:21:32.01041Z",
+   "current_usage": 0.0001089,
+   "model_config_id": "efe50de7-0937-4565-bad5-bc5309519b6c",
+   "config_hash": "",
+   "created_at": "2026-10-24T10:21:32.01041Z",
+   "updated_at": "2026-10-24T10:21:32.01041Z",
+   "per_model_usage": [
+    {
+     "model": "gemini-3.8-flash",
+     "provider": "vertex",
+     "total_requests": 1,
+     "total_tokens": 38,
+     "total_cost": 0.00010890000000000002,
+     "input_cost": 5.115e-05,
+     "output_cost": 5.775000000000001e-05,
+     "additional_cost": 0
+    }
+   ]
+  }
+ ],
+ "is_active": true,
+ "model_configs": [
+  {
+   "model_name": "gemini-3.8-flash",
+   "provider": "vertex",
+   "budgets": [
+    {
+     "id": "b32bbbd0-1e30-4310-a748-c202ef4bd642",
+     "max_limit": 0.0003,
+     "reset_duration": "1h",
+     "last_reset": "2026-10-24T10:21:32.023773Z",
+     "current_usage": 0.0001089,
+     "model_config_id": "72b5a2f6-e2b4-490b-ada6-f423753c52d2",
+     "config_hash": "",
+     "created_at": "2026-10-24T10:21:32.023773Z",
+     "updated_at": "2026-10-24T10:21:32.023773Z"
+    }
+   ]
+  }
+ ],
+ "provider_configs": [
+  {
+   "id": 7,
+   "virtual_key_id": "938155c6-cde2-49e7-a1cf-931392e08282",
+   "provider": "vertex",
+   "weight": 1,
+   "allow_all_keys": true,
+   "keys": null,
+   "model_budgets": [
+    {
+     "model_name": "gemini-3.8-flash",
+     "budgets": [
+      {
+       "id": "b32bbbd0-1e30-4310-a748-c202ef4bd642",
+       "max_limit": 0.0003,
+       "reset_duration": "1h",
+       "last_reset": "2026-10-24T10:21:32.023773Z",
+       "current_usage": 0.0001089,
+       "model_config_id": "72b5a2f6-e2b4-490b-ada6-f423753c52d2",
+       "config_hash": "",
+       "created_at": "2026-10-24T10:21:32.023773Z",
+       "updated_at": "2026-10-24T10:21:32.023773Z"
+      }
+     ]
+    }
+   ],
+   "allowed_models": [
+    "gemini-3.8-flash",
+    "claude-haiku-5-5"
+   ],
+   "blacklisted_models": []
+  }
+ ],
+ "rate_limit": null,
+ "rate_limits": [],
+ "virtual_key_name": "agw-t3-model-budget-20261024T102131-445783"
+}

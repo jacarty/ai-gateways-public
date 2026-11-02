@@ -1,0 +1,32 @@
+[project]
+name = "agw-harness"
+version = "0.1.0"
+description = "Load harness: the same requests against the direct baseline, the agent, or a gateway"
+requires-python = ">=3.13"
+dependencies = [
+    "httpx>=0.28",
+    "google-auth>=2.40",
+    "requests>=2.32",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+# Not an installable package: the container runs it from src/ via PYTHONPATH.
+package = false
+# Supply-chain guard: resolve only releases at least ~2 weeks old at lock time.
+exclude-newer = "2026-09-30T00:00:00Z"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+# The repo lives on gcsfuse, where the cache dir trips "too many open files".
+addopts = "-p no:cacheprovider"
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

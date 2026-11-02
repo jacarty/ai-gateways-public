@@ -1,0 +1,156 @@
+{
+  "run_id": "20261031T143429Z-scenarios-kong-failover-deef82",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "gateway_claude_api": "anthropic",
+  "command": "scenarios",
+  "gateway_url": "https://agw-kong-a1b2c3d4e5-ew.a.run.app/v1",
+  "git_commit": "6e26e9c-dirty",
+  "note": "test 2, agw-kong-00003-7g6, Kong OSS 3.9.3, test 2 window synced 14:34 UTC (README.md)",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/kong/failover.json",
+  "scenario": {
+    "name": "kong-failover",
+    "description": "Test 2 (routing and failover) on Kong OSS 3.9.3. Kong OSS has no failover between models (AI Proxy Advanced is enterprise): each ai-proxy route is pinned to one model. Needs the test window in README.md: a header-matched Gemini route (x-agw-test-route: gemini-broken) whose model, gemini-0-agw-missing, doesn't exist on the Agent Platform, and native Claude routes for test-claude-broken (a real Vertex 404) and test-claude-unreachable (upstream 127.0.0.1:9, a refused connection, to see Kong's same-target retries, services' default retries: 5, in the file-log tries). Claude cases are native Vertex requests (AGW_GATEWAY_CLAUDE_API=anthropic). Kong's OpenAI stream answers carry no model (normalize-sse-chunk.lua: model = nil), so stream cases record X-Kong-LLM-Model instead.",
+    "record_headers": [
+      "x-kong-llm-model",
+      "x-kong-request-id",
+      "x-kong-upstream-latency",
+      "x-kong-proxy-latency"
+    ],
+    "cases": [
+      {
+        "name": "gemini-healthy",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 2,
+        "expect": {
+          "status": 200,
+          "model": "gemini-3.8-flash"
+        }
+      },
+      {
+        "name": "claude-healthy",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 2,
+        "expect": {
+          "status": 200,
+          "model": "claude-haiku-5-5"
+        }
+      },
+      {
+        "name": "claude-healthy-stream",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "stream": true,
+        "repeat": 1,
+        "expect": {
+          "status": 200,
+          "model": "claude-haiku-5-5"
+        }
+      },
+      {
+        "name": "gemini-route-asks-for-claude",
+        "model": "claude-haiku-5-5",
+        "kind": "gemini",
+        "repeat": 1,
+        "expect": {
+          "status": 400,
+          "error_contains": "cannot use own model"
+        }
+      },
+      {
+        "name": "claude-path-with-no-route",
+        "model": "claude-agw-noroute",
+        "kind": "claude",
+        "repeat": 1,
+        "expect": {
+          "status": 404,
+          "error_contains": "no Route matched"
+        }
+      },
+      {
+        "name": "gemini-broken",
+        "model": "gemini-0-agw-missing",
+        "kind": "gemini",
+        "repeat": 2,
+        "headers": {
+          "x-agw-test-route": "gemini-broken"
+        },
+        "expect": {
+          "status": 404
+        }
+      },
+      {
+        "name": "gemini-broken-stream",
+        "model": "gemini-0-agw-missing",
+        "kind": "gemini",
+        "stream": true,
+        "repeat": 1,
+        "headers": {
+          "x-agw-test-route": "gemini-broken"
+        },
+        "expect": {
+          "status": 404
+        }
+      },
+      {
+        "name": "claude-broken",
+        "model": "test-claude-broken",
+        "kind": "claude",
+        "repeat": 2,
+        "expect": {
+          "status": 404
+        }
+      },
+      {
+        "name": "claude-broken-stream",
+        "model": "test-claude-broken",
+        "kind": "claude",
+        "stream": true,
+        "repeat": 1,
+        "expect": {
+          "status": 404
+        }
+      },
+      {
+        "name": "claude-unreachable",
+        "model": "test-claude-unreachable",
+        "kind": "claude",
+        "repeat": 2,
+        "expect": {
+          "status": 502
+        }
+      },
+      {
+        "name": "gemini-healthy-after",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 2,
+        "expect": {
+          "status": 200,
+          "model": "gemini-3.8-flash"
+        }
+      },
+      {
+        "name": "claude-healthy-after",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "expect": {
+          "status": 200,
+          "model": "claude-haiku-5-5"
+        }
+      }
+    ]
+  }
+}

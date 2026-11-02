@@ -1,0 +1,1 @@
+Test 2, first run (2026-10-18, local, harness key, `id_token_source: gcloud`): gateway revision `agw-litellm-00003`, with fallbacks and `test-gemini-broken` but **without** `dangerously_allow_mock_testing_request_params`, so LiteLLM refused every mocked case with a 400. Recorded before `meta.json` gained `note` and `git_commit`.

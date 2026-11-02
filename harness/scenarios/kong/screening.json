@@ -1,0 +1,12 @@
+{
+  "name": "kong-screening",
+  "description": "Test 4 (inline screening) on Kong OSS 3.9.3: the shared case set (../screening-cases.json) on both models, once each, Claude in native Vertex format (AGW_GATEWAY_CLAUDE_API=anthropic). Run it three times and say which in --note: A with the committed config (no screening: what the models do on their own), B with the ai-prompt-guard window (regex deny patterns on the user's messages; a match is Kong's 400 \"bad request\", classed blocked), and C with the ai-request-transformer window (an LLM rewrites each request body with personal data replaced by [REDACTED] before ai-proxy; mask_marker matches it). Windows: README.md, \"Test 4\". Kong's 400 for a request naming the wrong model would also class as blocked, so check B's errors read \"bad request\".",
+  "cases_from": "../screening-cases.json",
+  "matrix": [
+    {"model": "gemini-3.8-flash", "kind": "gemini"},
+    {"model": "claude-haiku-5-5", "kind": "claude"}
+  ],
+  "case_defaults": {"repeat": 1},
+  "mask_marker": "\\[REDACTED\\]",
+  "record_headers": ["x-kong-request-id", "x-kong-llm-model"]
+}

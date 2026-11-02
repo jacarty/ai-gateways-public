@@ -1,0 +1,152 @@
+[
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2822,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 7,
+      "cost": 0.00012045,
+      "prompt_tokens": 38,
+      "time_per_token": 403.14285714286,
+      "total_tokens": 45
+     }
+    }
+   },
+   "consumer": {
+    "username": "agw-t3-caps-20261031T190136-921476"
+   },
+   "latencies": {
+    "kong": 43,
+    "proxy": 2783,
+    "receive": 1,
+    "request": 2827
+   },
+   "request": {
+    "id": "cb52751eda1d514cf246fc1f6c04987f",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 20992,
+     "balancer_start": 1793473322372,
+     "balancer_start_ns": 1.7934733223722e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T19:02:05.156323Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 3546,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 16,
+      "cost": 0.0001947,
+      "prompt_tokens": 38,
+      "time_per_token": 221.625,
+      "total_tokens": 54
+     }
+    }
+   },
+   "consumer": {
+    "username": "agw-t3-caps-20261031T190136-921476"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 3545,
+    "receive": 1,
+    "request": 3548
+   },
+   "request": {
+    "id": "43bb18278f431e08cb109a522f713f78",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 1,
+     "balancer_latency_ns": 16384,
+     "balancer_start": 1793473325169,
+     "balancer_start_ns": 1.79347332517e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T19:02:08.715776Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-caps-20261031T190136-921476"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": 4742,
+    "receive": 1,
+    "request": 4744
+   },
+   "request": {
+    "id": "7d37953068684f724f06211f5749ea68",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 15104,
+     "balancer_start": 1793473328729,
+     "balancer_start_ns": 1.7934733287296e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T19:02:13.472286Z"
+ }
+]

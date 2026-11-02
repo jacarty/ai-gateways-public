@@ -1,0 +1,68 @@
+# Local lint hooks; there is no CI gate yet.
+# Install once per clone:  uv tool install pre-commit==4.6.2 && pre-commit install
+# Run the lint hooks:      pre-commit run --all-files
+#   (the commit-msg and pre-push hooks run only at commit and push time)
+default_install_hook_types: [pre-commit, commit-msg, pre-push]
+default_stages: [pre-commit]
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: [--maxkb=5120]
+      - id: detect-private-key
+
+  # Scans staged changes before each commit.
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.9
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+
+  # Terraform hooks call the official terraform binary directly (1.16.x).
+  - repo: local
+    hooks:
+      - id: terraform-fmt
+        name: terraform fmt
+        entry: terraform fmt
+        language: system
+        files: \.(tf|tfvars)$
+      - id: terraform-validate
+        name: terraform validate
+        entry: .githooks/terraform-validate
+        language: script
+        files: (\.tf|\.tf\.json|\.terraform\.lock\.hcl)$
+        require_serial: true
+      # Test windows (fallbacks, mock switches, guardrails, ...) are marked TEST ONLY in a
+      # gateway config and must never be committed: measured runs depend on the clean file.
+      - id: no-test-window
+        name: no test window in gateway config
+        entry: "TEST ONLY"
+        language: pygrep
+        files: ^gateways/[^/]+/config/
+      - id: conventional-commit-msg
+        name: Conventional Commits message
+        entry: .githooks/commit-msg
+        language: script
+        stages: [commit-msg]
+      - id: branch-name
+        name: Branch naming convention
+        entry: .githooks/pre-push
+        language: script
+        stages: [pre-push]
+        pass_filenames: false
+        always_run: true

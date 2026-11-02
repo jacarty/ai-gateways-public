@@ -1,0 +1,101 @@
+{
+  "run_id": "20261024T141605Z-scenarios-bifrost-audit-fcf408",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "command": "scenarios",
+  "gateway_url": "https://agw-bifrost-a1b2c3d4e5-ew.a.run.app/v1",
+  "git_commit": "9b7bde8-dirty",
+  "note": "revision agw-bifrost-00015-5c9; run B: logging_headers window (X-Serverless-Authorization, Authorization), revision 00015",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/bifrost/audit.json",
+  "scenario": {
+    "name": "bifrost-audit",
+    "description": "Test 6 (audit fidelity) on Bifrost transports/v2.2.6: four requests a cooperating caller puts in one session (x-bf-session-id) and tags with its own log headers (x-bf-lh-agw-case, x-bf-lh-agw-test), one of them refused (a model the key can't reach: 400), plus one untagged request. Run with run-audit.sh, which also sends one request through the agent (unchanged: it tags nothing) and then collects the trail each request left (Bifrost's logs store, Cloud Run request and container logs) into trail.json and trail.md. record_headers checks whether Bifrost returns a request id a caller could quote. The prompt carries a marker so stored content can be found.",
+    "record_headers": [
+      "x-request-id",
+      "x-bf-request-id",
+      "x-bf-session-id"
+    ],
+    "cases": [
+      {
+        "name": "session-claude",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+        "headers": {
+          "x-bf-session-id": "agw-t6-session",
+          "x-bf-lh-agw-case": "session-claude",
+          "x-bf-lh-agw-test": "6"
+        },
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "session-gemini",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 1,
+        "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+        "headers": {
+          "x-bf-session-id": "agw-t6-session",
+          "x-bf-lh-agw-case": "session-gemini",
+          "x-bf-lh-agw-test": "6"
+        },
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "session-claude-stream",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+        "headers": {
+          "x-bf-session-id": "agw-t6-session",
+          "x-bf-lh-agw-case": "session-claude-stream",
+          "x-bf-lh-agw-test": "6"
+        },
+        "stream": true,
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "session-unknown-model",
+        "model": "agw-t6-no-such-model",
+        "kind": "claude",
+        "repeat": 1,
+        "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+        "headers": {
+          "x-bf-session-id": "agw-t6-session",
+          "x-bf-lh-agw-case": "session-unknown-model",
+          "x-bf-lh-agw-test": "6"
+        },
+        "expect": {
+          "status": 400
+        }
+      },
+      {
+        "name": "untagged-claude",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "prompt": "AGW-T6-MARKER: What is the capital of Belgium?",
+        "expect": {
+          "status": 200
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+ "revision": "agw-kong-00003-7g6",
+ "consumer": "agw-t5-echo-1793558868",
+ "sent_extra_header": "X-Agw-Probe: test5",
+ "results": {
+  "claude (preserve)": {
+   "status": 200,
+   "x-kong-request-id": "d38217757444735111438564f597fe37",
+   "echo": "path /v1/projects/my-gcp-project/locations/eu/publishers/anthropic/models/agw-echo:rawPredict | headers: accept-encoding, authorization, connection, content-length, content-type, forwarded, host, traceparent, user-agent, via, x-agw-probe, x-cloud-trace-context, x-consumer-id, x-consumer-username, x-credential-identifier, x-forwarded-for, x-forwarded-host, x-forwarded-path, x-forwarded-port, x-forwarded-proto, x-kong-request-id, x-real-ip, x-serverless-authorization | authorization: Bearer + a Google access token | x-serverless-authorization segment lengths: 102.426.27"
+  },
+  "gemini (translated)": {
+   "status": 200,
+   "x-kong-request-id": "677dda44256e5372442edb64d50f0e09",
+   "echo": "path /agw-echo-sink/gemini | headers: accept-encoding, authorization, connection, content-length, content-type, forwarded, host, traceparent, user-agent, via, x-agw-probe, x-cloud-trace-context, x-consumer-id, x-consumer-username, x-credential-identifier, x-forwarded-for, x-forwarded-host, x-forwarded-path, x-forwarded-port, x-forwarded-proto, x-kong-request-id, x-real-ip, x-serverless-authorization | authorization: Bearer + a Google access token | x-serverless-authorization segment lengths: 102.426.27"
+  }
+ }
+}

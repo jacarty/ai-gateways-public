@@ -1,0 +1,8 @@
+# False positives: gitleaks' generic-api-key rule matches throwaway virtual-key *names*
+# (agw-nb-<test>-<unix time>) printed by gateways/bifrost/tests.ipynb's Test 6 cells, not
+# key values (those cells print `'key value stored': False`). Fingerprints carry the line
+# number: if the notebook changes above these lines, re-run gitleaks and update them.
+gateways/bifrost/tests.ipynb:generic-api-key:2053
+gateways/bifrost/tests.ipynb:generic-api-key:2055
+# A made-up key in a test that checks real-looking keys are refused in scenario files.
+harness/tests/test_scenarios.py:generic-api-key:54

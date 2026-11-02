@@ -1,0 +1,16 @@
+# What `gcloud builds submit` uploads: only what the Dockerfile needs.
+.gcloudignore
+.venv/
+**/__pycache__/
+tests/
+terraform/
+README.md
+.dockerignore
+.ruff_cache/
+.pytest_cache/
+.env*
+*.pem
+*.key
+*credentials*.json
+*-key.json
+.git/

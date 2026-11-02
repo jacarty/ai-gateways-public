@@ -1,0 +1,157 @@
+{
+  "run_id": "20261024T092947Z-scenarios-bifrost-failover-318543",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "command": "scenarios",
+  "gateway_url": "https://agw-bifrost-a1b2c3d4e5-ew.a.run.app/v1",
+  "git_commit": "96fa3e1-dirty",
+  "note": "test 2 window, agw-bifrost revision 00004 (window config: broken-model aliases, routing rules, harness key widened)",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/bifrost/failover.json",
+  "scenario": {
+    "name": "bifrost-failover",
+    "description": "Test 2 (routing and failover) on Bifrost transports/v2.2.6. Needs the test window in README.md: key aliases test-gemini-broken, test-gemini-broken-norule and test-claude-broken (model ids that don't exist on the Agent Platform: real upstream errors), the harness key allowed to use them, and two routing rules (governance.routing_rules) that fail test-gemini-broken over to Claude and test-claude-broken over to Gemini. Retries are off (Bifrost's default). Bifrost's mocker plugin is not compiled into the gateway, so no case forces an error on a healthy model; caller-side failover uses the request's own fallbacks list.",
+    "record_headers": [],
+    "cases": [
+      {
+        "name": "gemini-healthy",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 2,
+        "expect": {
+          "status": 200,
+          "model": "gemini-3.8-flash"
+        }
+      },
+      {
+        "name": "gemini-broken-rule-falls-back",
+        "model": "test-gemini-broken",
+        "kind": "gemini",
+        "repeat": 3,
+        "expect": {
+          "status": 200,
+          "model": "claude-haiku-5-5"
+        }
+      },
+      {
+        "name": "gemini-broken-rule-falls-back-stream",
+        "model": "test-gemini-broken",
+        "kind": "gemini",
+        "stream": true,
+        "repeat": 3,
+        "expect": {
+          "status": 200,
+          "model": "claude-haiku-5-5"
+        }
+      },
+      {
+        "name": "claude-broken-rule-falls-back",
+        "model": "test-claude-broken",
+        "kind": "claude",
+        "repeat": 3,
+        "expect": {
+          "status": 200,
+          "model": "gemini-3.8-flash"
+        }
+      },
+      {
+        "name": "claude-broken-rule-falls-back-stream",
+        "model": "test-claude-broken",
+        "kind": "claude",
+        "stream": true,
+        "repeat": 2,
+        "expect": {
+          "status": 200,
+          "model": "gemini-3.8-flash"
+        }
+      },
+      {
+        "name": "broken-no-fallbacks",
+        "model": "test-gemini-broken-norule",
+        "kind": "gemini",
+        "repeat": 2,
+        "expect": {
+          "status": 404
+        }
+      },
+      {
+        "name": "broken-caller-fallbacks",
+        "model": "test-gemini-broken-norule",
+        "kind": "gemini",
+        "repeat": 3,
+        "body": {
+          "fallbacks": [
+            "vertex/claude-haiku-5-5"
+          ]
+        },
+        "expect": {
+          "status": 200,
+          "model": "claude-haiku-5-5"
+        }
+      },
+      {
+        "name": "broken-caller-fallbacks-stream",
+        "model": "test-gemini-broken-norule",
+        "kind": "gemini",
+        "stream": true,
+        "repeat": 2,
+        "body": {
+          "fallbacks": [
+            "vertex/claude-haiku-5-5"
+          ]
+        },
+        "expect": {
+          "status": 200,
+          "model": "claude-haiku-5-5"
+        }
+      },
+      {
+        "name": "healthy-with-caller-fallbacks",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 2,
+        "body": {
+          "fallbacks": [
+            "vertex/claude-haiku-5-5"
+          ]
+        },
+        "expect": {
+          "status": 200,
+          "model": "gemini-3.8-flash"
+        }
+      },
+      {
+        "name": "every-fallback-broken",
+        "model": "test-gemini-broken-norule",
+        "kind": "gemini",
+        "repeat": 2,
+        "body": {
+          "fallbacks": [
+            "vertex/test-claude-broken"
+          ]
+        },
+        "expect": {
+          "status": 404
+        }
+      },
+      {
+        "name": "gemini-healthy-after",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 2,
+        "expect": {
+          "status": 200,
+          "model": "gemini-3.8-flash"
+        }
+      }
+    ]
+  }
+}

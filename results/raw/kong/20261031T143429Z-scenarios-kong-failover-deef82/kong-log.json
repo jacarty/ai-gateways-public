@@ -1,0 +1,906 @@
+[
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2112,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 7,
+      "cost": 0.0001089,
+      "prompt_tokens": 31,
+      "time_per_token": 301.71428571429,
+      "total_tokens": 38
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 63,
+    "proxy": 2055,
+    "receive": 1,
+    "request": 2119
+   },
+   "request": {
+    "id": "6afcf960bfe99c0715d3c369e3c4dd1e",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 2,
+     "balancer_latency_ns": 209920,
+     "balancer_start": 1793457270221,
+     "balancer_start_ns": 1.7934572702229e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T14:34:32.278530Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2565,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 11,
+      "cost": 0.00014025,
+      "prompt_tokens": 30,
+      "time_per_token": 233.18181818182,
+      "total_tokens": 41
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 2563,
+    "receive": 1,
+    "request": 2566
+   },
+   "request": {
+    "id": "0c55aa5f87a3320e1c2d3821dce4de72",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 18432,
+     "balancer_start": 1793457272293,
+     "balancer_start_ns": 1.7934572722937e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T14:34:34.856452Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 2087,
+    "receive": 2,
+    "request": 2091
+   },
+   "request": {
+    "id": "abd2fe1f3feb3941f7fb8656c3a3ff04",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 18432,
+     "balancer_start": 1793457274878,
+     "balancer_start_ns": 1.7934572748788e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T14:34:36.966732Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 810,
+    "receive": 2,
+    "request": 814
+   },
+   "request": {
+    "id": "9ec014548d697f2504cc384d1d2fec6e",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 29184,
+     "balancer_start": 1793457276981,
+     "balancer_start_ns": 1.7934572769813e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T14:34:37.792644Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 3,
+    "proxy": 513,
+    "receive": 316,
+    "request": 832
+   },
+   "request": {
+    "id": "df73d273ad50413de7bf946f2cad1b79",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-stream-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 23808,
+     "balancer_start": 1793457277808,
+     "balancer_start_ns": 1.7934572778083e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": "200"
+  },
+  "timestamp": "2026-10-31T14:34:38.637405Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 0,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "UNSPECIFIED",
+      "request_model": "claude-haiku-5-5",
+      "response_model": "claude-haiku-5-5"
+     },
+     "usage": {
+      "completion_tokens": 0,
+      "cost": 0,
+      "prompt_tokens": 0,
+      "time_per_token": 0,
+      "total_tokens": 0
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": -1,
+    "receive": 0,
+    "request": 3
+   },
+   "request": {
+    "id": "e5ade679501dd2483e92e0507a2d4236",
+    "method": "POST"
+   },
+   "response": {
+    "status": 400
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T14:34:38.651496Z"
+ },
+ {
+  "jsonPayload": {
+   "latencies": {
+    "kong": 0,
+    "proxy": -1,
+    "receive": 0,
+    "request": 2
+   },
+   "request": {
+    "id": "db59237cd9dd1057e80e4d163663a67a",
+    "method": "POST"
+   },
+   "response": {
+    "status": 404
+   },
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T14:34:38.666361Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 35,
+      "plugin_id": "a1ffdcce-9597-4490-852f-1c66fa64fc6b",
+      "provider_name": "gemini",
+      "request_model": "gemini-0-agw-missing",
+      "response_model": "gemini-0-agw-missing"
+     },
+     "usage": {
+      "completion_tokens": 0,
+      "cost": 0,
+      "prompt_tokens": 0,
+      "time_per_token": 0,
+      "total_tokens": 0
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 3,
+    "proxy": 33,
+    "receive": 1,
+    "request": 37
+   },
+   "request": {
+    "id": "6a40d20988310d538fb28b08d43ccc6a",
+    "method": "POST"
+   },
+   "response": {
+    "status": 404
+   },
+   "route": {
+    "name": "test-gemini-broken"
+   },
+   "service": {
+    "name": "test-gemini-broken"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 21504,
+     "balancer_start": 1793457278680,
+     "balancer_start_ns": 1.7934572786803e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 404
+  },
+  "timestamp": "2026-10-31T14:34:38.714251Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 36,
+      "plugin_id": "a1ffdcce-9597-4490-852f-1c66fa64fc6b",
+      "provider_name": "gemini",
+      "request_model": "gemini-0-agw-missing",
+      "response_model": "gemini-0-agw-missing"
+     },
+     "usage": {
+      "completion_tokens": 0,
+      "cost": 0,
+      "prompt_tokens": 0,
+      "time_per_token": 0,
+      "total_tokens": 0
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 34,
+    "receive": 1,
+    "request": 37
+   },
+   "request": {
+    "id": "471baa5aa4854f72b801aa095470543a",
+    "method": "POST"
+   },
+   "response": {
+    "status": 404
+   },
+   "route": {
+    "name": "test-gemini-broken"
+   },
+   "service": {
+    "name": "test-gemini-broken"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 19968,
+     "balancer_start": 1793457278729,
+     "balancer_start_ns": 1.7934572787292e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 404
+  },
+  "timestamp": "2026-10-31T14:34:38.764092Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 57,
+      "plugin_id": "a1ffdcce-9597-4490-852f-1c66fa64fc6b",
+      "provider_name": "gemini",
+      "request_model": "gemini-0-agw-missing",
+      "response_model": "gemini-0-agw-missing"
+     },
+     "usage": {
+      "completion_tokens": 0,
+      "cost": 0,
+      "prompt_tokens": 0,
+      "time_per_token": 0,
+      "total_tokens": 0
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 56,
+    "receive": 2,
+    "request": 60
+   },
+   "request": {
+    "id": "2c298200d42ee22a3055332dd7fb8020",
+    "method": "POST"
+   },
+   "response": {
+    "status": 404
+   },
+   "route": {
+    "name": "test-gemini-broken"
+   },
+   "service": {
+    "name": "test-gemini-broken"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 21248,
+     "balancer_start": 1793457278780,
+     "balancer_start_ns": 1.7934572787806e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": "404"
+  },
+  "timestamp": "2026-10-31T14:34:38.838300Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 27,
+    "receive": 2,
+    "request": 31
+   },
+   "request": {
+    "id": "131a1c6c2751ba039b9f8025b1da3040",
+    "method": "POST"
+   },
+   "response": {
+    "status": 404
+   },
+   "route": {
+    "name": "test-claude-broken"
+   },
+   "service": {
+    "name": "test-claude-broken"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 21760,
+     "balancer_start": 1793457278853,
+     "balancer_start_ns": 1.7934572788536e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 404
+  },
+  "timestamp": "2026-10-31T14:34:38.881920Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 4,
+    "proxy": 29,
+    "receive": 1,
+    "request": 34
+   },
+   "request": {
+    "id": "b5ba39299f6bb972cf091d2f942e0c1d",
+    "method": "POST"
+   },
+   "response": {
+    "status": 404
+   },
+   "route": {
+    "name": "test-claude-broken"
+   },
+   "service": {
+    "name": "test-claude-broken"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 207104,
+     "balancer_start": 1793457278901,
+     "balancer_start_ns": 1.7934572789015e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 404
+  },
+  "timestamp": "2026-10-31T14:34:38.931380Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 3,
+    "proxy": 38,
+    "receive": 1,
+    "request": 42
+   },
+   "request": {
+    "id": "4dbcfa2fb6c9b11ec1db2716326ae129",
+    "method": "POST"
+   },
+   "response": {
+    "status": 404
+   },
+   "route": {
+    "name": "test-claude-broken-stream"
+   },
+   "service": {
+    "name": "test-claude-broken"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 273664,
+     "balancer_start": 1793457278949,
+     "balancer_start_ns": 1.7934572789493e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": "404"
+  },
+  "timestamp": "2026-10-31T14:34:38.988271Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 14,
+    "proxy": 0,
+    "receive": 1,
+    "request": 15
+   },
+   "request": {
+    "id": "06e78367ff6d0867ac972360e240a763",
+    "method": "POST"
+   },
+   "response": {
+    "status": 502
+   },
+   "route": {
+    "name": "test-claude-unreachable"
+   },
+   "service": {
+    "name": "test-claude-broken"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 11520,
+     "balancer_start": 1793457279004,
+     "balancer_start_ns": 1.7934572790041e+18,
+     "code": 502,
+     "ip": "127.0.0.1",
+     "port": 9,
+     "state": "failed"
+    },
+    {
+     "balancer_latency": 3,
+     "balancer_latency_ns": 2841344,
+     "balancer_start": 1793457279004,
+     "balancer_start_ns": 1.7934572790046e+18,
+     "code": 502,
+     "ip": "127.0.0.1",
+     "port": 9,
+     "state": "failed"
+    },
+    {
+     "balancer_latency": 1,
+     "balancer_latency_ns": 1323008,
+     "balancer_start": 1793457279007,
+     "balancer_start_ns": 1.7934572790077e+18,
+     "code": 502,
+     "ip": "127.0.0.1",
+     "port": 9,
+     "state": "failed"
+    },
+    {
+     "balancer_latency": 2,
+     "balancer_latency_ns": 2223616,
+     "balancer_start": 1793457279009,
+     "balancer_start_ns": 1.7934572790092e+18,
+     "code": 502,
+     "ip": "127.0.0.1",
+     "port": 9,
+     "state": "failed"
+    },
+    {
+     "balancer_latency": 2,
+     "balancer_latency_ns": 1554688,
+     "balancer_start": 1793457279011,
+     "balancer_start_ns": 1.7934572790116e+18,
+     "code": 502,
+     "ip": "127.0.0.1",
+     "port": 9,
+     "state": "failed"
+    },
+    {
+     "balancer_latency": 2,
+     "balancer_latency_ns": 1617408,
+     "balancer_start": 1793457279013,
+     "balancer_start_ns": 1.7934572790135e+18,
+     "code": 502,
+     "ip": "127.0.0.1",
+     "port": 9,
+     "state": "failed"
+    }
+   ],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T14:34:39.016335Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 11,
+    "proxy": 0,
+    "receive": 1,
+    "request": 12
+   },
+   "request": {
+    "id": "d84b193e95a6707618a44d5e428ceb47",
+    "method": "POST"
+   },
+   "response": {
+    "status": 502
+   },
+   "route": {
+    "name": "test-claude-unreachable"
+   },
+   "service": {
+    "name": "test-claude-broken"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 9472,
+     "balancer_start": 1793457279028,
+     "balancer_start_ns": 1.793457279029e+18,
+     "code": 502,
+     "ip": "127.0.0.1",
+     "port": 9,
+     "state": "failed"
+    },
+    {
+     "balancer_latency": 2,
+     "balancer_latency_ns": 1963520,
+     "balancer_start": 1793457279029,
+     "balancer_start_ns": 1.7934572790293e+18,
+     "code": 502,
+     "ip": "127.0.0.1",
+     "port": 9,
+     "state": "failed"
+    },
+    {
+     "balancer_latency": 1,
+     "balancer_latency_ns": 1285120,
+     "balancer_start": 1793457279031,
+     "balancer_start_ns": 1.7934572790317e+18,
+     "code": 502,
+     "ip": "127.0.0.1",
+     "port": 9,
+     "state": "failed"
+    },
+    {
+     "balancer_latency": 1,
+     "balancer_latency_ns": 1599232,
+     "balancer_start": 1793457279033,
+     "balancer_start_ns": 1.7934572790332e+18,
+     "code": 502,
+     "ip": "127.0.0.1",
+     "port": 9,
+     "state": "failed"
+    },
+    {
+     "balancer_latency": 2,
+     "balancer_latency_ns": 1370112,
+     "balancer_start": 1793457279034,
+     "balancer_start_ns": 1.793457279035e+18,
+     "code": 502,
+     "ip": "127.0.0.1",
+     "port": 9,
+     "state": "failed"
+    },
+    {
+     "balancer_latency": 2,
+     "balancer_latency_ns": 1641472,
+     "balancer_start": 1793457279036,
+     "balancer_start_ns": 1.7934572790365e+18,
+     "code": 502,
+     "ip": "127.0.0.1",
+     "port": 9,
+     "state": "failed"
+    }
+   ],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T14:34:39.038842Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 1565,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 7,
+      "cost": 0.0001089,
+      "prompt_tokens": 31,
+      "time_per_token": 223.57142857143,
+      "total_tokens": 38
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 1565,
+    "receive": 1,
+    "request": 1568
+   },
+   "request": {
+    "id": "1dd87d49a856d96616c9b73265f32724",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 19200,
+     "balancer_start": 1793457279053,
+     "balancer_start_ns": 1.7934572790536e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T14:34:40.619391Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2607,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 8,
+      "cost": 0.0001155,
+      "prompt_tokens": 30,
+      "time_per_token": 325.875,
+      "total_tokens": 38
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 2605,
+    "receive": 1,
+    "request": 2608
+   },
+   "request": {
+    "id": "4cdc2859ceca613cb9637c5e7805ab59",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 26112,
+     "balancer_start": 1793457280634,
+     "balancer_start_ns": 1.7934572806349e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T14:34:43.240476Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 800,
+    "receive": 1,
+    "request": 803
+   },
+   "request": {
+    "id": "a2f94367e9b8af0b50012c7ab5136053",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 28928,
+     "balancer_start": 1793457283269,
+     "balancer_start_ns": 1.7934572832698e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T14:34:44.069943Z"
+ }
+]

@@ -1,0 +1,9 @@
+{
+ "consumer": "agw-t6-admin-probe-20261101T191650-988727",
+ "started_at": 1793560610.4687226,
+ "ended_at": 1793560610.6057372,
+ "steps": [
+  "POST /admin-api/consumers",
+  "DELETE /admin-api/consumers/<name>"
+ ]
+}

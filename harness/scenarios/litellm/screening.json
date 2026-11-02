@@ -1,0 +1,24 @@
+{
+  "name": "litellm-screening",
+  "description": "Test 4 (inline screening) on LiteLLM v1.103.2: the shared case set (../screening-cases.json) on both models, once each. Run it three times: with the committed config (no guardrails: what the models do on their own), with the content-filter window, and with the LLM-judge window (README.md, \"Test 4\"); say which in --note. mask_marker matches LiteLLM's content-filter placeholders ([EMAIL_REDACTED] and the like).",
+  "cases_from": "../screening-cases.json",
+  "matrix": [
+    {
+      "model": "gemini-3.8-flash",
+      "kind": "gemini"
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "kind": "claude"
+    }
+  ],
+  "case_defaults": {
+    "repeat": 1
+  },
+  "mask_marker": "_REDACTED\\]",
+  "record_headers": [
+    "x-litellm-applied-guardrails",
+    "x-litellm-model-group",
+    "x-litellm-response-cost"
+  ]
+}

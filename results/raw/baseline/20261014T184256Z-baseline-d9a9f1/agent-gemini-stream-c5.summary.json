@@ -1,0 +1,34 @@
+{
+  "run": "agent-gemini-stream-c5",
+  "target": "agent",
+  "model": "gemini",
+  "model_name": "gemini-3.8-flash",
+  "stream": true,
+  "concurrency": 5,
+  "warmup_discarded": 10,
+  "requests": 50,
+  "ok": 50,
+  "error_rate": 0.0,
+  "wall_s": 14.863,
+  "throughput_rps": 3.364,
+  "latency_s": {
+    "p50": 1.3366,
+    "p95": 2.018,
+    "p99": 3.0787,
+    "mean": 1.4417
+  },
+  "latency_all_s": {
+    "p50": 1.3366,
+    "p95": 2.018,
+    "p99": 3.0787
+  },
+  "ttft_s": {
+    "p50": 1.1952,
+    "p95": 1.8867,
+    "mean": 1.3075
+  },
+  "output_tokens_mean": 23.4,
+  "thinking_tokens_mean": 128.0,
+  "thinking_reported": 1,
+  "errors": []
+}

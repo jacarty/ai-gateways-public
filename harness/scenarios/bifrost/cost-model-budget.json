@@ -1,0 +1,31 @@
+{
+  "name": "bifrost-cost-model-budget",
+  "description": "Test 3 on Bifrost transports/v2.2.6, run through run-cost.sh with a throwaway key (limits in the run's NOTE.md and quota.json). A $0.0003 budget on Gemini only (a model budget under the key's Vertex provider config; per-model budgets are enterprise-only in LiteLLM). A Gemini request costs about $0.00023: expect 2 through, then Gemini refused with 402 while Claude, with no budget of its own, still answers.",
+  "record_headers": [],
+  "cases": [
+    {
+      "name": "gemini-spend-down",
+      "model": "gemini-3.8-flash",
+      "kind": "gemini",
+      "repeat": 3
+    },
+    {
+      "name": "gemini-refused",
+      "model": "gemini-3.8-flash",
+      "kind": "gemini",
+      "repeat": 1,
+      "expect": {
+        "status": 402
+      }
+    },
+    {
+      "name": "claude-still-answers",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 2,
+      "expect": {
+        "status": 200
+      }
+    }
+  ]
+}

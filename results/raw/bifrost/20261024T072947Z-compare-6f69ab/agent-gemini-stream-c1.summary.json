@@ -1,0 +1,51 @@
+{
+  "run": "agent-gemini-stream-c1",
+  "target": "agent",
+  "model": "gemini",
+  "model_name": "gemini-3.8-flash",
+  "stream": true,
+  "concurrency": 1,
+  "warmup_discarded": 10,
+  "blocks": 2,
+  "block_size": 10,
+  "rewarm_per_block": 1,
+  "block_orders": [
+    [
+      "agent",
+      "direct"
+    ],
+    [
+      "direct",
+      "agent"
+    ]
+  ],
+  "agent_backend": "gateway",
+  "requests": 20,
+  "ok": 19,
+  "error_rate": 0.05,
+  "wall_s": 34.383,
+  "throughput_rps": 0.553,
+  "latency_s": {
+    "p50": 1.5112,
+    "p95": 2.9528,
+    "p99": 2.9528,
+    "mean": 1.6278
+  },
+  "latency_all_s": {
+    "p50": 1.5112,
+    "p95": 2.9528,
+    "p99": 3.4474
+  },
+  "ttft_s": {
+    "p50": 1.3709,
+    "p95": 2.8522,
+    "mean": 1.4823
+  },
+  "output_tokens_mean": 25.7895,
+  "thinking_tokens_mean": 6.8947,
+  "thinking_reported": 19,
+  "thinking_used": 1,
+  "errors": [
+    "{\"modelVersion\": \"gemini-3.8-flash\", \"content\": {\"parts\": [{\"text\": \"There are most commonly recognized to be seven continents: Africa, Antarctica, Asia, Europe, North America, Australia (or Oceania), and South America. However, depending on the cultural or geographic\"}], \"role\": \"model\"}, \"partial\": false, \"finishReason\": \"MAX_TOKENS\", \"errorCode\": \"MAX_TOKENS\", \"errorMessage\": \"Maximum tokens reached\", \"usageMetadata\": {\"cachedContentTokenCount\": 0, \"candidatesTokenCount\": 252, \"promptTokenCou"
+  ]
+}

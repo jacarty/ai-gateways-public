@@ -1,0 +1,71 @@
+{
+ "budgets": [
+  {
+   "id": "19e87cec-45fd-43f8-987c-d751b01b5212",
+   "max_limit": 0.05,
+   "reset_duration": "1d",
+   "last_reset": "2026-10-24T10:19:31.520414Z",
+   "current_usage": 0.00069333,
+   "model_config_id": "8f9e4790-b4eb-4825-a0c7-b700c3687a55",
+   "config_hash": "",
+   "created_at": "2026-10-24T10:19:31.520414Z",
+   "updated_at": "2026-10-24T10:19:31.520414Z",
+   "per_model_usage": [
+    {
+     "model": "claude-haiku-5-5",
+     "provider": "vertex",
+     "total_requests": 26,
+     "total_tokens": 2275,
+     "total_cost": 0.00069333,
+     "input_cost": 0.00013948,
+     "output_cost": 0.00055385,
+     "additional_cost": 0
+    }
+   ]
+  }
+ ],
+ "is_active": true,
+ "model_configs": [],
+ "provider_configs": [
+  {
+   "id": 4,
+   "virtual_key_id": "541b14b4-9c8b-4cfb-a668-21c71082be8c",
+   "provider": "vertex",
+   "weight": 1,
+   "allow_all_keys": true,
+   "keys": null,
+   "allowed_models": [
+    "gemini-3.8-flash",
+    "claude-haiku-5-5"
+   ],
+   "blacklisted_models": []
+  }
+ ],
+ "rate_limit": {
+  "id": "1f03724a-c666-4fac-a9c5-4746d7a72f97",
+  "token_max_limit": 1000,
+  "token_reset_duration": "1m",
+  "token_current_usage": 1230,
+  "token_last_reset": "2026-10-24T10:20:31.505155Z",
+  "request_current_usage": 22,
+  "request_last_reset": "2026-10-24T10:19:31.50513Z",
+  "config_hash": "",
+  "created_at": "2026-10-24T10:19:31.505155Z",
+  "updated_at": "2026-10-24T10:19:31.505155Z"
+ },
+ "rate_limits": [
+  {
+   "id": "1f03724a-c666-4fac-a9c5-4746d7a72f97",
+   "token_max_limit": 1000,
+   "token_reset_duration": "1m",
+   "token_current_usage": 1230,
+   "token_last_reset": "2026-10-24T10:20:31.505155Z",
+   "request_current_usage": 22,
+   "request_last_reset": "2026-10-24T10:19:31.50513Z",
+   "config_hash": "",
+   "created_at": "2026-10-24T10:19:31.505155Z",
+   "updated_at": "2026-10-24T10:19:31.505155Z"
+  }
+ ],
+ "virtual_key_name": "agw-t3-tpm-20261024T101931-445292"
+}

@@ -1,0 +1,24 @@
+{
+  "run": "agent-claude-nostream-c5",
+  "target": "agent",
+  "model": "claude",
+  "model_name": "claude-haiku-5-5",
+  "stream": false,
+  "concurrency": 5,
+  "warmup_discarded": 10,
+  "requests": 50,
+  "ok": 50,
+  "error_rate": 0.0,
+  "wall_s": 5.917,
+  "throughput_rps": 8.451,
+  "latency_s": {
+    "p50": 0.549,
+    "p95": 0.7803,
+    "p99": 0.8647,
+    "mean": 0.563
+  },
+  "ttft_s": null,
+  "output_tokens_mean": 46.44,
+  "thinking_tokens_mean": 0.0,
+  "errors": []
+}

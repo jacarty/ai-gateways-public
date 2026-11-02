@@ -1,0 +1,24 @@
+{
+  "run": "direct-claude-nostream-c5",
+  "target": "direct",
+  "model": "claude",
+  "model_name": "claude-haiku-5-5",
+  "stream": false,
+  "concurrency": 5,
+  "warmup_discarded": 10,
+  "requests": 200,
+  "ok": 200,
+  "error_rate": 0.0,
+  "wall_s": 19.954,
+  "throughput_rps": 10.023,
+  "latency_s": {
+    "p50": 0.4904,
+    "p95": 0.7195,
+    "p99": 0.8637,
+    "mean": 0.4909
+  },
+  "ttft_s": null,
+  "output_tokens_mean": 46.145,
+  "thinking_tokens_mean": 0.0,
+  "errors": []
+}

@@ -1,0 +1,59 @@
+{
+  "run_id": "20261024T101931Z-scenarios-bifrost-cost-tpm-3d12b5",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "command": "scenarios",
+  "gateway_url": "https://agw-bifrost-a1b2c3d4e5-ew.a.run.app/v1",
+  "git_commit": "5cb107b-dirty",
+  "note": "revision agw-bifrost-00010-fp2; throwaway key agw-t3-tpm-20261024T101931-445292 {\"rate_limit\": {\"token_max_limit\": 1000, \"token_reset_duration\": \"1m\"}}",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/bifrost/cost-tpm.json",
+  "scenario": {
+    "name": "bifrost-cost-tpm",
+    "description": "Test 3 on Bifrost transports/v2.2.6, run through run-cost.sh with a throwaway key (limits in the run's NOTE.md and quota.json). A token limit of 1000 a minute. Checked as usage >= limit before the call, with usage charged after the response: one at a time, the request that crosses is admitted and the next refused; at once, every request that starts below the limit is admitted, so a burst can overshoot (LiteLLM reserved each request's worst case and refused bursts early).",
+    "record_headers": [],
+    "cases": [
+      {
+        "name": "tpm-one-at-a-time",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 12
+      },
+      {
+        "name": "tpm-refused",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "expect": {
+          "status": 429
+        }
+      },
+      {
+        "name": "tpm-at-once",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 12,
+        "concurrent": true,
+        "pause_s": 70
+      },
+      {
+        "name": "tpm-refused-after-burst",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "pause_s": 3,
+        "expect": {
+          "status": 429
+        }
+      }
+    ]
+  }
+}

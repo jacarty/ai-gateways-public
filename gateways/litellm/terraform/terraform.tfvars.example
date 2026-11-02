@@ -1,0 +1,7 @@
+# Copy to terraform.tfvars (git-ignored) and fill in.
+project_id      = "my-gcp-project"
+image           = "europe-west1-docker.pkg.dev/my-gcp-project/agw-ghcr/berriai/litellm@sha256:f63fb81b831b170ec16851e23c36ac5bf52ef106b271406429524a2ed730bbfd" # v1.103.2
+invoker_members = ["user:me@example.com", "serviceAccount:agw-agent@my-gcp-project.iam.gserviceaccount.com", "serviceAccount:agw-harness@my-gcp-project.iam.gserviceaccount.com"]
+
+# Optional overrides
+# max_instances        = 1

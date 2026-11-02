@@ -1,0 +1,52 @@
+{
+  "run": "agent-gemini-stream-c1",
+  "target": "agent",
+  "model": "gemini",
+  "model_name": "gemini-3.8-flash",
+  "stream": true,
+  "concurrency": 1,
+  "warmup_discarded": 10,
+  "blocks": 2,
+  "block_size": 10,
+  "rewarm_per_block": 1,
+  "block_orders": [
+    [
+      "agent",
+      "direct"
+    ],
+    [
+      "direct",
+      "agent"
+    ]
+  ],
+  "agent_backend": "gateway",
+  "requests": 20,
+  "ok": 18,
+  "error_rate": 0.1,
+  "wall_s": 55.531,
+  "throughput_rps": 0.324,
+  "latency_s": {
+    "p50": 2.6618,
+    "p95": 3.7152,
+    "p99": 3.7152,
+    "mean": 2.7089
+  },
+  "latency_all_s": {
+    "p50": 2.6797,
+    "p95": 3.5722,
+    "p99": 3.7152
+  },
+  "ttft_s": {
+    "p50": 2.6539,
+    "p95": 3.7034,
+    "mean": 2.698
+  },
+  "output_tokens_mean": 19.7778,
+  "thinking_tokens_mean": 0.0,
+  "thinking_reported": 18,
+  "thinking_used": 0,
+  "errors": [
+    "{\"modelVersion\": \"gemini-3.8-flash\", \"content\": {\"parts\": [{\"text\": \"The first person walked on the Moon in 1969. American astronaut Neil Armstrong accomplished this milestone during the Apollo 11 mission on\"}], \"role\": \"model\"}, \"partial\": false, \"finishReason\": \"MAX_TOKENS\", \"errorCode\": \"MAX_TOKENS\", \"errorMessage\": \"Maximum tokens reached\", \"usageMetadata\": {\"cachedContentTokenCount\": 0, \"candidatesTokenCount\": 26, \"promptTokenCount\": 61, \"totalTokenCount\": 87}, \"invocationId\": \"e-e8c4ef7d-0",
+    "{\"modelVersion\": \"gemini-3.8-flash\", \"content\": {\"parts\": [{\"text\": \"There are typically considered to be seven continents: Africa,\"}], \"role\": \"model\"}, \"partial\": false, \"finishReason\": \"MAX_TOKENS\", \"errorCode\": \"MAX_TOKENS\", \"errorMessage\": \"Maximum tokens reached\", \"usageMetadata\": {\"cachedContentTokenCount\": 0, \"candidatesTokenCount\": 11, \"promptTokenCount\": 55, \"totalTokenCount\": 66}, \"invocationId\": \"e-c59b6a4a-886c-43b3-acc6-bcc20929eaa6\", \"author\": \"gemini_agent\", \"actions\": {\"stateDel"
+  ]
+}

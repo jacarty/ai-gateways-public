@@ -1,0 +1,174 @@
+{
+  "run_id": "20261024T135211Z-scenarios-bifrost-auth-2d6094",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "command": "scenarios",
+  "gateway_url": "https://agw-bifrost-a1b2c3d4e5-ew.a.run.app/v1",
+  "git_commit": "9b7bde8",
+  "note": "revision agw-bifrost-00014-fq6; throwaway keys agw-t5-*-20261024T135152-461714",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/bifrost/auth.json",
+  "scenario": {
+    "name": "bifrost-auth",
+    "description": "Test 5 (identity and secrets) on Bifrost transports/v2.2.6: which layer stops which credential problem. Two layers: Cloud Run IAM checks the Google ID token (X-Serverless-Authorization; refusals are HTML), then Bifrost checks its virtual key (Authorization: Bearer sk-bf-...; refusals are JSON). Run with run-auth.sh, which makes the throwaway keys through the admin API (Claude-only, expired, inactive, deleted, rotated) and reads the agent's key, passes them as AGW_T5_* environment variables, and deletes them on exit. Expected codes from the source: unknown key 401, inactive or expired key 403, model not allowed 403; a rotated key's old value should stop at once (no rotation cooldown configured). Claude cases throughout (cheapest); the Gemini case is refused before any model call.",
+    "record_headers": [],
+    "cases": [
+      {
+        "name": "valid-id-token-and-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "no-credentials",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "id_token": false,
+        "api_key": "none",
+        "expect": {
+          "status": 403,
+          "error_contains": "forbidden"
+        }
+      },
+      {
+        "name": "key-without-id-token",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "id_token": false,
+        "expect": {
+          "status": 401,
+          "error_not_contains": "virtual key"
+        }
+      },
+      {
+        "name": "id-token-without-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "none",
+        "expect": {
+          "status": 401,
+          "error_contains": "virtual key is required"
+        }
+      },
+      {
+        "name": "key-not-sk-bf-format",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "agw-not-a-real-key-123",
+        "expect": {
+          "status": 401,
+          "error_not_contains": "agw-not-a-real-key-123"
+        }
+      },
+      {
+        "name": "unknown-sk-bf-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_UNKNOWN_KEY",
+        "expect": {
+          "status": 401,
+          "error_not_contains": "agw-unknown"
+        }
+      },
+      {
+        "name": "claude-only-key-asks-gemini",
+        "model": "gemini-3.8-flash",
+        "kind": "gemini",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_CLAUDE_ONLY_KEY",
+        "expect": {
+          "status": 403,
+          "error_contains": "not allowed"
+        }
+      },
+      {
+        "name": "claude-only-key-asks-claude",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_CLAUDE_ONLY_KEY",
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "expired-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_EXPIRED_KEY",
+        "expect": {
+          "status": 403,
+          "error_contains": "expired"
+        }
+      },
+      {
+        "name": "inactive-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_INACTIVE_KEY",
+        "expect": {
+          "status": 403,
+          "error_contains": "inactive"
+        }
+      },
+      {
+        "name": "deleted-key",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_DELETED_KEY",
+        "expect": {
+          "status": 401
+        }
+      },
+      {
+        "name": "rotated-key-old-value",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_ROTATED_OLD_KEY",
+        "expect": {
+          "status": 401
+        }
+      },
+      {
+        "name": "rotated-key-new-value",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_ROTATED_NEW_KEY",
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "agent-key-from-the-harness",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "api_key": "env:AGW_T5_AGENT_KEY",
+        "expect": {
+          "status": 200
+        }
+      }
+    ]
+  }
+}

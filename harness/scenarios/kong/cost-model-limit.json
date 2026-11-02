@@ -1,0 +1,41 @@
+{
+  "name": "kong-cost-model-limit",
+  "description": "Test 3 on Kong OSS 3.9.3, run through run-cost.sh with a throwaway consumer (its limit in the run's meta.json note). 1 request a minute on the Gemini route only (a plugin scoped to the consumer and the gemini-chat route), policy local. A per-model request limit: expect Gemini answered once, then refused, while Claude, on a route with no limit for this consumer, still answers.",
+  "record_headers": [
+    "ratelimit-limit",
+    "ratelimit-remaining",
+    "ratelimit-reset",
+    "retry-after",
+    "x-ratelimit-remaining-minute",
+    "x-kong-request-id"
+  ],
+  "cases": [
+    {
+      "name": "gemini-within-limit",
+      "model": "gemini-3.8-flash",
+      "kind": "gemini",
+      "repeat": 1,
+      "expect": {
+        "status": 200
+      }
+    },
+    {
+      "name": "gemini-refused",
+      "model": "gemini-3.8-flash",
+      "kind": "gemini",
+      "repeat": 1,
+      "expect": {
+        "status": 429
+      }
+    },
+    {
+      "name": "claude-still-answers",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 2,
+      "expect": {
+        "status": 200
+      }
+    }
+  ]
+}

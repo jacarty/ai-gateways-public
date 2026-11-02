@@ -1,0 +1,516 @@
+{
+ "run_id": "20261022T062509Z-scenarios-litellm-audit-924adb",
+ "window": [
+  "2026-10-22T06:24:56.094485Z",
+  "2026-10-22T06:27:09.526137Z"
+ ],
+ "requests": [
+  {
+   "case": "session-claude",
+   "http": 200,
+   "call_id_header": "a16b2e5a-ae6d-4ce0-863c-05a08b9c984a",
+   "joined_by": "call id",
+   "spend_row": {
+    "start": "2026-10-22T06:26:02.762000Z",
+    "call_id": "a16b2e5a-ae6d-4ce0-863c-05a08b9c984a",
+    "key_alias": "agw-harness",
+    "model_group": "claude-haiku-5-5",
+    "original_model_group": "claude-haiku-5-5",
+    "call_type": "acompletion",
+    "internal_call_origin": null,
+    "status": "success",
+    "error": null,
+    "api_base": "https://aiplatform.eu.rep.googleapis.com/v1/projects/my-gcp-project/locations/eu/publishers/anthropic/models/claude-haiku-5-5:rawPredict",
+    "session_id": "agw-t6-session",
+    "spend_logs_metadata": {
+     "agw_case": "session-claude",
+     "agw_test": "6"
+    },
+    "spend": 2.343e-05,
+    "total_tokens": 97,
+    "request_duration_ms": 18225,
+    "user": null,
+    "end_user": null,
+    "requester_ip": "link-local (Cloud Run front end)",
+    "user_agent": "python-httpx/0.28.1",
+    "applied_guardrails": [],
+    "content_stored": {
+     "messages": false,
+     "response": false,
+     "proxy_server_request": false
+    },
+    "proxy_server_request_keys": [],
+    "stored_header_names": [],
+    "contains": {
+     "prompt_marker": false,
+     "id_token_jwt": false,
+     "bearer_value": false,
+     "x_serverless_authorization": false
+    },
+    "session_is_a_request_log_trace": false
+   }
+  },
+  {
+   "case": "session-gemini",
+   "http": 200,
+   "call_id_header": "b02f393b-1d60-439b-bd4b-094a3f43c8e3",
+   "joined_by": "call id",
+   "spend_row": {
+    "start": "2026-10-22T06:26:21.072000Z",
+    "call_id": "b02f393b-1d60-439b-bd4b-094a3f43c8e3",
+    "key_alias": "agw-harness",
+    "model_group": "gemini-3.8-flash",
+    "original_model_group": "gemini-3.8-flash",
+    "call_type": "acompletion",
+    "internal_call_origin": null,
+    "status": "success",
+    "error": null,
+    "api_base": "https://aiplatform.eu.rep.googleapis.com/v1/projects/my-gcp-project/locations/eu/publishers/google/models/gemini-3.8-flash:generateContent",
+    "session_id": "agw-t6-session",
+    "spend_logs_metadata": {
+     "agw_case": "session-gemini",
+     "agw_test": "6"
+    },
+    "spend": 0.00012375,
+    "total_tokens": 47,
+    "request_duration_ms": 1256,
+    "user": null,
+    "end_user": null,
+    "requester_ip": "link-local (Cloud Run front end)",
+    "user_agent": "python-httpx/0.28.1",
+    "applied_guardrails": [],
+    "content_stored": {
+     "messages": false,
+     "response": false,
+     "proxy_server_request": false
+    },
+    "proxy_server_request_keys": [],
+    "stored_header_names": [],
+    "contains": {
+     "prompt_marker": false,
+     "id_token_jwt": false,
+     "bearer_value": false,
+     "x_serverless_authorization": false
+    },
+    "session_is_a_request_log_trace": false
+   }
+  },
+  {
+   "case": "session-claude-stream",
+   "http": 200,
+   "call_id_header": "15aee95e-f9db-43dc-8454-06a168888412",
+   "joined_by": "call id",
+   "spend_row": {
+    "start": "2026-10-22T06:26:22.356000Z",
+    "call_id": "15aee95e-f9db-43dc-8454-06a168888412",
+    "key_alias": "agw-harness",
+    "model_group": "claude-haiku-5-5",
+    "original_model_group": "claude-haiku-5-5",
+    "call_type": "acompletion",
+    "internal_call_origin": null,
+    "status": "success",
+    "error": null,
+    "api_base": "https://aiplatform.eu.rep.googleapis.com/v1/projects/my-gcp-project/locations/eu/publishers/anthropic/models/claude-haiku-5-5:streamRawPredict",
+    "session_id": "agw-t6-session",
+    "spend_logs_metadata": {
+     "agw_case": "session-claude-stream",
+     "agw_test": "6"
+    },
+    "spend": 2.343e-05,
+    "total_tokens": 97,
+    "request_duration_ms": 449,
+    "user": null,
+    "end_user": null,
+    "requester_ip": "link-local (Cloud Run front end)",
+    "user_agent": "python-httpx/0.28.1",
+    "applied_guardrails": [],
+    "content_stored": {
+     "messages": false,
+     "response": false,
+     "proxy_server_request": false
+    },
+    "proxy_server_request_keys": [],
+    "stored_header_names": [],
+    "contains": {
+     "prompt_marker": false,
+     "id_token_jwt": false,
+     "bearer_value": false,
+     "x_serverless_authorization": false
+    },
+    "session_is_a_request_log_trace": false
+   }
+  },
+  {
+   "case": "session-unknown-model",
+   "http": 403,
+   "call_id_header": null,
+   "joined_by": "caller metadata",
+   "spend_row": {
+    "start": "2026-10-22T06:26:22.819000Z",
+    "call_id": "d7eaff15-3068-452e-bf92-175b416be3a8",
+    "key_alias": "agw-harness",
+    "model_group": "",
+    "original_model_group": null,
+    "call_type": "acompletion",
+    "internal_call_origin": null,
+    "status": "failure",
+    "error": {
+     "error_code": "403",
+     "error_class": "ModelAccessDeniedProxyException"
+    },
+    "api_base": "",
+    "session_id": "agw-t6-session",
+    "spend_logs_metadata": {
+     "agw_case": "session-unknown-model",
+     "agw_test": "6"
+    },
+    "spend": 0.0,
+    "total_tokens": 0,
+    "request_duration_ms": 2,
+    "user": null,
+    "end_user": null,
+    "requester_ip": "link-local (Cloud Run front end)",
+    "user_agent": "python-httpx/0.28.1",
+    "applied_guardrails": [],
+    "content_stored": {
+     "messages": false,
+     "response": false,
+     "proxy_server_request": false
+    },
+    "proxy_server_request_keys": [],
+    "stored_header_names": [],
+    "contains": {
+     "prompt_marker": false,
+     "id_token_jwt": false,
+     "bearer_value": false,
+     "x_serverless_authorization": false
+    },
+    "session_is_a_request_log_trace": false
+   }
+  },
+  {
+   "case": "untagged-claude",
+   "http": 200,
+   "call_id_header": "00ba2570-9eee-4146-b6c5-90de04d46d42",
+   "joined_by": "call id",
+   "spend_row": {
+    "start": "2026-10-22T06:26:22.857000Z",
+    "call_id": "00ba2570-9eee-4146-b6c5-90de04d46d42",
+    "key_alias": "agw-harness",
+    "model_group": "claude-haiku-5-5",
+    "original_model_group": "claude-haiku-5-5",
+    "call_type": "acompletion",
+    "internal_call_origin": null,
+    "status": "success",
+    "error": null,
+    "api_base": "https://aiplatform.eu.rep.googleapis.com/v1/projects/my-gcp-project/locations/eu/publishers/anthropic/models/claude-haiku-5-5:rawPredict",
+    "session_id": "1ad5f994eaed0eed5cb1b4be5c85f6ac",
+    "spend_logs_metadata": null,
+    "spend": 2.343e-05,
+    "total_tokens": 97,
+    "request_duration_ms": 492,
+    "user": null,
+    "end_user": null,
+    "requester_ip": "link-local (Cloud Run front end)",
+    "user_agent": "python-httpx/0.28.1",
+    "applied_guardrails": [],
+    "content_stored": {
+     "messages": false,
+     "response": false,
+     "proxy_server_request": false
+    },
+    "proxy_server_request_keys": [],
+    "stored_header_names": [],
+    "contains": {
+     "prompt_marker": false,
+     "id_token_jwt": false,
+     "bearer_value": false,
+     "x_serverless_authorization": false
+    },
+    "session_is_a_request_log_trace": true
+   }
+  }
+ ],
+ "session": {
+  "id": "agw-t6-session",
+  "rows": [
+   {
+    "start": "2026-10-22T06:26:22.819000Z",
+    "call_id": "d7eaff15-3068-452e-bf92-175b416be3a8",
+    "key_alias": "agw-harness",
+    "model_group": "",
+    "original_model_group": null,
+    "call_type": "acompletion",
+    "internal_call_origin": null,
+    "status": "failure",
+    "error": {
+     "error_code": "403",
+     "error_class": "ModelAccessDeniedProxyException"
+    },
+    "api_base": "",
+    "session_id": "agw-t6-session",
+    "spend_logs_metadata": {
+     "agw_case": "session-unknown-model",
+     "agw_test": "6"
+    },
+    "spend": 0.0,
+    "total_tokens": 0,
+    "request_duration_ms": 2,
+    "user": null,
+    "end_user": null,
+    "requester_ip": "link-local (Cloud Run front end)",
+    "user_agent": "python-httpx/0.28.1",
+    "applied_guardrails": [],
+    "content_stored": {
+     "messages": false,
+     "response": false,
+     "proxy_server_request": false
+    },
+    "proxy_server_request_keys": [],
+    "stored_header_names": [],
+    "contains": {
+     "prompt_marker": false,
+     "id_token_jwt": false,
+     "bearer_value": false,
+     "x_serverless_authorization": false
+    },
+    "session_is_a_request_log_trace": false
+   },
+   {
+    "start": "2026-10-22T06:26:22.356000Z",
+    "call_id": "15aee95e-f9db-43dc-8454-06a168888412",
+    "key_alias": "agw-harness",
+    "model_group": "claude-haiku-5-5",
+    "original_model_group": "claude-haiku-5-5",
+    "call_type": "acompletion",
+    "internal_call_origin": null,
+    "status": "success",
+    "error": null,
+    "api_base": "https://aiplatform.eu.rep.googleapis.com/v1/projects/my-gcp-project/locations/eu/publishers/anthropic/models/claude-haiku-5-5:streamRawPredict",
+    "session_id": "agw-t6-session",
+    "spend_logs_metadata": {
+     "agw_case": "session-claude-stream",
+     "agw_test": "6"
+    },
+    "spend": 2.343e-05,
+    "total_tokens": 97,
+    "request_duration_ms": 449,
+    "user": null,
+    "end_user": null,
+    "requester_ip": "link-local (Cloud Run front end)",
+    "user_agent": "python-httpx/0.28.1",
+    "applied_guardrails": [],
+    "content_stored": {
+     "messages": false,
+     "response": false,
+     "proxy_server_request": false
+    },
+    "proxy_server_request_keys": [],
+    "stored_header_names": [],
+    "contains": {
+     "prompt_marker": false,
+     "id_token_jwt": false,
+     "bearer_value": false,
+     "x_serverless_authorization": false
+    },
+    "session_is_a_request_log_trace": false
+   },
+   {
+    "start": "2026-10-22T06:26:21.072000Z",
+    "call_id": "b02f393b-1d60-439b-bd4b-094a3f43c8e3",
+    "key_alias": "agw-harness",
+    "model_group": "gemini-3.8-flash",
+    "original_model_group": "gemini-3.8-flash",
+    "call_type": "acompletion",
+    "internal_call_origin": null,
+    "status": "success",
+    "error": null,
+    "api_base": "https://aiplatform.eu.rep.googleapis.com/v1/projects/my-gcp-project/locations/eu/publishers/google/models/gemini-3.8-flash:generateContent",
+    "session_id": "agw-t6-session",
+    "spend_logs_metadata": {
+     "agw_case": "session-gemini",
+     "agw_test": "6"
+    },
+    "spend": 0.00012375,
+    "total_tokens": 47,
+    "request_duration_ms": 1256,
+    "user": null,
+    "end_user": null,
+    "requester_ip": "link-local (Cloud Run front end)",
+    "user_agent": "python-httpx/0.28.1",
+    "applied_guardrails": [],
+    "content_stored": {
+     "messages": false,
+     "response": false,
+     "proxy_server_request": false
+    },
+    "proxy_server_request_keys": [],
+    "stored_header_names": [],
+    "contains": {
+     "prompt_marker": false,
+     "id_token_jwt": false,
+     "bearer_value": false,
+     "x_serverless_authorization": false
+    },
+    "session_is_a_request_log_trace": false
+   },
+   {
+    "start": "2026-10-22T06:26:02.762000Z",
+    "call_id": "a16b2e5a-ae6d-4ce0-863c-05a08b9c984a",
+    "key_alias": "agw-harness",
+    "model_group": "claude-haiku-5-5",
+    "original_model_group": "claude-haiku-5-5",
+    "call_type": "acompletion",
+    "internal_call_origin": null,
+    "status": "success",
+    "error": null,
+    "api_base": "https://aiplatform.eu.rep.googleapis.com/v1/projects/my-gcp-project/locations/eu/publishers/anthropic/models/claude-haiku-5-5:rawPredict",
+    "session_id": "agw-t6-session",
+    "spend_logs_metadata": {
+     "agw_case": "session-claude",
+     "agw_test": "6"
+    },
+    "spend": 2.343e-05,
+    "total_tokens": 97,
+    "request_duration_ms": 18225,
+    "user": null,
+    "end_user": null,
+    "requester_ip": "link-local (Cloud Run front end)",
+    "user_agent": "python-httpx/0.28.1",
+    "applied_guardrails": [],
+    "content_stored": {
+     "messages": false,
+     "response": false,
+     "proxy_server_request": false
+    },
+    "proxy_server_request_keys": [],
+    "stored_header_names": [],
+    "contains": {
+     "prompt_marker": false,
+     "id_token_jwt": false,
+     "bearer_value": false,
+     "x_serverless_authorization": false
+    },
+    "session_is_a_request_log_trace": false
+   }
+  ]
+ },
+ "other_spend_rows_in_window": [],
+ "agent": {
+  "run": {
+   "status": 503,
+   "started_at": 1792650383.534734,
+   "ended_at": 1792650414.5261374,
+   "session_id": "agw-t6-agent-20261022T062623",
+   "app": "claude",
+   "answer": ""
+  },
+  "agent_request_logs": [
+   {
+    "time": "2026-10-22T06:26:23.581360Z",
+    "method": "POST",
+    "path": "/run",
+    "status": 503,
+    "latency": "30.379460s",
+    "user_agent": "curl/8.14.1",
+    "remote_ip": "public (redacted)",
+    "trace": "ad282dc981b1e5562d0c0fbe13c4c657"
+   }
+  ],
+  "gateway_request_logs_during_the_run": [
+   {
+    "time": "2026-10-22T06:26:22.833051Z",
+    "method": "POST",
+    "path": "/chat/completions",
+    "status": 200,
+    "latency": "0.520609538s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "1ad5f994eaed0eed5cb1b4be5c85f6ac"
+   },
+   {
+    "time": "2026-10-22T06:26:22.811818Z",
+    "method": "POST",
+    "path": "/chat/completions",
+    "status": 403,
+    "latency": "0.009109106s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "c06fb6b4898d4e645cb1b4be5c85f3be"
+   }
+  ],
+  "spend_rows_during_the_run": [],
+  "agent_logs": {
+   "container_log_lines": 2,
+   "entries_naming_a_caller_identity": 0,
+   "entries_containing": {
+    "prompt_marker": 0,
+    "session_id": 0,
+    "id_token_jwt": 0,
+    "bearer": 0
+   }
+  }
+ },
+ "gateway_logs": {
+  "request_log_entries": [
+   {
+    "time": "2026-10-22T06:26:22.833051Z",
+    "method": "POST",
+    "path": "/chat/completions",
+    "status": 200,
+    "latency": "0.520609538s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "1ad5f994eaed0eed5cb1b4be5c85f6ac"
+   },
+   {
+    "time": "2026-10-22T06:26:22.811818Z",
+    "method": "POST",
+    "path": "/chat/completions",
+    "status": 403,
+    "latency": "0.009109106s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "c06fb6b4898d4e645cb1b4be5c85f3be"
+   },
+   {
+    "time": "2026-10-22T06:26:22.346387Z",
+    "method": "POST",
+    "path": "/chat/completions",
+    "status": 200,
+    "latency": "0.455620135s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "658b8958735bd84b5cb1b4be5c85faf4"
+   },
+   {
+    "time": "2026-10-22T06:26:21.036719Z",
+    "method": "POST",
+    "path": "/chat/completions",
+    "status": 200,
+    "latency": "1.284372533s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "e616e0affe17a2d35cb1b4be5c85f6e5"
+   },
+   {
+    "time": "2026-10-22T06:25:11.169784Z",
+    "method": "POST",
+    "path": "/chat/completions",
+    "status": 200,
+    "latency": "69.395259619s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "aeb97e53dba64fb3916d5b2f2b0969b0"
+   }
+  ],
+  "container_log_lines": 48,
+  "entries_naming_a_caller_identity": 0,
+  "entries_containing": {
+   "prompt_marker": 0,
+   "session_id": 0,
+   "id_token_jwt": 0,
+   "bearer": 0
+  }
+ }
+}

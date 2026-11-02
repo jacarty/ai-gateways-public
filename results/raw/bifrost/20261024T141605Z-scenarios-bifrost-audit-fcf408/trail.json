@@ -1,0 +1,386 @@
+{
+ "window": {
+  "start": "2026-10-24T14:16:01.494728Z",
+  "end": "2026-10-24T14:16:51.233323Z"
+ },
+ "rows": [
+  {
+   "id": "8133bddb-febd-430e-90bb-4e0ab98ceb7e",
+   "time": "2026-10-24T14:16:06.614711Z",
+   "virtual_key": "agw-harness",
+   "provider": "vertex",
+   "model": "claude-haiku-5-5",
+   "status": "success",
+   "session_id": "agw-t6-session",
+   "tag": "session-claude",
+   "metadata_keys": [
+    "agw-case",
+    "agw-test",
+    "authorization",
+    "x-serverless-authorization"
+   ],
+   "user_agent": "python-httpx/0.28.1",
+   "parent_request_id": null,
+   "fallback_index": 0,
+   "selected_key": "vertex-adc",
+   "tokens": 97,
+   "cost": 2.343e-05,
+   "latency_ms": 1134.233301,
+   "overhead_ms": 201.66739699999994,
+   "stream": false,
+   "content": {
+    "prompt_marker": true,
+    "input_stored": true,
+    "output_stored": true,
+    "id_token": true,
+    "virtual_key_value": true,
+    "serverless_auth_header": true
+   }
+  },
+  {
+   "id": "2360e2c6-5ca8-44f1-ab17-a7f870841d51",
+   "time": "2026-10-24T14:16:07.722823Z",
+   "virtual_key": "agw-harness",
+   "provider": "vertex",
+   "model": "gemini-3.8-flash",
+   "status": "success",
+   "session_id": "agw-t6-session",
+   "tag": "session-gemini",
+   "metadata_keys": [
+    "agw-case",
+    "agw-test",
+    "authorization",
+    "x-serverless-authorization"
+   ],
+   "user_agent": "python-httpx/0.28.1",
+   "parent_request_id": null,
+   "fallback_index": 0,
+   "selected_key": "vertex-adc",
+   "tokens": 47,
+   "cost": 0.00012375,
+   "latency_ms": 3699.047366,
+   "overhead_ms": 58.73479699999962,
+   "stream": false,
+   "content": {
+    "prompt_marker": true,
+    "input_stored": true,
+    "output_stored": true,
+    "id_token": true,
+    "virtual_key_value": true,
+    "serverless_auth_header": true
+   }
+  },
+  {
+   "id": "7092c86c-2ce0-4a6b-b3a0-f4099a24aef1",
+   "time": "2026-10-24T14:16:11.435455Z",
+   "virtual_key": "agw-harness",
+   "provider": "vertex",
+   "model": "claude-haiku-5-5",
+   "status": "success",
+   "session_id": "agw-t6-session",
+   "tag": "session-claude-stream",
+   "metadata_keys": [
+    "agw-case",
+    "agw-test",
+    "authorization",
+    "x-serverless-authorization"
+   ],
+   "user_agent": "python-httpx/0.28.1",
+   "parent_request_id": null,
+   "fallback_index": 0,
+   "selected_key": "vertex-adc",
+   "tokens": 147,
+   "cost": 5.093e-05,
+   "latency_ms": 1098.801437,
+   "overhead_ms": 51.707579,
+   "stream": true,
+   "content": {
+    "prompt_marker": true,
+    "input_stored": true,
+    "output_stored": true,
+    "id_token": true,
+    "virtual_key_value": true,
+    "serverless_auth_header": true
+   }
+  },
+  {
+   "id": "c43d10c1-7aea-493e-b0a8-b92be4f9de9e",
+   "time": "2026-10-24T14:16:12.560885Z",
+   "virtual_key": "agw-harness",
+   "provider": "vertex",
+   "model": "claude-haiku-5-5",
+   "status": "success",
+   "session_id": null,
+   "tag": null,
+   "metadata_keys": [
+    "authorization",
+    "x-serverless-authorization"
+   ],
+   "user_agent": "python-httpx/0.28.1",
+   "parent_request_id": null,
+   "fallback_index": 0,
+   "selected_key": "vertex-adc",
+   "tokens": 97,
+   "cost": 2.343e-05,
+   "latency_ms": 619.846646,
+   "overhead_ms": 1.031562000000008,
+   "stream": false,
+   "content": {
+    "prompt_marker": true,
+    "input_stored": true,
+    "output_stored": true,
+    "id_token": true,
+    "virtual_key_value": true,
+    "serverless_auth_header": true
+   }
+  },
+  {
+   "id": "bc2537d9-8485-4aa3-85f2-0d3e1e97307e",
+   "time": "2026-10-24T14:16:15.156343Z",
+   "virtual_key": "agw-agent",
+   "provider": "vertex",
+   "model": "claude-haiku-5-5",
+   "status": "success",
+   "session_id": null,
+   "tag": null,
+   "metadata_keys": [
+    "authorization",
+    "x-serverless-authorization"
+   ],
+   "user_agent": "AsyncOpenAI/Python 2.54.0",
+   "parent_request_id": null,
+   "fallback_index": 0,
+   "selected_key": "vertex-adc",
+   "tokens": 120,
+   "cost": 2.5960000000000002e-05,
+   "latency_ms": 947.746019,
+   "overhead_ms": 1.5570470000000114,
+   "stream": false,
+   "content": {
+    "prompt_marker": true,
+    "input_stored": true,
+    "output_stored": true,
+    "id_token": true,
+    "virtual_key_value": true,
+    "serverless_auth_header": true
+   }
+  }
+ ],
+ "gateway_cloud_run": {
+  "request_log_entries": [
+   {
+    "time": "2026-10-24T14:16:46.965699Z",
+    "method": "GET",
+    "path": "/api/logs/bc2537d9-8485-4aa3-85f2-0d3e1e97307e",
+    "status": 200,
+    "latency": "0.097278749s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "7c625ba1b7b97d2eb110a61ebd832e1e"
+   },
+   {
+    "time": "2026-10-24T14:16:46.856171Z",
+    "method": "GET",
+    "path": "/api/logs/c43d10c1-7aea-493e-b0a8-b92be4f9de9e",
+    "status": 200,
+    "latency": "0.090451950s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "fae610c8276ed2a7ada8408dcff3b48d"
+   },
+   {
+    "time": "2026-10-24T14:16:46.752343Z",
+    "method": "GET",
+    "path": "/api/logs/7092c86c-2ce0-4a6b-b3a0-f4099a24aef1",
+    "status": 200,
+    "latency": "0.086953609s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "a148913f1e80bdd5796c4cd6c26a4268"
+   },
+   {
+    "time": "2026-10-24T14:16:46.643173Z",
+    "method": "GET",
+    "path": "/api/logs/2360e2c6-5ca8-44f1-ab17-a7f870841d51",
+    "status": 200,
+    "latency": "0.091661958s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "6d05edc4c0c44c7633865b549a56db77"
+   },
+   {
+    "time": "2026-10-24T14:16:46.514128Z",
+    "method": "GET",
+    "path": "/api/logs/8133bddb-febd-430e-90bb-4e0ab98ceb7e",
+    "status": 200,
+    "latency": "0.110650855s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "6072811fe316b09c2821d0bdf98406fc"
+   },
+   {
+    "time": "2026-10-24T14:16:46.262207Z",
+    "method": "GET",
+    "path": "/api/logs?start_time=2026-10-24T14%3A16%3A01.494728Z&end_time=2026-10-24T14%3A16%3A51.233323Z&limit=200&order=asc",
+    "status": 200,
+    "latency": "0.225902139s",
+    "user_agent": "Python-urllib/3.13",
+    "remote_ip": "public (redacted)",
+    "trace": "51650c69bffd342d0f853b2ab859fd6d"
+   },
+   {
+    "time": "2026-10-24T14:16:15.138244Z",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "status": 200,
+    "latency": "0.949082445s",
+    "user_agent": "AsyncOpenAI/Python 2.54.0",
+    "remote_ip": "public (redacted)",
+    "trace": "98db4f22c762e4d35aabc014ab1f006c"
+   },
+   {
+    "time": "2026-10-24T14:16:12.556996Z",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "status": 200,
+    "latency": "0.621764051s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "c0d0bdf8011abf2eaf933976a2bfdd97"
+   },
+   {
+    "time": "2026-10-24T14:16:12.541763Z",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "status": 400,
+    "latency": "0.001895050s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "14ca5c513a2746caaf933976a2bfd7f1"
+   },
+   {
+    "time": "2026-10-24T14:16:11.431267Z",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "status": 200,
+    "latency": "1.099891306s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "a7ffc05fd2fc5206af933976a2bfdf69"
+   },
+   {
+    "time": "2026-10-24T14:16:07.718106Z",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "status": 200,
+    "latency": "3.699886781s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "762832c1c8a9f5f4af933976a2bfdc5d"
+   },
+   {
+    "time": "2026-10-24T14:16:06.543152Z",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "status": 200,
+    "latency": "1.136194747s",
+    "user_agent": "python-httpx/0.28.1",
+    "remote_ip": "public (redacted)",
+    "trace": "4f8a870726c7b191af933976a2bfda6a"
+   }
+  ],
+  "container_log_lines": 12,
+  "entries_naming_a_caller_identity": 0,
+  "entries_containing": {
+   "prompt_marker": 0,
+   "session": 0
+  }
+ },
+ "agent_cloud_run": {
+  "request_log_entries": [
+   {
+    "time": "2026-10-24T14:16:15.076392Z",
+    "method": "POST",
+    "path": "/run",
+    "status": 200,
+    "latency": "1.017543346s",
+    "user_agent": "curl/8.14.1",
+    "remote_ip": "public (redacted)",
+    "trace": "580e45aee32419273cdecab99ad56e22"
+   }
+  ],
+  "container_log_lines": 1,
+  "entries_naming_a_caller_identity": 0,
+  "entries_containing": {
+   "prompt_marker": 0,
+   "session": 0
+  }
+ },
+ "agent_run": {
+  "status": 200,
+  "started_at": 1792851375.0310495,
+  "ended_at": 1792851376.1293283,
+  "session_id": "agw-t6-agent-20261024T141614",
+  "app": "claude",
+  "answer": "The capital of Belgium is Brussels. (Agent ID: claude_agent)"
+ },
+ "join": {
+  "requests": [
+   {
+    "case": "session-claude",
+    "status": 200,
+    "row": "8133bddb-febd-430e-90bb-4e0ab98ceb7e",
+    "joined_by": "request id",
+    "cloud_run_trace_by_time": "4f8a870726c7b191af933976a2bfda6a"
+   },
+   {
+    "case": "session-gemini",
+    "status": 200,
+    "row": "2360e2c6-5ca8-44f1-ab17-a7f870841d51",
+    "joined_by": "request id",
+    "cloud_run_trace_by_time": "762832c1c8a9f5f4af933976a2bfdc5d"
+   },
+   {
+    "case": "session-claude-stream",
+    "status": 200,
+    "row": "7092c86c-2ce0-4a6b-b3a0-f4099a24aef1",
+    "joined_by": "request id",
+    "cloud_run_trace_by_time": "a7ffc05fd2fc5206af933976a2bfdf69"
+   },
+   {
+    "case": "session-unknown-model",
+    "status": 400,
+    "row": null,
+    "joined_by": null,
+    "cloud_run_trace_by_time": null
+   },
+   {
+    "case": "untagged-claude",
+    "status": 200,
+    "row": "c43d10c1-7aea-493e-b0a8-b92be4f9de9e",
+    "joined_by": "request id",
+    "cloud_run_trace_by_time": "c0d0bdf8011abf2eaf933976a2bfdd97"
+   }
+  ],
+  "agent_row": "bc2537d9-8485-4aa3-85f2-0d3e1e97307e",
+  "agent_row_trace_by_time": "98db4f22c762e4d35aabc014ab1f006c",
+  "unjoined_rows": []
+ },
+ "response_headers": {
+  "session-claude": {
+   "x-request-id": "8133bddb-febd-430e-90bb-4e0ab98ceb7e"
+  },
+  "session-gemini": {
+   "x-request-id": "2360e2c6-5ca8-44f1-ab17-a7f870841d51"
+  },
+  "session-claude-stream": {
+   "x-request-id": "7092c86c-2ce0-4a6b-b3a0-f4099a24aef1"
+  },
+  "session-unknown-model": {
+   "x-request-id": "e5593d48-f0dd-47da-8ce5-c495896d6bcb"
+  },
+  "untagged-claude": {
+   "x-request-id": "c43d10c1-7aea-493e-b0a8-b92be4f9de9e"
+  }
+ }
+}

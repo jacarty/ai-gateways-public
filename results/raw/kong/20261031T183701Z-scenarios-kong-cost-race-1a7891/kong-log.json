@@ -1,0 +1,609 @@
+[
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 0,
+    "proxy": -1,
+    "receive": 0,
+    "request": 1
+   },
+   "request": {
+    "id": "d6d20f4bae9d296717912a3e8f3cda06",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:02.576968Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 0,
+    "proxy": -1,
+    "receive": 0,
+    "request": 0
+   },
+   "request": {
+    "id": "1e6a57375d5b5976c373de5a35c8a464",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:02.577608Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": -1,
+    "receive": 0,
+    "request": 2
+   },
+   "request": {
+    "id": "aad67b000ca7fc00ce086259da68d91f",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:02.578994Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 0,
+    "proxy": -1,
+    "receive": 0,
+    "request": 1
+   },
+   "request": {
+    "id": "9a63691b2ea62d423486103374a02220",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:02.579719Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 0,
+    "proxy": -1,
+    "receive": 0,
+    "request": 0
+   },
+   "request": {
+    "id": "b78eaf60ee48275349c1832c2d8a9909",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:02.580314Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 0,
+    "proxy": -1,
+    "receive": 0,
+    "request": 1
+   },
+   "request": {
+    "id": "6e6bf26a78de0e66d262ae1f60c94e67",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:02.580902Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": -1,
+    "receive": 0,
+    "request": 2
+   },
+   "request": {
+    "id": "fa046a272e3e6324abfff11d32cc4937",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:02.593981Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 8,
+    "proxy": 539,
+    "receive": 2,
+    "request": 549
+   },
+   "request": {
+    "id": "38c7df0f2334d76cbc7f36186871586d",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 12544,
+     "balancer_start": 1793471822576,
+     "balancer_start_ns": 1.7934718225762e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T18:37:03.117945Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 9,
+    "proxy": 660,
+    "receive": 1,
+    "request": 670
+   },
+   "request": {
+    "id": "f25d5c7c82265b415cdbb4044a36a336",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 14592,
+     "balancer_start": 1793471822575,
+     "balancer_start_ns": 1.7934718225756e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T18:37:03.236211Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 9,
+    "proxy": 839,
+    "receive": 2,
+    "request": 850
+   },
+   "request": {
+    "id": "76fbe9288022cb172e1d8b39a4d81416",
+    "method": "POST"
+   },
+   "response": {
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 19712,
+     "balancer_start": 1793471822574,
+     "balancer_start_ns": 1.7934718225742e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-10-31T18:37:03.415805Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": -1,
+    "receive": 0,
+    "request": 1
+   },
+   "request": {
+    "id": "52723a11677f28369a3da22428454a5c",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:08.475572Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": -1,
+    "receive": 0,
+    "request": 1
+   },
+   "request": {
+    "id": "151d521db1cecc62b78124633387a954",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:08.477551Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": -1,
+    "receive": 0,
+    "request": 1
+   },
+   "request": {
+    "id": "0f2a26597af5023e694f4e39b900a259",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:08.478635Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": -1,
+    "receive": 0,
+    "request": 1
+   },
+   "request": {
+    "id": "869cff3e3758b01294697b792000695a",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:08.479871Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": -1,
+    "receive": 0,
+    "request": 1
+   },
+   "request": {
+    "id": "65fedd54c8ef8b2c95a08b7a1c8d8d35",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:08.481060Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 0,
+    "proxy": -1,
+    "receive": 0,
+    "request": 0
+   },
+   "request": {
+    "id": "b638b37fde610f274a17273f24a4a56a",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:08.481632Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": -1,
+    "receive": 0,
+    "request": 1
+   },
+   "request": {
+    "id": "56401e0d1c7ad55e846df45150458834",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:08.482254Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 0,
+    "proxy": -1,
+    "receive": 0,
+    "request": 0
+   },
+   "request": {
+    "id": "4ab838032f6de66f8311d26b9c2a7314",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:08.482696Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": -1,
+    "receive": 0,
+    "request": 1
+   },
+   "request": {
+    "id": "97ec0e261d4f7410c46fbd70ac096143",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:08.486325Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "agw-t3-race-20261031T183644-919603"
+   },
+   "latencies": {
+    "kong": 0,
+    "proxy": -1,
+    "receive": 0,
+    "request": 0
+   },
+   "request": {
+    "id": "cf1d41737bf1e153e0900a18de47674c",
+    "method": "POST"
+   },
+   "response": {
+    "status": 429
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [],
+   "upstream_status": ""
+  },
+  "timestamp": "2026-10-31T18:37:08.489413Z"
+ }
+]

@@ -1,0 +1,43 @@
+{
+  "name": "litellm-cost-unpriced",
+  "description": "Test 3 config window on LiteLLM v1.103.2: does a model with no price escape the budget? Needs test-claude-unpriced in config.yaml (Haiku with no input/output price) and the unpriced key (run-cost.sh). The priced model is refused once the key is over budget, and so is the unpriced one: LiteLLM skips budgets only for a model explicitly priced at 0 and treats a missing price as a cost (found 2026-10-18; the first run expected the opposite).",
+  "record_headers": [
+    "x-litellm-key-spend",
+    "x-litellm-response-cost",
+    "x-ratelimit-remaining-requests",
+    "x-ratelimit-remaining-tokens",
+    "retry-after",
+    "x-litellm-model-group"
+  ],
+  "cases": [
+    {
+      "name": "priced-spends-budget",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "expect": {
+        "status": 200
+      }
+    },
+    {
+      "name": "priced-refused",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "expect": {
+        "status": 429,
+        "error_contains": "budget has been exceeded"
+      }
+    },
+    {
+      "name": "unpriced-also-refused",
+      "model": "test-claude-unpriced",
+      "kind": "claude",
+      "repeat": 3,
+      "expect": {
+        "status": 429,
+        "error_contains": "budget has been exceeded"
+      }
+    }
+  ]
+}

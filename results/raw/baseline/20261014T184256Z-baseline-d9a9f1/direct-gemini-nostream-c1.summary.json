@@ -1,0 +1,30 @@
+{
+  "run": "direct-gemini-nostream-c1",
+  "target": "direct",
+  "model": "gemini",
+  "model_name": "gemini-3.8-flash",
+  "stream": false,
+  "concurrency": 1,
+  "warmup_discarded": 10,
+  "requests": 200,
+  "ok": 200,
+  "error_rate": 0.0,
+  "wall_s": 727.826,
+  "throughput_rps": 0.275,
+  "latency_s": {
+    "p50": 1.5526,
+    "p95": 12.9029,
+    "p99": 16.4272,
+    "mean": 3.6387
+  },
+  "latency_all_s": {
+    "p50": 1.5526,
+    "p95": 12.9029,
+    "p99": 16.4272
+  },
+  "ttft_s": null,
+  "output_tokens_mean": 22.125,
+  "thinking_tokens_mean": null,
+  "thinking_reported": 0,
+  "errors": []
+}

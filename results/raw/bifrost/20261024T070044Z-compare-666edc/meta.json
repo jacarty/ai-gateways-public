@@ -1,0 +1,81 @@
+{
+  "run_id": "20261024T070044Z-compare-666edc",
+  "image": "europe-west1-docker.pkg.dev/my-gcp-project/agw-images/harness@sha256:5559fd38cb570cf5bd421bd0540676756a0d839baf35a05420d62be315897eeb",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "metadata",
+  "command": "compare",
+  "targets": [
+    "direct",
+    "gateway"
+  ],
+  "n_per_target": 100,
+  "block": 25,
+  "agent_backend": null,
+  "grid": [
+    {
+      "model": "gemini",
+      "stream": false,
+      "concurrency": 1
+    },
+    {
+      "model": "gemini",
+      "stream": false,
+      "concurrency": 5
+    },
+    {
+      "model": "gemini",
+      "stream": true,
+      "concurrency": 1
+    },
+    {
+      "model": "gemini",
+      "stream": true,
+      "concurrency": 5
+    },
+    {
+      "model": "claude",
+      "stream": false,
+      "concurrency": 1
+    },
+    {
+      "model": "claude",
+      "stream": false,
+      "concurrency": 5
+    },
+    {
+      "model": "claude",
+      "stream": true,
+      "concurrency": 1
+    },
+    {
+      "model": "claude",
+      "stream": true,
+      "concurrency": 5
+    }
+  ],
+  "prewarm": [
+    {
+      "target": "gateway",
+      "model": "gemini",
+      "attempt": 1,
+      "status": 200,
+      "latency_s": 13.6968,
+      "error": null
+    },
+    {
+      "target": "gateway",
+      "model": "claude",
+      "attempt": 1,
+      "status": 200,
+      "latency_s": 2.2172,
+      "error": null
+    }
+  ]
+}

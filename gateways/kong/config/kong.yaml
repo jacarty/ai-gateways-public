@@ -1,0 +1,267 @@
+# Kong's committed config, synced with decK through the Admin API route (ADR 0015):
+#   deck gateway sync gateways/kong/config/kong.yaml (see gateways/kong/README.md)
+# decK manages only entities tagged agw, and deletes tagged entities this file
+# doesn't declare. Key values come from DECK_* environment variables at sync time.
+# The admin entities and the global key-auth repeat bootstrap.yaml, with the same IDs.
+_format_version: "3.0"
+_info:
+  select_tags: [agw]
+
+services:
+  - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0001
+    name: admin-api
+    url: http://127.0.0.1:8001
+    routes:
+      - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0002
+        name: admin-api
+        paths: [/admin-api]
+        strip_path: true
+        plugins:
+          - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0003
+            name: acl
+            config:
+              allow: [admin]
+              hide_groups_header: true
+
+  # Gemini: AI Proxy translates OpenAI chat to generateContent. Kong drops the
+  # callers' max_completion_tokens, so the cap is forced here, and it has no
+  # mapping for reasoning_effort (gateways/kong/NOTES.md). Prices: ADR 0009.
+  # ai-proxy sets the upstream itself; the service URL is a placeholder.
+  - name: gemini
+    url: http://localhost:32000
+    routes:
+      - name: gemini-chat
+        paths: [/v1/chat/completions]
+        methods: [POST]
+        strip_path: false
+    plugins:
+      - name: acl
+        config:
+          allow: [callers]
+          hide_groups_header: true
+      - name: ai-proxy
+        config:
+          route_type: llm/v1/chat
+          auth:
+            gcp_use_service_account: true
+          model:
+            provider: gemini
+            name: gemini-3.8-flash
+            options:
+              max_tokens: 256
+              input_cost: 1.65
+              output_cost: 8.25
+              gemini:
+                api_endpoint: aiplatform.eu.rep.googleapis.com
+                project_id: my-gcp-project
+                location_id: eu
+          logging:
+            log_statistics: true
+            log_payloads: false
+
+  # Claude: AI Proxy can't translate to Claude on Vertex, so its native request
+  # passes through (route_type preserve) to the URL below, with Kong's GCP token
+  # (ADR 0014). The gemini provider is the only one that gets GCP credentials.
+  - name: claude
+    url: http://localhost:32000
+    routes:
+      - name: claude-raw-predict
+        paths: [/v1/projects/my-gcp-project/locations/eu/publishers/anthropic/models/claude-haiku-5-5:rawPredict]
+        methods: [POST]
+        strip_path: false
+        plugins:
+          - name: ai-proxy
+            config:
+              route_type: preserve
+              auth:
+                gcp_use_service_account: true
+              model:
+                provider: gemini
+                # Required even in preserve mode: Kong's response filter asserts a
+                # model name for its X-Kong-LLM-Model header before it checks for
+                # preserve (normalize-json-response.lua:88), so without it Vertex's
+                # 200 becomes a broken response.
+                name: claude-haiku-5-5
+                options:
+                  upstream_url: https://aiplatform.eu.rep.googleapis.com/v1/projects/my-gcp-project/locations/eu/publishers/anthropic/models/claude-haiku-5-5:rawPredict
+              logging:
+                log_statistics: false
+                log_payloads: false
+      - name: claude-stream-raw-predict
+        paths: [/v1/projects/my-gcp-project/locations/eu/publishers/anthropic/models/claude-haiku-5-5:streamRawPredict]
+        methods: [POST]
+        strip_path: false
+        plugins:
+          - name: ai-proxy
+            config:
+              route_type: preserve
+              auth:
+                gcp_use_service_account: true
+              model:
+                provider: gemini
+                # Required even in preserve mode: Kong's response filter asserts a
+                # model name for its X-Kong-LLM-Model header before it checks for
+                # preserve (normalize-json-response.lua:88), so without it Vertex's
+                # 200 becomes a broken response.
+                name: claude-haiku-5-5
+                options:
+                  upstream_url: https://aiplatform.eu.rep.googleapis.com/v1/projects/my-gcp-project/locations/eu/publishers/anthropic/models/claude-haiku-5-5:streamRawPredict
+              logging:
+                log_statistics: false
+                log_payloads: false
+    plugins:
+      - name: acl
+        config:
+          allow: [callers]
+          hide_groups_header: true
+
+  # Kong Manager OSS, the admin UI (served by Kong on 127.0.0.1:8002 at /manager), and
+  # the Admin API it calls from the browser (/manager-api). Open it through
+  # `gcloud run services proxy` on your laptop. Manager OSS has no login of its own and
+  # can't send our admin key, so these two routes take no key; Kong's basic-auth gives
+  # the browser's login instead (user admin, agw-kong-manager-password), as LiteLLM's
+  # and Bifrost's UIs have.
+  - name: manager-ui
+    url: http://127.0.0.1:8002
+    routes:
+      - name: manager-ui
+        paths: [/manager]
+        strip_path: false
+      # Kong Manager 3.9.0.0 prefixes a relative ADMIN_API_URL with only the protocol
+      # (src/config.ts:39: "/manager-api" becomes "http:///manager-api"), so every list
+      # page failed. This route serves its kconfig.js with the API URL taken from the
+      # page's own host, so it works through the proxy on any port and on a domain.
+      # Its values must match Kong's own kconfig (kong/admin_gui/init.lua) and the
+      # KONG_ADMIN_GUI_* / KONG_ANONYMOUS_REPORTS settings in terraform/main.tf. Its
+      # route-level pre-function replaces the service's cross-site check below; the
+      # file is static and holds no secrets, so it answers before the login.
+      - name: manager-kconfig
+        paths: ['~/manager/kconfig\.js$']
+        methods: [GET]
+        plugins:
+          - name: pre-function
+            config:
+              access:
+                - |
+                  return kong.response.exit(200, [[
+                  window.K_CONFIG = {
+                    'ADMIN_API_PORT': '8001',
+                    'ADMIN_API_SSL_PORT': '',
+                    'ANONYMOUS_REPORTS': 'false',
+                    'ADMIN_GUI_PATH': '/manager',
+                    'ADMIN_API_URL': window.location.host + '/manager-api'
+                  }
+                  ]], { ["Content-Type"] = "application/javascript; charset=utf-8", ["Cache-Control"] = "no-store" })
+    # Shared with manager-api through the YAML anchor. No ids here: both services get
+    # their own copy, and a shared id would make the sync fail.
+    plugins: &manager_plugins
+      # Cross-site protection. The browser keeps the admin login for the proxy's
+      # origin, and Kong's Admin API echoes any Origin with credentials allowed
+      # (api_helpers.lua cors_filter, with no admin_gui_url set), so without this a
+      # page on any other site could read /manager-api (keys come back in clear) or
+      # post forms to it. Refuse what the browser marks cross-site (Sec-Fetch-Site,
+      # which page scripts can't set), refuse non-JSON writes (forms can't send JSON),
+      # and drop Origin so the Admin API never grants CORS.
+      - name: pre-function
+        config:
+          access:
+            - |
+              local site = kong.request.get_header("sec-fetch-site")
+              if site and site ~= "same-origin" and site ~= "none" then
+                return kong.response.exit(403, { message = "Kong Manager: cross-site request refused" })
+              end
+              local method = kong.request.get_method()
+              if method ~= "GET" and method ~= "HEAD" and method ~= "OPTIONS" then
+                local ct = kong.request.get_header("content-type") or ""
+                if not ct:lower():find("^application/json") then
+                  return kong.response.exit(415, { message = "Kong Manager: writes must be JSON" })
+                end
+              end
+              kong.service.request.clear_header("origin")
+      # Overrides the global key-auth (Manager can't send a key), so the login below
+      # decides: the browser's username/password prompt, as for LiteLLM and Bifrost.
+      # It reads a header nothing sends, so it never touches Authorization (which holds
+      # the login; with key_names [authorization] its hide_credentials stripped it before
+      # basic-auth ran) and every request falls through to the anonymous consumer.
+      - name: key-auth
+        config:
+          key_names: [x-agw-no-key]
+          key_in_query: false
+          key_in_body: false
+          anonymous: manager-browser
+      # No `anonymous` here: basic-auth must always require the login (there is no acl
+      # on these routes; a caller key in x-agw-no-key only names a consumer).
+      - name: basic-auth
+        config:
+          hide_credentials: true
+          realm: kong-manager
+  # The bare service URL (exactly /) redirects to Kong Manager. Relative, so it stays
+  # on the proxy's localhost (the redirect plugin only takes an absolute URL). The
+  # pre-function runs before key-auth and only ever answers with the redirect.
+  - name: root-redirect
+    url: http://localhost:32000
+    routes:
+      - name: root-redirect
+        paths: ["~/$"]
+        methods: [GET, HEAD]
+    plugins:
+      - name: pre-function
+        config:
+          access:
+            - return kong.response.exit(302, "", { Location = "/manager" })
+  - name: manager-api
+    url: http://127.0.0.1:8001
+    routes:
+      - name: manager-api
+        paths: [/manager-api]
+        strip_path: true
+    plugins: *manager_plugins
+
+consumers:
+  # Kong Manager: a request first counts as manager-browser (no key), then basic-auth
+  # requires the login below; Kong stores the password hashed. The basic-auth user
+  # "admin" belongs to consumer "manager"; the consumer named "admin" is the admin key.
+  - username: manager-browser
+  - username: manager
+    basicauth_credentials:
+      # id from deck.sh (a hash of the password), so a rotated password replaces the
+      # credential; decK can't compare the password itself (Kong stores a hash).
+      - id: ${{ env "DECK_MANAGER_CRED_ID" }}
+        username: admin
+        password: ${{ env "DECK_MANAGER_PASSWORD" }}
+  - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0004
+    username: admin
+    acls:
+      - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0005
+        group: admin
+    keyauth_credentials:
+      - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0006
+        key: Bearer ${{ env "DECK_ADMIN_KEY" }}
+  - username: agent
+    acls:
+      - group: callers
+    keyauth_credentials:
+      - key: Bearer ${{ env "DECK_AGENT_KEY" }}
+  - username: harness
+    acls:
+      - group: callers
+    keyauth_credentials:
+      - key: Bearer ${{ env "DECK_HARNESS_KEY" }}
+
+plugins:
+  - id: 0b6f3a52-5d1e-4c7a-9f20-6a1d3e7c0007
+    name: key-auth
+    config:
+      key_names: [authorization]
+      hide_credentials: true
+      # Header only: by default key-auth also reads ?authorization=... from the
+      # query string, which would put the key in request URLs and logs.
+      key_in_query: false
+      key_in_body: false
+  # One JSON line per request on stdout, into Cloud Logging. Kong redacts only
+  # Authorization and Proxy-Authorization, so the callers' ID token is redacted here.
+  - name: file-log
+    config:
+      path: /dev/stdout
+      custom_fields_by_lua:
+        request.headers.x-serverless-authorization: "return 'REDACTED'"

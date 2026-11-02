@@ -1,0 +1,48 @@
+{
+  "run_id": "20261018T141209Z-scenarios-litellm-cost-race-01ced7",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "command": "scenarios",
+  "gateway_url": "https://agw-litellm-a1b2c3d4e5-ew.a.run.app",
+  "git_commit": "3be546e-dirty",
+  "note": "throwaway key agw-t3-run-race {\"max_budget\": 0.0005}; <agw-litellm-000NN>",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/litellm/cost-race.json",
+  "scenario": {
+    "name": "litellm-cost-race",
+    "description": "Test 3 on LiteLLM v1.103.2: the same budget under concurrency. Run with the t3-race key (max_budget $0.0005; README.md). Ten requests at once each reserve their worst case (~$0.00015) before any finishes, so only about 4 are admitted although ten would cost ~$0.0003 in total: the reservation trades unused budget for never overshooting. A second burst after the first has settled shows the freed budget.",
+    "record_headers": [
+      "x-litellm-key-spend",
+      "x-litellm-response-cost",
+      "x-ratelimit-remaining-requests",
+      "x-ratelimit-remaining-tokens",
+      "retry-after",
+      "x-litellm-model-group"
+    ],
+    "cases": [
+      {
+        "name": "race-burst",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 10,
+        "concurrent": true
+      },
+      {
+        "name": "race-second-burst",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 10,
+        "concurrent": true,
+        "pause_s": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "bifrost-cost-tpm",
+  "description": "Test 3 on Bifrost transports/v2.2.6, run through run-cost.sh with a throwaway key (limits in the run's NOTE.md and quota.json). A token limit of 1000 a minute. Checked as usage >= limit before the call, with usage charged after the response: one at a time, the request that crosses is admitted and the next refused; at once, every request that starts below the limit is admitted, so a burst can overshoot (LiteLLM reserved each request's worst case and refused bursts early).",
+  "record_headers": [],
+  "cases": [
+    {
+      "name": "tpm-one-at-a-time",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 12
+    },
+    {
+      "name": "tpm-refused",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "expect": {
+        "status": 429
+      }
+    },
+    {
+      "name": "tpm-at-once",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 12,
+      "concurrent": true,
+      "pause_s": 70
+    },
+    {
+      "name": "tpm-refused-after-burst",
+      "model": "claude-haiku-5-5",
+      "kind": "claude",
+      "repeat": 1,
+      "pause_s": 3,
+      "expect": {
+        "status": 429
+      }
+    }
+  ]
+}

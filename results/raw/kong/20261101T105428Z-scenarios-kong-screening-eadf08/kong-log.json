@@ -1,0 +1,1730 @@
+[
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 1779,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 13,
+      "cost": 0.0001815,
+      "prompt_tokens": 45,
+      "time_per_token": 136.84615384615,
+      "total_tokens": 58
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 49,
+    "proxy": 1736,
+    "receive": 1,
+    "request": 1786
+   },
+   "request": {
+    "id": "cd4f67741e74e475e3cc1d567395c23a",
+    "method": "POST"
+   },
+   "response": {
+    "size": 735,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 20480,
+     "balancer_start": 1793530470244,
+     "balancer_start_ns": 1.7935304702442e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:31.980425Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 1107,
+    "receive": 1,
+    "request": 1110
+   },
+   "request": {
+    "id": "60074e6e1762493d7836f0070e72b35e",
+    "method": "POST"
+   },
+   "response": {
+    "size": 1172,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 16640,
+     "balancer_start": 1793530471995,
+     "balancer_start_ns": 1.7935304719954e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:33.102494Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2060,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 18,
+      "cost": 0.00023595,
+      "prompt_tokens": 53,
+      "time_per_token": 114.44444444444,
+      "total_tokens": 71
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 2059,
+    "receive": 1,
+    "request": 2062
+   },
+   "request": {
+    "id": "0de2f56f04fb3b133ff55a1416139b58",
+    "method": "POST"
+   },
+   "response": {
+    "size": 725,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 1,
+     "balancer_latency_ns": 18688,
+     "balancer_start": 1793530473119,
+     "balancer_start_ns": 1.7935304731201e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:35.179554Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": 1432,
+    "receive": 1,
+    "request": 1434
+   },
+   "request": {
+    "id": "7c0ff5098b0aa66d9c22362e04b1cb64",
+    "method": "POST"
+   },
+   "response": {
+    "size": 1981,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 17152,
+     "balancer_start": 1793530475193,
+     "balancer_start_ns": 1.7935304751938e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:36.625415Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2757,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 11,
+      "cost": 0.0001815,
+      "prompt_tokens": 55,
+      "time_per_token": 250.63636363636,
+      "total_tokens": 66
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 2757,
+    "receive": 1,
+    "request": 2760
+   },
+   "request": {
+    "id": "b174fd4fd3784e164d691c2e1a92cc5b",
+    "method": "POST"
+   },
+   "response": {
+    "size": 722,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 17920,
+     "balancer_start": 1793530476642,
+     "balancer_start_ns": 1.7935304766423e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:39.399877Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 1677,
+    "receive": 2,
+    "request": 1681
+   },
+   "request": {
+    "id": "37b1ac48eb4eec67ed85b32d9aede27f",
+    "method": "POST"
+   },
+   "response": {
+    "size": 2024,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 1,
+     "balancer_latency_ns": 19712,
+     "balancer_start": 1793530479414,
+     "balancer_start_ns": 1.7935304794151e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:41.092704Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2080,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 23,
+      "cost": 0.0002805,
+      "prompt_tokens": 55,
+      "time_per_token": 90.434782608696,
+      "total_tokens": 78
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 2078,
+    "receive": 1,
+    "request": 2081
+   },
+   "request": {
+    "id": "dbceab17468fdc5bf6037f3c11d65722",
+    "method": "POST"
+   },
+   "response": {
+    "size": 741,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 17152,
+     "balancer_start": 1793530481108,
+     "balancer_start_ns": 1.7935304811085e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:43.186369Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 1405,
+    "receive": 2,
+    "request": 1409
+   },
+   "request": {
+    "id": "5dac654aa9c73765c6cc48722bfccc3e",
+    "method": "POST"
+   },
+   "response": {
+    "size": 2181,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 16384,
+     "balancer_start": 1793530483203,
+     "balancer_start_ns": 1.7935304832035e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:44.610240Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2134,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 17,
+      "cost": 0.0002178,
+      "prompt_tokens": 47,
+      "time_per_token": 125.52941176471,
+      "total_tokens": 64
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 2131,
+    "receive": 1,
+    "request": 2134
+   },
+   "request": {
+    "id": "c73b1c5ba99966489e918f7927436a49",
+    "method": "POST"
+   },
+   "response": {
+    "size": 741,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 28160,
+     "balancer_start": 1793530484625,
+     "balancer_start_ns": 1.7935304846252e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:46.758028Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 3,
+    "proxy": 1780,
+    "receive": 2,
+    "request": 1785
+   },
+   "request": {
+    "id": "c0fbaf0517c87f0136b51d28cedda575",
+    "method": "POST"
+   },
+   "response": {
+    "size": 2242,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 26368,
+     "balancer_start": 1793530486774,
+     "balancer_start_ns": 1.7935304867743e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:48.556185Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2615,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 10,
+      "cost": 0.0001551,
+      "prompt_tokens": 44,
+      "time_per_token": 261.5,
+      "total_tokens": 54
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 3,
+    "proxy": 2614,
+    "receive": 2,
+    "request": 2619
+   },
+   "request": {
+    "id": "1bc3bb1475aa783ce4f0404e98d2b01e",
+    "method": "POST"
+   },
+   "response": {
+    "size": 709,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 1,
+     "balancer_latency_ns": 18432,
+     "balancer_start": 1793530488572,
+     "balancer_start_ns": 1.793530488573e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:51.188867Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 3,
+    "proxy": 1948,
+    "receive": 2,
+    "request": 1953
+   },
+   "request": {
+    "id": "00b51e2a8013777c9c837c03b1291c7a",
+    "method": "POST"
+   },
+   "response": {
+    "size": 2112,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 1,
+     "balancer_latency_ns": 40704,
+     "balancer_start": 1793530491203,
+     "balancer_start_ns": 1.7935304912041e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:53.153964Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2809,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 11,
+      "cost": 0.0001485,
+      "prompt_tokens": 35,
+      "time_per_token": 255.36363636364,
+      "total_tokens": 46
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 2807,
+    "receive": 2,
+    "request": 2811
+   },
+   "request": {
+    "id": "538cc512e9ec9831cbbbe8558b3d725b",
+    "method": "POST"
+   },
+   "response": {
+    "size": 741,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 17408,
+     "balancer_start": 1793530493171,
+     "balancer_start_ns": 1.7935304931719e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:55.980337Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 1340,
+    "receive": 2,
+    "request": 1344
+   },
+   "request": {
+    "id": "d43b8519b8419c03252b555bb00a3131",
+    "method": "POST"
+   },
+   "response": {
+    "size": 1237,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 21760,
+     "balancer_start": 1793530495995,
+     "balancer_start_ns": 1.7935304959954e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:57.337122Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2475,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 9,
+      "cost": 0.00015015,
+      "prompt_tokens": 46,
+      "time_per_token": 275,
+      "total_tokens": 55
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": 2474,
+    "receive": 2,
+    "request": 2477
+   },
+   "request": {
+    "id": "ffd0785f1b2fd417c1e088535c7dde29",
+    "method": "POST"
+   },
+   "response": {
+    "size": 737,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 54272,
+     "balancer_start": 1793530497349,
+     "balancer_start_ns": 1.7935304973499e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:54:59.825517Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 1120,
+    "receive": 1,
+    "request": 1123
+   },
+   "request": {
+    "id": "c5f60b7d87add1458779ab688c322858",
+    "method": "POST"
+   },
+   "response": {
+    "size": 2216,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 16128,
+     "balancer_start": 1793530499839,
+     "balancer_start_ns": 1.7935304998391e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:00.960181Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2496,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 27,
+      "cost": 0.00033165,
+      "prompt_tokens": 66,
+      "time_per_token": 92.444444444444,
+      "total_tokens": 93
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": 2494,
+    "receive": 2,
+    "request": 2497
+   },
+   "request": {
+    "id": "3147380e260b3b62b4759221f142e813",
+    "method": "POST"
+   },
+   "response": {
+    "size": 797,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 19200,
+     "balancer_start": 1793530500974,
+     "balancer_start_ns": 1.7935305009747e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:03.470330Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": 1420,
+    "receive": 2,
+    "request": 1423
+   },
+   "request": {
+    "id": "3dd3ba63ea2ab049bf208e0958967678",
+    "method": "POST"
+   },
+   "response": {
+    "size": 2161,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 36608,
+     "balancer_start": 1793530503485,
+     "balancer_start_ns": 1.7935305034858e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:04.906917Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 1574,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 8,
+      "cost": 0.0001815,
+      "prompt_tokens": 70,
+      "time_per_token": 196.75,
+      "total_tokens": 78
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 1571,
+    "receive": 2,
+    "request": 1575
+   },
+   "request": {
+    "id": "5fd52806a311cf57f0682717608a4730",
+    "method": "POST"
+   },
+   "response": {
+    "size": 711,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 1,
+     "balancer_latency_ns": 39680,
+     "balancer_start": 1793530504919,
+     "balancer_start_ns": 1.7935305049201e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:06.493442Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 1039,
+    "receive": 1,
+    "request": 1042
+   },
+   "request": {
+    "id": "242546548ceca31a11b4632a77b10b67",
+    "method": "POST"
+   },
+   "response": {
+    "size": 2000,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 19200,
+     "balancer_start": 1793530506509,
+     "balancer_start_ns": 1.7935305065093e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:07.549625Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2696,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 19,
+      "cost": 0.00025245,
+      "prompt_tokens": 58,
+      "time_per_token": 141.89473684211,
+      "total_tokens": 77
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": 2695,
+    "receive": 2,
+    "request": 2698
+   },
+   "request": {
+    "id": "76d93c4cdd6f4c0002ef7d424a15c265",
+    "method": "POST"
+   },
+   "response": {
+    "size": 769,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 15104,
+     "balancer_start": 1793530507562,
+     "balancer_start_ns": 1.793530507563e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:10.259485Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": 752,
+    "receive": 1,
+    "request": 754
+   },
+   "request": {
+    "id": "95b1e803281ad31dfa1ff31694826163",
+    "method": "POST"
+   },
+   "response": {
+    "size": 2017,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 31488,
+     "balancer_start": 1793530510275,
+     "balancer_start_ns": 1.7935305102758e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:11.028359Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2437,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 8,
+      "cost": 0.00020955,
+      "prompt_tokens": 87,
+      "time_per_token": 304.625,
+      "total_tokens": 95
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 2436,
+    "receive": 1,
+    "request": 2439
+   },
+   "request": {
+    "id": "4349a735bb007c6af1ff3f0d0840b332",
+    "method": "POST"
+   },
+   "response": {
+    "size": 722,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 16640,
+     "balancer_start": 1793530511041,
+     "balancer_start_ns": 1.7935305110411e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:13.478425Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 1672,
+    "receive": 1,
+    "request": 1675
+   },
+   "request": {
+    "id": "43ae4d307879eb759572db0a74f5853e",
+    "method": "POST"
+   },
+   "response": {
+    "size": 2211,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 18688,
+     "balancer_start": 1793530513493,
+     "balancer_start_ns": 1.793530513494e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:15.166062Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2429,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 8,
+      "cost": 0.00013695,
+      "prompt_tokens": 43,
+      "time_per_token": 303.625,
+      "total_tokens": 51
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 3,
+    "proxy": 2428,
+    "receive": 1,
+    "request": 2432
+   },
+   "request": {
+    "id": "9e84265849e86d2c65386e52db57e13b",
+    "method": "POST"
+   },
+   "response": {
+    "size": 734,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 1,
+     "balancer_latency_ns": 23808,
+     "balancer_start": 1793530515181,
+     "balancer_start_ns": 1.7935305151821e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:17.612264Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 884,
+    "receive": 1,
+    "request": 887
+   },
+   "request": {
+    "id": "33131e762559fc5b34ee573492e8467c",
+    "method": "POST"
+   },
+   "response": {
+    "size": 1306,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 1,
+     "balancer_latency_ns": 17152,
+     "balancer_start": 1793530517627,
+     "balancer_start_ns": 1.7935305176281e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:18.513960Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2243,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 27,
+      "cost": 0.0003036,
+      "prompt_tokens": 49,
+      "time_per_token": 83.074074074074,
+      "total_tokens": 76
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 2241,
+    "receive": 1,
+    "request": 2244
+   },
+   "request": {
+    "id": "c86acb3324577f4bf2728e2cec8f1108",
+    "method": "POST"
+   },
+   "response": {
+    "size": 770,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 22528,
+     "balancer_start": 1793530518526,
+     "balancer_start_ns": 1.7935305185263e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:20.768495Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": 2457,
+    "receive": 1,
+    "request": 2459
+   },
+   "request": {
+    "id": "b14323660427f25664411d6f271d6032",
+    "method": "POST"
+   },
+   "response": {
+    "size": 2195,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 16128,
+     "balancer_start": 1793530520783,
+     "balancer_start_ns": 1.7935305207838e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:23.241642Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 1437,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 7,
+      "cost": 0.0001089,
+      "prompt_tokens": 31,
+      "time_per_token": 205.28571428571,
+      "total_tokens": 38
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 1436,
+    "receive": 1,
+    "request": 1439
+   },
+   "request": {
+    "id": "e1963e5766309b31713222187648275b",
+    "method": "POST"
+   },
+   "response": {
+    "size": 727,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 18432,
+     "balancer_start": 1793530523257,
+     "balancer_start_ns": 1.7935305232571e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:24.694992Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 1021,
+    "receive": 1,
+    "request": 1024
+   },
+   "request": {
+    "id": "8e4a6e4f6c52152f0bcb883ed2931505",
+    "method": "POST"
+   },
+   "response": {
+    "size": 1213,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 15872,
+     "balancer_start": 1793530524709,
+     "balancer_start_ns": 1.7935305247094e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:25.730943Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2894,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 10,
+      "cost": 0.0001353,
+      "prompt_tokens": 32,
+      "time_per_token": 289.4,
+      "total_tokens": 42
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 2893,
+    "receive": 1,
+    "request": 2896
+   },
+   "request": {
+    "id": "27539119fccac84bdad3c8376a01df49",
+    "method": "POST"
+   },
+   "response": {
+    "size": 740,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 1,
+     "balancer_latency_ns": 20736,
+     "balancer_start": 1793530525744,
+     "balancer_start_ns": 1.793530525745e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:28.639043Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": 694,
+    "receive": 1,
+    "request": 696
+   },
+   "request": {
+    "id": "7444b4416f46a442def6640813c9da19",
+    "method": "POST"
+   },
+   "response": {
+    "size": 1330,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 16640,
+     "balancer_start": 1793530528654,
+     "balancer_start_ns": 1.7935305286549e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:29.349330Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2423,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 10,
+      "cost": 0.0001485,
+      "prompt_tokens": 40,
+      "time_per_token": 242.3,
+      "total_tokens": 50
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 3,
+    "proxy": 2420,
+    "receive": 1,
+    "request": 2424
+   },
+   "request": {
+    "id": "b82e126f442fd35aee20bc55eb413065",
+    "method": "POST"
+   },
+   "response": {
+    "size": 732,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 21760,
+     "balancer_start": 1793530529364,
+     "balancer_start_ns": 1.7935305293647e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:31.785453Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": 1010,
+    "receive": 0,
+    "request": 1011
+   },
+   "request": {
+    "id": "6988cf36220f140a7e2a776131f39a6a",
+    "method": "POST"
+   },
+   "response": {
+    "size": 1349,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 16640,
+     "balancer_start": 1793530531806,
+     "balancer_start_ns": 1.7935305318064e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:32.817007Z"
+ },
+ {
+  "jsonPayload": {
+   "ai": {
+    "proxy": {
+     "meta": {
+      "llm_latency": 2802,
+      "plugin_id": "d5f3313b-68e5-45a3-89b8-ab22da49c5b7",
+      "provider_name": "gemini",
+      "request_model": "gemini-3.8-flash",
+      "response_model": "gemini-3.8-flash"
+     },
+     "usage": {
+      "completion_tokens": 10,
+      "cost": 0.00015345,
+      "prompt_tokens": 43,
+      "time_per_token": 280.2,
+      "total_tokens": 53
+     }
+    }
+   },
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 2,
+    "proxy": 2801,
+    "receive": 1,
+    "request": 2804
+   },
+   "request": {
+    "id": "47669355709d050e1e83ac72f8a9b63b",
+    "method": "POST"
+   },
+   "response": {
+    "size": 736,
+    "status": 200
+   },
+   "route": {
+    "name": "gemini-chat"
+   },
+   "service": {
+    "name": "gemini"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 19712,
+     "balancer_start": 1793530532831,
+     "balancer_start_ns": 1.7935305328313e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:35.633248Z"
+ },
+ {
+  "jsonPayload": {
+   "consumer": {
+    "username": "harness"
+   },
+   "latencies": {
+    "kong": 1,
+    "proxy": 1514,
+    "receive": 1,
+    "request": 1516
+   },
+   "request": {
+    "id": "74c4f76482c4c9611fc7166e555b363c",
+    "method": "POST"
+   },
+   "response": {
+    "size": 2140,
+    "status": 200
+   },
+   "route": {
+    "name": "claude-raw-predict"
+   },
+   "service": {
+    "name": "claude"
+   },
+   "tries": [
+    {
+     "balancer_latency": 0,
+     "balancer_latency_ns": 38400,
+     "balancer_start": 1793530535648,
+     "balancer_start_ns": 1.7935305356486e+18,
+     "ip": "34.190.115.170",
+     "port": 443
+    }
+   ],
+   "upstream_status": 200
+  },
+  "timestamp": "2026-11-01T10:55:37.163186Z"
+ }
+]

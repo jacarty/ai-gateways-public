@@ -1,0 +1,9 @@
+# Copy to terraform.tfvars (git-ignored) and fill in.
+project_id         = "my-gcp-project"
+billing_account_id = "012345-6789AB-CDEF01"
+alert_email        = "me@example.com"
+
+# Optional overrides
+# region          = "europe-west1"
+# budget_amount   = 50
+# budget_currency = "USD"   # must match the billing account's currency, or apply fails

@@ -1,0 +1,59 @@
+{
+  "run_id": "20261024T103315Z-scenarios-bifrost-cost-unpriced-6e86dd",
+  "image": "local",
+  "model_location": "eu",
+  "gemini_model": "gemini-3.8-flash",
+  "claude_model": "claude-haiku-5-5",
+  "max_tokens": 256,
+  "thinking": {
+    "gemini": "LOW",
+    "claude": "off"
+  },
+  "id_token_source": "gcloud",
+  "command": "scenarios",
+  "gateway_url": "https://agw-bifrost-a1b2c3d4e5-ew.a.run.app/v1",
+  "git_commit": "5cb107b-dirty",
+  "note": "revision agw-bifrost-00011-bc5; throwaway key agw-t3-unpriced-20261024T103314-447413 {\"budgets\": [{\"max_limit\": 0.0001, \"reset_duration\": \"1h\"}]}; test 3 window: test-claude-unpriced alias (model_name agw-unpriced-claude, no price) on revision 00011",
+  "timeout_s": 120.0,
+  "scenario_file": "scenarios/bifrost/cost-unpriced.json",
+  "scenario": {
+    "name": "bifrost-cost-unpriced",
+    "description": "Test 3 on Bifrost transports/v2.2.6, run through run-cost.sh with a throwaway key (limits in the run's NOTE.md and quota.json). Needs the test 3 window (README.md): test-claude-unpriced, an alias to the real Claude model whose canonical model_name has no price. Bifrost charges a budget only when cost > 0, so unpriced requests should never spend the $0.0001 budget: expect all of them answered, then priced Claude requests to spend it and be refused.",
+    "record_headers": [],
+    "cases": [
+      {
+        "name": "unpriced-not-charged",
+        "model": "test-claude-unpriced",
+        "kind": "claude",
+        "repeat": 8,
+        "expect": {
+          "status": 200
+        }
+      },
+      {
+        "name": "priced-spends-budget",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 5
+      },
+      {
+        "name": "priced-refused",
+        "model": "claude-haiku-5-5",
+        "kind": "claude",
+        "repeat": 1,
+        "expect": {
+          "status": 402
+        }
+      },
+      {
+        "name": "unpriced-refused-once-spent",
+        "model": "test-claude-unpriced",
+        "kind": "claude",
+        "repeat": 1,
+        "expect": {
+          "status": 402
+        }
+      }
+    ]
+  }
+}
